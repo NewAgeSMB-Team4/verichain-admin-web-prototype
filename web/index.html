@@ -4,6 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>VeriChain Authentication — Verify once. Trust forever.</title>
+    <!-- Installable app: manifest, icons and the colour the app's title bar takes. -->
+    <link rel="manifest" href="manifest.webmanifest" />
+    <meta name="theme-color" content="#0C0D10" />
+    <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="VeriChain" />
     <script type="text/javascript" src="https://gc.kes.v2.scr.kaspersky-labs.com/7EA5E9BB-55E1-4C31-9C21-4943DDFED2E4/main.js?attr=RuWEQ_jmI0hlzWW_agyneEzoxfOosT-GehklROjWcRvS4wxcuUAnWUa-nqiTQFMVKzU8US8-jzniWNWPpg823LTa06F_3sd79H5xlQ9l1IljKN7sJ3jaEcYCDVeweXoET4RWMHea-TrmZTuhheEi24gnzN3Osw3JW_uV0h3-5S5yL3HNmRAeKQishKlEheChEczNJA3IEwPcEKrxeiJtJ1YTXf-6ZDiYaNG_8uaR4rbZBdM7W49idHXFAB8ZbO-O2RuVSbjuYPNf_0BzQrXlkZeY4S-F4Si8hb7c-1qHJeotKL4laGQ3-gGsnJhIZgSAP585rpYdnyPnrVaWfZU7jOK85oLRPscN8clkoQ-wT8ibQ1pUG4rmfKgwcDXZym8ox9bp8rRi_H3mQ9wgVMO0Zve12orViPqxwGCc7WkeI50tdj8j2sE533wKmiRqctY_N2ZcPclCefWmKYBQr1I2xSoLWkuKO65tWH2CsgXy2ANbQW-rQEovFDTiiugx8tvi1Tqw7XK2nxJt-8wKsOmf7sT9q68O-B9Xfjy14mhScSMSp-O0Qnr8J_lvGYfKFcEwPXqAgV4XdUmaobIQpvkBvQ2qRZA5JVNFXJuG4geQHel-4Rl4M-_inxnhYMffU8jq2y5KS-rK5s71iF6YWhCPq4ZSd-tX5A9VbzqDRR2N7QqWBCM27UU3AHmjiVz_c4P36tQepfXWq_G5mWkHxTwQNR-6dLFlE6sYS8rv8MK-OSYjtDKpnfBZ_tKr_D7e2wr8n5dSztSMyS8joUXrwfBPJMS9KFTwC3Y5ZEDTHdIui395Gw-2ijVoPIiU8x8A6MpVJoHq0_VybtMs5WpsvKQ93T33QWaXl6A1D83Z9Ux9mwIUn76tinH_QTkPKo9PIZbcIZY2WL5LXxn_dkcdhQtbTnCwEvBZ2-zynE2Ecyd80iTr7Apfliq8lElwU48GsadyA9zkVzeiqmC7OMrOdGK8wMxaJurROzkKRd4U9Qtgn1Sp4AT8JQff05k9ADacuAjUr-MzuMSt8Pk79WYgKAg-Vph3amEmIifjHCnZOp1SkS1Ld6xt3CVpfUlWVty1Ogviu06AxJO5H15irU8VJ7-q4x4a1yNe8Pxm_ZQgbTzA-LeEkBpNWXgH-JXv1VgSJpIZXlNdP8NmNOcLscDnAaP5LJy8ZT0_pjoVXQwm5xcpSDaAtp-OCSTuS2yapMAWfQd9pYA79FFbosbaLQSexRXOe1-ukQeCYHrc43oRmpKcu9xjY0Aw0lJ5q7QgTpBlZuFu56d4DXzo8as84iN855HRH_mIC-vTJAqFWD7gvpnBa59u-g-Oikw5v1VFXNCVC9uqL66CT6JMrOkXgXpT_fc0muvBoTXb4F3MqU5Eakqg7ATZjnv9tFL6LEDipZ_7imFFpHD9XbbwS_RBGoZkNEbRS9Goeh936232KxLi3qRI8dVJSsnRC-irMDt2jslwXcwfikdhiBJpqyf6qS6Xpzm7GueXjkDFcjzRJyle1ppgYQOeKvOpHGz6hah2DKO9cEYeC1Aw8BTNg6eLEDXjur5A6Tmdsnryjrk1x_933jAOU3_4s2nZFJVr3CWMohJBAnmWizg6xmhJHAtAx23x3kXFlAKKHlw3z5iRgwO7I00DHTfnqGrmxo6o3KBNN4yUwqazaAt1fVjYgqVzQAkLZF3mSBkxAp1tz1blsW-yvjX-32bTgvHNz2ttcYE1yg7YWgXb8Ct-jOjWT_nRg6ZsIFq9TRhjI9tBlNt2mokJtphfKDk" nonce="bd6b7000057ade3d4f83bcc2a87f628a" charset="UTF-8"></script><script>
       /* Before anything paints: a stored choice wins, otherwise follow the
          system. Inline and synchronous on purpose — deferred, the page paints
@@ -3414,6 +3423,176 @@
         font-size: 24px;
         padding: 0;
       }
+      /* ── Passwords ─────────────────────────────────────────────
+         Written for the glass card first; the Account page restates
+         the few colours that assume a dark ground. */
+      .pw-lblrow {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+      }
+      .pw-link {
+        font-size: 12.5px;
+        color: #e3cb92;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        background: none;
+        border: 0;
+        padding: 0;
+        cursor: pointer;
+      }
+      .pw-link:hover {
+        color: #fff;
+      }
+      .pw-wrap {
+        position: relative;
+      }
+      .pw-wrap input {
+        padding-right: 64px;
+      }
+      .pw-eye {
+        position: absolute;
+        right: 2px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.6);
+        background: none;
+        border: 0;
+        padding: 6px 4px;
+        cursor: pointer;
+      }
+      .pw-eye:hover {
+        color: #e3cb92;
+      }
+      /* Four short rules, filled from the left as the checklist does. */
+      .pw-meter {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 5px;
+        margin-top: 12px;
+      }
+      .pw-meter i {
+        height: 3px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.18);
+        transition: background 0.15s;
+      }
+      .pw-meter.s1 i:nth-child(-n + 1) { background: #e08e84; }
+      .pw-meter.s2 i:nth-child(-n + 2) { background: #d9a54a; }
+      .pw-meter.s3 i:nth-child(-n + 3) { background: #e3cb92; }
+      .pw-meter.s4 i { background: #7fc29a; }
+      .pw-word {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.14em;
+        color: rgba(255, 255, 255, 0.55);
+        margin-top: 7px;
+        min-height: 15px;
+      }
+      .pw-word.bad { color: #eaa79e; }
+      .pw-rules {
+        list-style: none;
+        margin: 10px 0 0;
+        padding: 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px 14px;
+        font-size: 12.5px;
+        color: rgba(255, 255, 255, 0.55);
+      }
+      .pw-rules li {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .pw-rules li::before {
+        content: "";
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        flex: none;
+        transition: 0.15s;
+      }
+      .pw-rules li.ok { color: #fff; }
+      .pw-rules li.ok::before {
+        border-color: #e3cb92;
+        background: #e3cb92 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13'%3E%3Cpath d='M3.5 6.8l2 2 4-4.3' fill='none' stroke='%230c0d10' stroke-width='1.7'/%3E%3C/svg%3E") center/13px no-repeat;
+      }
+      @media (max-width: 520px) {
+        .pw-rules { grid-template-columns: 1fr; }
+      }
+      /* The ring over each step's title: what the step is about. */
+      .pw-mark {
+        width: 54px;
+        height: 54px;
+        margin: 0 auto 16px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        border: 1px solid rgba(227, 203, 146, 0.55);
+        background: rgba(168, 127, 40, 0.18);
+      }
+      .pw-mark svg {
+        width: 23px;
+        height: 23px;
+        fill: none;
+        stroke: #e3cb92;
+        stroke-width: 1.6;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .pw-or {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin: 22px 0 14px;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.16em;
+        color: rgba(255, 255, 255, 0.5);
+      }
+      .pw-or::before,
+      .pw-or::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.18);
+      }
+      /* On the Account page: white paper, so the dark-ground colours go. */
+      .pw-light .pw-eye { color: #6e757f; right: 8px; }
+      .pw-light .pw-eye:hover { color: #0c0d10; }
+      .pw-light .pw-link { color: #7a5e1c; }
+      .pw-light .pw-link:hover { color: #0c0d10; }
+      .pw-light .pw-meter i { background: #e4e0d6; }
+      .pw-light .pw-meter.s1 i:nth-child(-n + 1) { background: #8c2f26; }
+      .pw-light .pw-meter.s2 i:nth-child(-n + 2) { background: #8a5a10; }
+      .pw-light .pw-meter.s3 i:nth-child(-n + 3) { background: #a87f28; }
+      .pw-light .pw-meter.s4 i { background: #2e6b45; }
+      .pw-light .pw-word { color: #6e757f; }
+      .pw-light .pw-word.bad { color: #8c2f26; }
+      .pw-light .pw-rules { color: #6e757f; }
+      .pw-light .pw-rules li::before { border-color: #b9c0c9; }
+      .pw-light .pw-rules li.ok { color: #0c0d10; }
+      .pw-light .pw-rules li.ok::before {
+        border-color: #2e6b45;
+        background: #2e6b45 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='13' height='13'%3E%3Cpath d='M3.5 6.8l2 2 4-4.3' fill='none' stroke='%23fff' stroke-width='1.7'/%3E%3C/svg%3E") center/13px no-repeat;
+      }
+      [data-theme="dark"] .pw-light .pw-eye,
+      [data-theme="dark"] .pw-light .pw-rules,
+      [data-theme="dark"] .pw-light .pw-word { color: rgba(255, 255, 255, 0.6); }
+      [data-theme="dark"] .pw-light .pw-rules li.ok { color: #fff; }
+      [data-theme="dark"] .pw-light .pw-link { color: #e3cb92; }
+      [data-theme="dark"] .pw-light .pw-meter i { background: rgba(255, 255, 255, 0.16); }
+      [data-theme="dark"] .pw-light .pw-meter.s1 i:nth-child(-n + 1) { background: #e08e84; }
+      [data-theme="dark"] .pw-light .pw-meter.s2 i:nth-child(-n + 2) { background: #d9a54a; }
+      [data-theme="dark"] .pw-light .pw-meter.s3 i:nth-child(-n + 3) { background: #e3cb92; }
+      [data-theme="dark"] .pw-light .pw-meter.s4 i { background: #7fc29a; }
       /* ── The events deck ───────────────────────────────────────
          One event at a time, held large, with its neighbours showing at
          either edge so the row reads as a deck you are part-way through
@@ -8033,7 +8212,7 @@ function sendCode(){
   paintCodeStep();
   toast('Code sent to ' + email + '. Any four digits will do here.');
 }
-function backToEmail(){ authMode = 'email'; stopResendTimer(); paintAuth(); }
+function backToEmail(){ authMode = 'codeEmail'; stopResendTimer(); paintAuth(); }
 function codeKey(i, e){
   if(e.key === 'Backspace' && !e.target.value && i > 0){
     const pv = document.getElementById('code'+(i-1));
@@ -8996,6 +9175,7 @@ function viewProfile(){
           <p class="text-[13px] text-steel">We cannot deliver to a PO box.</p>
         </div>
       </div>
+      ${profilePassword()}
       <div class="bg-white border border-rule p-7">
         <h2 class="font-display text-[19px] mb-5">How payment works</h2>
         <div class="goldrule w-10 mb-5 -mt-2"></div>
@@ -9010,6 +9190,27 @@ function viewProfile(){
       </div>
     </div>
   </div>`;
+}
+function profilePassword(){
+  const has = !!USER.hasPassword;
+  return `
+      <div class="bg-white border border-rule p-7 pw-light">
+        <div class="flex items-start justify-between gap-4">
+          <h2 class="font-display text-[19px]">Password</h2>
+          <span class="font-mono text-[10.5px] tracking-[.12em] uppercase text-steel pt-1.5">${has ? 'Last changed ' + esc(USER.pwChanged || 'Mar 2026') : 'Not set'}</span>
+        </div>
+        <div class="goldrule w-10 my-5"></div>
+        <p class="text-[13.5px] text-steel leading-[1.7] mb-1">${has
+          ? 'Changing it signs you out anywhere else you are signed in. A sign-in code by email always works too.'
+          : 'You sign in with a code we email you. Add a password to sign in straight away — codes keep working either way.'}</p>
+        ${has ? `<div class="mt-5">
+          <div class="pw-lblrow"><label class="lbl" for="apCur">Current password</label>
+            <button type="button" class="pw-link" onclick="pwForgot('${esc(USER.email)}')">Forgot it?</button></div>
+          ${pwInput('apCur', 'field', 'Your current password', 'current-password')}
+          <p class="err" id="apCurErr">Enter your current password.</p></div>` : ''}
+        ${pwNewFields('ap', 'lbl', 'field')}
+        <button onclick="pwUpdate()" class="btn btn-dark w-full mt-6">${has ? 'Update password' : 'Set password'}</button>
+      </div>`;
 }
 function setFormSigned(v){ FORMSIGNED = v; render(); vcTop(); }
 function leaveContact(){ FORMCTX = null; setView('dash'); }
@@ -10235,13 +10436,13 @@ function guestPrompt(){
     <div class="mt-7 max-w-[480px] mx-auto border p-6 text-left" style="border-color:rgba(168,127,40,.45);background:#F6EEDC">
       <p class="eyebrow">Following your submission</p>
       <p class="text-[13.5px] text-steel mt-2.5 leading-[1.7]">
-        You can check the status of this submission at any time by signing in with
-        <span class="font-mono text-ink">${esc(W.you.email)}</span>. We will send a code to that address —
-        there is no password to remember.
+        Your account is <span class="font-mono text-ink">${esc(W.you.email)}</span>. Create a password now to
+        sign in straight away next time — or skip it and we will email you a code whenever you sign in.
       </p>
     </div>
     <div class="mt-6 flex flex-wrap justify-center gap-3">
-      <button onclick="openAuth('in','${esc(W.you.email)}')" class="btn btn-gold px-7">Sign in</button>
+      <button onclick="pwCreateAfterSubmit('${esc(W.you.email)}')" class="btn btn-gold px-7">Create a password</button>
+      <button onclick="openAuth('in','${esc(W.you.email)}')" class="btn btn-ghost px-7">Sign in</button>
       <button onclick="goHome()" class="btn btn-ghost px-7">Skip to the home page</button>
     </div>`;
 }
@@ -12300,14 +12501,49 @@ ${
     ).join("")}</div>`
   );
 }
+/* Signing in: email and password, with the four-digit code kept as the way in for anyone who has not set
+   one (every account opened by a submission starts that way) or would rather not type it. */
 function paintAuth() {
   if (authMode === "code") return paintCodeStep();
+  if (authMode === "codeEmail") return paintCodeEmail();
   openModal(
     authCard(`
   <div class="auth-body">
     <h2 class="auth-title">Sign in</h2>
+    <p class="auth-sub">Welcome back. Sign in to follow your submissions and certificates.</p>
+
+    <div class="mt-7">
+      <label class="auth-lbl" for="auEmail">Email</label>
+      <input id="auEmail" type="email" class="auth-field" placeholder="you@example.com" autocomplete="username"
+             value="${esc(AUTH_EMAIL || "alex@whitfieldcollection.com")}">
+      <p class="err" id="auEmailErr">Enter a valid email address.</p>
+    </div>
+    <div class="mt-5">
+      <div class="pw-lblrow"><label class="auth-lbl" for="auPass">Password</label>
+        <button type="button" class="pw-link" onclick="pwForgot()">Forgot password?</button></div>
+      ${pwInput("auPass", "auth-field", "Your password", "current-password", `onkeydown="if(event.key==='Enter')pwSignIn()"`)}
+      <p class="err" id="auPassErr">Enter your password.</p>
+    </div>
+    <button onclick="pwSignIn()" class="auth-btn auth-btn-gold mt-7">Sign in</button>
+
+    <div class="pw-or">OR</div>
+    <button onclick="authMode='codeEmail';paintAuth()" class="auth-btn auth-btn-ghost">Email me a sign-in code</button>
+  </div>
+  <p class="auth-foot">
+    No account yet? One is opened for you the first time you submit an item. Authenticators sign in through the admin panel.
+  </p>`),
+    true
+  );
+  const f = document.getElementById(AUTH_EMAIL ? "auPass" : "auEmail");
+  if (f) setTimeout(() => f.focus(), 60);
+}
+function paintCodeEmail() {
+  openModal(
+    authCard(`
+  <div class="auth-body">
+    <h2 class="auth-title">Sign in with a code</h2>
     <p class="auth-sub">
-      Enter the email you submitted with. We will send a four-digit code to it — there is no password.
+      Enter the email you submitted with. We will send a four-digit code to it — no password needed.
     </p>
 
     <div class="mt-7">
@@ -12317,6 +12553,7 @@ function paintAuth() {
       <p class="err" id="auEmailErr">Enter a valid email address.</p>
     </div>
     <button onclick="sendCode()" class="auth-btn auth-btn-gold mt-6">Send me a code</button>
+    <button onclick="authMode='email';paintAuth()" class="auth-btn auth-btn-ghost mt-4">&larr; Use my password instead</button>
   </div>
   <p class="auth-foot">
     No account yet? One is opened for you the first time you submit an item. Authenticators sign in through the admin panel.
@@ -12325,6 +12562,220 @@ function paintAuth() {
   );
   const f = document.getElementById("auEmail");
   if (f) setTimeout(() => f.focus(), 60);
+}
+
+/* ── Passwords ──────────────────────────────────────────────
+   Forgot → link sent → choose a new one → done, all on the sign-in card. The same "choose" step creates a
+   password for an account a submission opened. The replies never say whether an address has an account. */
+const PW_RULES = [
+  ["len", "10 or more characters", (p) => p.length >= 10],
+  ["case", "Upper and lower case", (p) => /[a-z]/.test(p) && /[A-Z]/.test(p)],
+  ["num", "At least one number", (p) => /\d/.test(p)],
+  ["sym", "At least one symbol", (p) => /[^A-Za-z0-9]/.test(p)],
+];
+const PW_MARKS = {
+  key: '<path d="M15 7a4 4 0 1 1-3.4 6.1L4 20.7V17h3v-3h3l1.6-1.6A4 4 0 0 1 15 7z"/><circle cx="16" cy="8" r="1"/>',
+  mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+  lock: '<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+  ok: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+};
+let PW_EMAIL = "";
+let PW_LEFT = 0;
+let PW_TIMER = null;
+const pwMark = (k) => `<div class="pw-mark"><svg viewBox="0 0 24 24">${PW_MARKS[k]}</svg></div>`;
+function pwInput(id, cls, ph, ac, extra) {
+  return `<div class="pw-wrap"><input id="${id}" type="password" class="${cls}" placeholder="${ph}" autocomplete="${ac}" ${extra || ""}>
+    <button type="button" class="pw-eye" onclick="pwEye(this)" aria-label="Show password">Show</button></div>`;
+}
+function pwEye(b) {
+  const i = b.previousElementSibling;
+  const show = i.type === "password";
+  i.type = show ? "text" : "password";
+  b.textContent = show ? "Hide" : "Show";
+  b.setAttribute("aria-label", show ? "Hide password" : "Show password");
+  i.focus();
+}
+// New and confirm, with the meter and checklist. `p` prefixes the ids; `lbl`/`cls` are the card's or the page's.
+function pwNewFields(p, lbl, cls) {
+  return `
+    <div class="mt-5">
+      <label class="${lbl}" for="${p}New">New password</label>
+      ${pwInput(p + "New", cls, "Choose a password", "new-password", `oninput="pwScore('${p}')"`)}
+      <div class="pw-meter" id="${p}Meter"><i></i><i></i><i></i><i></i></div>
+      <div class="pw-word" id="${p}Word">&nbsp;</div>
+      <ul class="pw-rules" id="${p}Rules">${PW_RULES.map(([k, t]) => `<li data-k="${k}">${t}</li>`).join("")}</ul>
+    </div>
+    <div class="mt-5">
+      <label class="${lbl}" for="${p}Conf">Confirm new password</label>
+      ${pwInput(p + "Conf", cls, "Type it again", "new-password")}
+      <p class="err" id="${p}ConfErr">The two passwords do not match.</p>
+    </div>`;
+}
+function pwScore(p) {
+  const v = $("#" + p + "New").value;
+  const met = PW_RULES.filter(([k, , f]) => {
+    const ok = f(v);
+    $(`#${p}Rules [data-k="${k}"]`).classList.toggle("ok", ok);
+    return ok;
+  }).length;
+  $("#" + p + "Meter").className = "pw-meter" + (v && met ? " s" + met : "");
+  const w = $("#" + p + "Word");
+  w.classList.remove("bad");
+  w.innerHTML = v ? ["TOO WEAK", "WEAK", "FAIR", "GOOD", "STRONG"][met] : "&nbsp;";
+  $("#" + p + "New").classList.remove("bad");
+  return met === PW_RULES.length;
+}
+function pwValid(p) {
+  if (!pwScore(p)) {
+    $("#" + p + "New").classList.add("bad");
+    const w = $("#" + p + "Word");
+    w.textContent = "MEET EVERY RULE BELOW";
+    w.classList.add("bad");
+    return false;
+  }
+  $("#" + p + "ConfErr").textContent = "The two passwords do not match.";
+  return fieldErr(p + "Conf", $("#" + p + "New").value !== $("#" + p + "Conf").value);
+}
+
+function pwSignIn() {
+  const email = $("#auEmail").value.trim();
+  let ok = fieldErr("auEmail", !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(email));
+  ok = fieldErr("auPass", !$("#auPass").value) && ok;
+  if (!ok) return;
+  AUTH_EMAIL = email;
+  USER.hasPassword = true;
+  submitCode("0000"); // prototype: any password is accepted, and signs in exactly as a correct code does
+}
+function pwForgot(email) {
+  const f = document.getElementById("auEmail");
+  PW_EMAIL = email || (f ? f.value.trim() : "") || AUTH_EMAIL;
+  openModal(
+    authCard(`
+  <div class="auth-body">
+    ${pwMark("key")}
+    <h2 class="auth-title">Reset your password</h2>
+    <p class="auth-sub">Enter the email on your account and we will send you a link to choose a new password.</p>
+    <div class="mt-7">
+      <label class="auth-lbl" for="pwEmail">Email</label>
+      <input id="pwEmail" type="email" class="auth-field" placeholder="you@example.com" autocomplete="username"
+             value="${esc(PW_EMAIL)}" onkeydown="if(event.key==='Enter')pwSendLink()">
+      <p class="err" id="pwEmailErr">Enter a valid email address.</p>
+    </div>
+    <button onclick="pwSendLink()" class="auth-btn auth-btn-gold mt-7">Send reset link</button>
+    <button onclick="authMode='email';paintAuth()" class="auth-btn auth-btn-ghost mt-4">&larr; Back to sign in</button>
+  </div>
+  <p class="auth-foot">Remembered it? You can also <button onclick="AUTH_EMAIL=PW_EMAIL;authMode='codeEmail';paintAuth()">sign in with a code</button> instead.</p>`),
+    true
+  );
+  setTimeout(() => $("#pwEmail").focus(), 60);
+}
+function pwSendLink(again) {
+  if (!again) {
+    const e = $("#pwEmail").value.trim();
+    if (!fieldErr("pwEmail", !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(e))) return;
+    PW_EMAIL = e;
+  }
+  PW_LEFT = 30;
+  clearInterval(PW_TIMER);
+  PW_TIMER = setInterval(() => {
+    PW_LEFT--;
+    const el = document.getElementById("pwResend");
+    if (el) el.innerHTML = pwResendMarkup();
+    if (PW_LEFT <= 0 || !el) clearInterval(PW_TIMER);
+  }, 1000);
+  if (again) {
+    $("#pwResend").innerHTML = pwResendMarkup();
+    toast("Another reset link is on its way to " + PW_EMAIL + ".");
+    return;
+  }
+  openModal(
+    authCard(`
+  <div class="auth-body">
+    ${pwMark("mail")}
+    <h2 class="auth-title">Check your email</h2>
+    <p class="auth-sub">
+      If <span class="text-ink font-mono">${esc(PW_EMAIL)}</span> has a VeriChain account, a link to reset
+      your password is on its way. It works once and expires in 30 minutes.
+    </p>
+    <button onclick="pwChoose('reset')" class="auth-btn auth-btn-gold mt-7">Open the reset link</button>
+    <p class="auth-sub mt-5" id="pwResend">${pwResendMarkup()}</p>
+    <button onclick="authMode='email';paintAuth()" class="auth-btn auth-btn-ghost mt-5">&larr; Back to sign in</button>
+  </div>
+  <p class="auth-foot">Nothing after a few minutes? Check your spam folder. The button above stands in for the email here.</p>`),
+    true
+  );
+}
+function pwResendMarkup() {
+  return PW_LEFT > 0
+    ? `Did not get it? Resend in ${PW_LEFT}s`
+    : `Did not get it? <button onclick="pwSendLink(true)" class="pw-link">Resend the link</button>`;
+}
+// kind: 'reset' from the emailed link, 'create' for an account a submission opened without one.
+function pwChoose(kind) {
+  clearInterval(PW_TIMER);
+  const create = kind === "create";
+  openModal(
+    authCard(`
+  <div class="auth-body">
+    ${pwMark("lock")}
+    <h2 class="auth-title">${create ? "Create a password" : "Choose a new password"}</h2>
+    <p class="auth-sub">
+      ${create
+        ? "Sign in straight away next time, without waiting for a code. You can still use a code whenever you like."
+        : "Pick one you do not use anywhere else. Anywhere you are signed in will be signed out."}
+    </p>
+    <div class="mt-7">
+      <label class="auth-lbl">Account</label>
+      <input class="auth-field font-mono" value="${esc(PW_EMAIL)}" readonly autocomplete="username" style="opacity:.75">
+    </div>
+    ${pwNewFields("pwc", "auth-lbl", "auth-field")}
+    <button onclick="pwSave('${kind}')" class="auth-btn auth-btn-gold mt-7">${create ? "Create password" : "Save new password"}</button>
+  </div>`),
+    true
+  );
+  setTimeout(() => $("#pwcNew").focus(), 60);
+}
+function pwSave(kind) {
+  if (!pwValid("pwc")) return;
+  const create = kind === "create";
+  if (create) USER.hasPassword = true;
+  openModal(
+    authCard(`
+  <div class="auth-body">
+    ${pwMark("ok")}
+    <h2 class="auth-title">${create ? "Your password is set" : "Password updated"}</h2>
+    <p class="auth-sub">
+      ${create
+        ? "From now on, sign in with your email and this password — or a code, if you ever prefer."
+        : "Your new password is active. Use it the next time you sign in."}
+    </p>
+    ${create
+      ? `<button onclick="AUTH_EMAIL=PW_EMAIL;submitCode('0000')" class="auth-btn auth-btn-gold mt-8">Go to your account</button>`
+      : `<button onclick="AUTH_EMAIL=PW_EMAIL;authMode='email';paintAuth()" class="auth-btn auth-btn-gold mt-8">Sign in</button>`}
+  </div>`),
+    true
+  );
+}
+function pwCreateAfterSubmit(email) {
+  PW_EMAIL = email;
+  pwChoose("create");
+}
+// Account page: change it, or add one if this account has only ever signed in by code.
+function pwUpdate() {
+  const has = !!USER.hasPassword;
+  let ok = true;
+  if (has) ok = fieldErr("apCur", !$("#apCur").value);
+  ok = pwValid("ap") && ok;
+  if (!ok) return;
+  if (has && $("#apCur").value === $("#apNew").value) {
+    $("#apConfErr").textContent = "Choose a password different from your current one.";
+    fieldErr("apConf", true);
+    return;
+  }
+  USER.hasPassword = true;
+  USER.pwChanged = "Just now";
+  render();
+  toast(has ? "Password updated. Anywhere else you were signed in has been signed out." : "Password set. You can sign in with it next time.");
 }
 function enterWorkspace() {
   if (SIGNED_IN) return enterApp();
@@ -14832,5 +15283,36 @@ window.addEventListener('resize', fitLetters);
         <path d="M12 19V5M5 12l7-7 7 7" />
       </svg>
     </button>
+    <!-- Offered only when the browser says the site can be installed, and gone once it is. -->
+    <button id="installApp" hidden onclick="installApp()"
+      style="position:fixed;left:18px;bottom:18px;z-index:60;display:none;align-items:center;gap:9px;padding:11px 18px;border-radius:100px;border:1px solid rgba(227,203,146,.55);background:#0c0d10;color:#f2e6cb;font:600 13px 'IBM Plex Sans',sans-serif;box-shadow:0 10px 26px rgba(0,0,0,.35);cursor:pointer">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>
+      Install app
+    </button>
+    <script>
+      /* Installable app. A service worker needs http(s) — opened from disk the site simply runs as a page. */
+      if ("serviceWorker" in navigator && location.protocol !== "file:") {
+        window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));
+      }
+      let installPrompt = null;
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        installPrompt = e;
+        const b = document.getElementById("installApp");
+        b.hidden = false;
+        b.style.display = "inline-flex";
+      });
+      window.addEventListener("appinstalled", () => {
+        installPrompt = null;
+        document.getElementById("installApp").style.display = "none";
+      });
+      async function installApp() {
+        if (!installPrompt) return;
+        installPrompt.prompt();
+        await installPrompt.userChoice;
+        installPrompt = null;
+        document.getElementById("installApp").style.display = "none";
+      }
+    </script>
   </body>
 </html>
