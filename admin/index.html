@@ -35,6 +35,17 @@
             --okbg: #E8F1EB;
             --warn: #8A5A10;
             --warnbg: #FBF3E0;
+            /* shared with the web prototype */
+            --ink3: #22252B;
+            --ruleD: #3A3E46;
+            --slvtint: #EDEFF2;
+            --goldsoft: #F6EEDC;
+            --champ: #C4AE82;
+            --champ2: #B39B6E;
+            --focus: #B8923C;
+            --eyebrow: #8A6614;
+            --label: #4A515A;
+            --field: #C9CDD3;
             --side: 236px;
             --top: 56px;
             --r: 8px;
@@ -48,12 +59,12 @@
         }
 
         html {
-            font-size: 16px
+            font-size: 18px
         }
 
         body {
             font-family: 'IBM Plex Sans', sans-serif;
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.55;
             color: var(--ink);
             background: var(--mist);
@@ -128,14 +139,14 @@
         .brand b {
             font-family: 'Libre Caslon Text', serif;
             font-weight: 400;
-            font-size: 16px;
+            font-size: 18px;
             display: block;
             line-height: 1.1
         }
 
         .brand small {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 10.5px;
+            font-size: 11.5px;
             letter-spacing: .18em;
             color: var(--gold2);
             display: block;
@@ -150,7 +161,7 @@
 
         .navgrp {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 10.5px;
+            font-size: 11.5px;
             letter-spacing: .16em;
             color: rgba(255, 255, 255, .4);
             padding: 14px 10px 6px
@@ -163,7 +174,7 @@
             padding: 8px 10px;
             border-radius: 6px;
             color: rgba(255, 255, 255, .78);
-            font-size: 14px;
+            font-size: 15px;
             width: 100%;
             text-align: left
         }
@@ -197,7 +208,7 @@
         .navi .cnt {
             margin-left: auto;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 12.5px;
             color: var(--gold2)
         }
 
@@ -222,7 +233,7 @@
 
         .navi.subi {
             padding: 6px 8px;
-            font-size: 14px
+            font-size: 15px
         }
 
         .navi.subi svg {
@@ -236,7 +247,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-size: 13px
+            font-size: 14px
         }
 
         .me .av {
@@ -247,20 +258,20 @@
             display: grid;
             place-items: center;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 12.5px;
             color: #fff
         }
 
         .me small {
             display: block;
             color: rgba(255, 255, 255, .5);
-            font-size: 12px
+            font-size: 13px
         }
 
         .me button {
             margin-left: auto;
             color: rgba(255, 255, 255, .55);
-            font-size: 12.5px
+            font-size: 13.5px
         }
 
         .me button:hover {
@@ -286,7 +297,7 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 14px;
+            font-size: 15px;
             color: var(--silver);
             min-width: 0
         }
@@ -312,7 +323,7 @@
             height: 34px;
             width: 360px;
             color: var(--silver);
-            font-size: 14px;
+            font-size: 15px;
             cursor: text
         }
 
@@ -330,7 +341,7 @@
 
         kbd {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: 12px;
             padding: 2px 6px;
             border: 1px solid var(--rule);
             border-bottom-width: 2px;
@@ -361,13 +372,13 @@
         h2 {
             font-family: 'Libre Caslon Text', serif;
             font-weight: 400;
-            font-size: 21px;
+            font-size: 23px;
             line-height: 1.25
         }
 
         .sub {
             color: var(--silver);
-            font-size: 14px;
+            font-size: 15px;
             margin-top: 5px;
             line-height: 1.6
         }
@@ -376,7 +387,7 @@
             display: block;
             font-family: 'IBM Plex Mono', monospace;
             font-weight: 600;
-            font-size: 11.5px;
+            font-size: 12.5px;
             letter-spacing: .06em;
             color: var(--silver);
             margin-bottom: 5px
@@ -385,7 +396,7 @@
         .eyebrow {
             font-family: 'IBM Plex Mono', monospace;
             font-weight: 500;
-            font-size: 11px;
+            font-size: 12px;
             letter-spacing: .16em;
             text-transform: uppercase;
             color: var(--gold3)
@@ -400,11 +411,11 @@
         }
 
         .small {
-            font-size: 12.5px
+            font-size: 13.5px
         }
 
         .t13 {
-            font-size: 14px
+            font-size: 15px
         }
 
         .goldrule {
@@ -529,7 +540,7 @@
 
         .kpi .d {
             color: var(--silver);
-            font-size: 12.5px;
+            font-size: 13.5px;
             margin-top: 6px
         }
 
@@ -542,7 +553,7 @@
             align-items: center;
             gap: 6px;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: 12px;
             letter-spacing: .05em;
             padding: 3px 8px;
             border-radius: 4px;
@@ -600,7 +611,7 @@
             display: inline-flex;
             align-items: center;
             gap: 7px;
-            font-size: 13.5px;
+            font-size: 14.5px;
             font-weight: 600;
             padding: 8px 13px;
             border-radius: 6px;
@@ -660,7 +671,7 @@
 
         .btn.sm {
             padding: 5px 10px;
-            font-size: 12.5px
+            font-size: 13.5px
         }
 
         .btn.icon {
@@ -704,7 +715,7 @@
             border: 1px solid var(--slv2);
             border-radius: 6px;
             padding: 9px 11px;
-            font-size: 14.5px;
+            font-size: 15.5px;
             outline: none;
             transition: .12s
         }
@@ -744,7 +755,7 @@
         .err {
             display: none;
             color: var(--bad);
-            font-size: 12.5px;
+            font-size: 13.5px;
             margin-top: 4px
         }
 
@@ -759,7 +770,7 @@
             padding: 7px 0;
             border-bottom: 1px solid var(--rule);
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.4
         }
 
@@ -776,7 +787,7 @@
             align-items: center;
             gap: 8px;
             cursor: pointer;
-            font-size: 14px
+            font-size: 15px
         }
 
         .switch input {
@@ -819,7 +830,7 @@
 
         .tbl th {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: 12px;
             letter-spacing: .12em;
             text-transform: uppercase;
             color: var(--silver);
@@ -834,7 +845,7 @@
         .tbl td {
             padding: 11px 14px;
             border-bottom: 1px solid var(--rule);
-            font-size: 14px;
+            font-size: 15px;
             vertical-align: middle;
             line-height: 1.45
         }
@@ -918,7 +929,7 @@
 
         .tab {
             padding: 12px 12px 10px;
-            font-size: 14px;
+            font-size: 15px;
             color: var(--silver);
             border-bottom: 2px solid transparent;
             white-space: nowrap;
@@ -938,7 +949,7 @@
 
         .tab .n {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 12.5px;
             color: var(--silver)
         }
 
@@ -946,7 +957,7 @@
             padding: 44px 20px;
             text-align: center;
             color: var(--silver);
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.6
         }
 
@@ -954,7 +965,7 @@
             display: block;
             font-family: 'Libre Caslon Text', serif;
             font-weight: 400;
-            font-size: 19px;
+            font-size: 21px;
             color: var(--ink);
             margin-bottom: 6px
         }
@@ -971,7 +982,7 @@
             align-items: center;
             gap: 12px;
             box-shadow: var(--shadow);
-            font-size: 14px
+            font-size: 15px
         }
 
         .bulkbar .btn.quiet {
@@ -1028,12 +1039,12 @@
         }
 
         .dhead h2 {
-            font-size: 21px
+            font-size: 23px
         }
 
         .dhead .x {
             margin-left: auto;
-            font-size: 22px;
+            font-size: 24px;
             line-height: 1;
             color: var(--silver);
             padding: 2px 6px
@@ -1062,9 +1073,9 @@
             flex: 1
         }
 
-        .detail {
+        /* .detail {
             max-width: 820px
-        }
+        } */
 
         .detail .sect {
             margin-top: 22px
@@ -1078,7 +1089,7 @@
             display: grid;
             grid-template-columns: 130px 1fr;
             gap: 6px 14px;
-            font-size: 14px
+            font-size: 15px
         }
 
         .kv dt {
@@ -1098,7 +1109,7 @@
 
         .sect h3 {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 12.5px;
             letter-spacing: .14em;
             text-transform: uppercase;
             color: var(--gold3);
@@ -1114,7 +1125,7 @@
             display: flex;
             gap: 10px;
             padding: 4px 0;
-            font-size: 14px
+            font-size: 15px
         }
 
         .tl li::before {
@@ -1140,14 +1151,14 @@
             color: var(--silver);
             margin-left: auto;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px
+            font-size: 12.5px
         }
 
         .note {
             background: var(--mist);
             border-left: 3px solid var(--gold);
             padding: 10px 12px;
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.55;
             border-radius: 0 6px 6px 0
         }
@@ -1173,7 +1184,7 @@
         }
 
         .itemrow .m {
-            font-size: 12.5px;
+            font-size: 13.5px;
             color: var(--silver);
             margin-top: 2px
         }
@@ -1186,7 +1197,7 @@
         .lines td {
             padding: 7px 6px;
             border-bottom: 1px solid var(--rule);
-            font-size: 14px;
+            font-size: 15px;
             vertical-align: middle
         }
 
@@ -1196,7 +1207,7 @@
 
         .lines input.f {
             padding: 6px 8px;
-            font-size: 14px
+            font-size: 15px
         }
 
         .lines .r {
@@ -1226,7 +1237,7 @@
         #modal {
             background: var(--paper);
             border-radius: 10px;
-            width: min(560px, 100%);
+            width: min(640px, 100%);
             box-shadow: var(--shadow);
             max-height: 90vh;
             overflow: auto
@@ -1279,7 +1290,7 @@
             width: 100%;
             border: 0;
             padding: 16px 18px;
-            font-size: 16px;
+            font-size: 18px;
             outline: none;
             border-bottom: 1px solid var(--rule)
         }
@@ -1294,7 +1305,7 @@
             align-items: center;
             gap: 12px;
             padding: 10px 18px;
-            font-size: 14px;
+            font-size: 15px;
             cursor: pointer;
             width: 100%;
             text-align: left
@@ -1307,7 +1318,7 @@
 
         .pal .ri .k {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: 12px;
             color: var(--gold3);
             width: 88px;
             flex: none;
@@ -1317,14 +1328,14 @@
         .pal .ri .m {
             color: var(--silver);
             margin-left: auto;
-            font-size: 12.5px;
+            font-size: 13.5px;
             white-space: nowrap
         }
 
         .pal .hint {
             padding: 8px 18px;
             border-top: 1px solid var(--rule);
-            font-size: 12px;
+            font-size: 13px;
             color: var(--silver);
             display: flex;
             gap: 14px
@@ -1347,7 +1358,7 @@
             color: #fff;
             padding: 10px 16px;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 15px;
             display: flex;
             align-items: center;
             gap: 14px;
@@ -1358,7 +1369,7 @@
         .toast button {
             color: var(--gold2);
             font-weight: 500;
-            font-size: 13px
+            font-size: 14px
         }
 
         .toast button:hover {
@@ -1395,7 +1406,7 @@
 
         .loginbox h1 {
             text-align: center;
-            font-size: 24px
+            font-size: 26px
         }
 
         .loginbox .roles {
@@ -1410,7 +1421,7 @@
             border-radius: 6px;
             padding: 10px;
             text-align: left;
-            font-size: 14px;
+            font-size: 15px;
             background: var(--paper)
         }
 
@@ -1420,7 +1431,7 @@
         }
 
         .roles button span {
-            font-size: 12px;
+            font-size: 13px;
             color: var(--silver)
         }
 
@@ -1483,7 +1494,7 @@
         }
 
         .tier span {
-            font-size: 12.5px;
+            font-size: 13.5px;
             color: var(--silver)
         }
 
@@ -1504,7 +1515,7 @@
             display: grid;
             place-items: center;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 10.5px;
+            font-size: 11.5px;
             color: var(--silver);
             text-align: center;
             padding: 4px
@@ -1527,7 +1538,7 @@
             border-radius: 50%;
             background: rgba(12, 13, 16, .8);
             color: #fff;
-            font-size: 12.5px;
+            font-size: 13.5px;
             line-height: 18px;
             text-align: center;
             z-index: 2
@@ -1536,13 +1547,13 @@
         .photo.add {
             border-style: dashed;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 22px;
             color: var(--slv)
         }
 
         .grp {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 12.5px;
             letter-spacing: .06em;
             color: var(--gold3);
             margin: 12px 0 4px
@@ -1588,7 +1599,7 @@
 
         .invdoc .lines th {
             text-align: left;
-            font-size: 12px;
+            font-size: 13px;
             letter-spacing: .08em;
             text-transform: uppercase;
             color: var(--silver);
@@ -1611,7 +1622,7 @@
             padding: 30px 34px;
             color: var(--ink);
             line-height: 1.6;
-            font-size: 14.5px
+            font-size: 15.5px
         }
 
         .btn.pillbtn {
@@ -1619,7 +1630,7 @@
             border-radius: 999px;
             padding: 9px 20px;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 12.5px;
             letter-spacing: .14em;
             text-transform: uppercase;
             background: var(--paper);
@@ -1656,13 +1667,13 @@
 
         .nsopt b {
             display: block;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600
         }
 
         .nsopt span {
             display: block;
-            font-size: 12.5px;
+            font-size: 13.5px;
             color: var(--silver);
             margin-top: 2px
         }
@@ -1670,7 +1681,7 @@
         .nsopt em {
             font-style: normal;
             color: var(--gold3);
-            font-size: 12.5px;
+            font-size: 13.5px;
             white-space: nowrap
         }
 
@@ -1776,7 +1787,7 @@
 
         .f.sm {
             padding: 6px 8px;
-            font-size: 12.5px;
+            font-size: 13.5px;
             width: auto
         }
 
@@ -1793,7 +1804,7 @@
             display: grid;
             place-items: center;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 12.5px;
             color: var(--silver);
             border: 1px solid var(--rule)
         }
@@ -1809,7 +1820,7 @@
             cursor: pointer;
             overflow: hidden;
             color: var(--silver);
-            font-size: 12.5px
+            font-size: 13.5px
         }
 
         .evthumb-box img {
@@ -1839,14 +1850,14 @@
 
         .evcard-name {
             font-weight: 700;
-            font-size: 20px;
+            font-size: 22px;
             line-height: 1.1;
             text-transform: uppercase
         }
 
         .evcard-city {
             font-weight: 700;
-            font-size: 14px;
+            font-size: 15px;
             letter-spacing: .06em;
             text-transform: uppercase;
             margin-top: 8px;
@@ -1854,14 +1865,14 @@
         }
 
         .evcard-line {
-            font-size: 14px;
+            font-size: 15px;
             margin-top: 4px;
             color: #c9cbd1
         }
 
         .evcard-k {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 10.5px;
+            font-size: 11.5px;
             letter-spacing: .14em;
             text-transform: uppercase;
             color: #9a9ca3;
@@ -1870,7 +1881,7 @@
 
         .evcard-v {
             font-weight: 700;
-            font-size: 14.5px;
+            font-size: 15.5px;
             line-height: 1.35;
             margin-top: 4px
         }
@@ -1878,7 +1889,7 @@
         .evcard-cta {
             margin-top: auto;
             align-self: flex-end;
-            font-size: 12.5px;
+            font-size: 13.5px;
             font-weight: 600;
             padding-top: 18px
         }
@@ -1890,7 +1901,7 @@
         .evtitle {
             font-family: 'IBM Plex Sans', system-ui, sans-serif;
             font-weight: 700;
-            font-size: 22px;
+            font-size: 24px;
             text-transform: uppercase;
             margin: 4px 0 10px
         }
@@ -1901,7 +1912,7 @@
             color: var(--gold3);
             padding: 2px 6px;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 12.5px;
             letter-spacing: .1em;
             text-transform: uppercase;
             text-decoration: underline
@@ -1913,7 +1924,7 @@
 
         .evkv dt {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 10.5px;
+            font-size: 11.5px;
             letter-spacing: .14em;
             text-transform: uppercase;
             color: var(--silver);
@@ -1923,13 +1934,13 @@
         .evkv dd {
             margin: 4px 0 0;
             font-weight: 600;
-            font-size: 14.5px;
+            font-size: 15.5px;
             line-height: 1.5
         }
 
         .evkv dd p {
             font-weight: 400;
-            font-size: 14px;
+            font-size: 15px;
             margin: 0 0 8px;
             color: var(--steel)
         }
@@ -1974,7 +1985,7 @@
             border-radius: 999px;
             padding: 3px 12px;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11px;
+            font-size: 12px;
             letter-spacing: .14em;
             text-transform: uppercase;
             margin-bottom: 14px
@@ -1993,7 +2004,7 @@
         .posthero p {
             max-width: 520px;
             margin: 12px auto 0;
-            font-size: 14px;
+            font-size: 15px;
             color: #d9dbe0;
             line-height: 1.5
         }
@@ -2011,7 +2022,7 @@
             border-radius: 999px;
             padding: 2px 10px;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 10.5px;
+            font-size: 11.5px;
             letter-spacing: .14em;
             text-transform: uppercase;
             color: var(--silver);
@@ -2024,7 +2035,7 @@
         }
 
         .postbody p {
-            font-size: 14.5px;
+            font-size: 15.5px;
             line-height: 1.75;
             margin: 0 0 16px;
             color: var(--steel)
@@ -2049,7 +2060,7 @@
             display: grid;
             place-items: center;
             text-align: center;
-            font-size: 12px;
+            font-size: 13px;
             color: var(--silver);
             padding: 8px;
             margin-right: 10px
@@ -2068,7 +2079,7 @@
         .cmsimg em {
             font-style: normal;
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 10.5px;
+            font-size: 11.5px;
             letter-spacing: .08em;
             text-transform: uppercase
         }
@@ -2098,7 +2109,7 @@
 
         .cmsrow-n {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 12.5px;
             color: var(--silver);
             padding-top: 9px;
             width: 22px
@@ -2120,21 +2131,21 @@
             border: 1px dashed var(--slv2);
             border-radius: 8px;
             padding: 22px;
-            font-size: 14px;
+            font-size: 15px;
             line-height: 1.6
         }
 
         .preview h4 {
             font-family: 'Libre Caslon Text', serif;
             font-weight: 400;
-            font-size: 22px;
+            font-size: 24px;
             line-height: 1.2;
             margin-bottom: 6px
         }
 
         .diff {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 12px;
+            font-size: 13px;
             background: var(--mist);
             border-radius: 6px;
             padding: 10px 12px;
@@ -2156,7 +2167,7 @@
             gap: 12px;
             padding: 8px 0;
             border-bottom: 1px solid var(--rule);
-            font-size: 14px
+            font-size: 15px
         }
 
         .audit li:last-child {
@@ -2165,7 +2176,7 @@
 
         .audit .who {
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 12.5px;
             color: var(--gold3);
             width: 64px;
             flex: none
@@ -2175,7 +2186,7 @@
             margin-left: auto;
             color: var(--silver);
             font-family: 'IBM Plex Mono', monospace;
-            font-size: 11.5px;
+            font-size: 12.5px;
             white-space: nowrap
         }
 
@@ -2314,7 +2325,7 @@
             }
 
             .pagehead h1 {
-                font-size: 24px
+                font-size: 26px
             }
 
             .g3,
@@ -2456,6 +2467,41 @@
         }
 
         /* ── responsive fixes ───────────────────────────────── */
+        /* modal footer: never clip buttons; the first (Cancel) sits left, actions right, and it wraps when space runs out */
+        #modal .mf {
+            flex-wrap: wrap;
+            align-items: center
+        }
+
+        #modal .mf>.btn:first-child:not(:only-child) {
+            margin-right: auto
+        }
+
+        #modal .mb>.note {
+            margin: 4px 0 16px
+        }
+
+        @media (max-width:600px) {
+            #modal .mf>.btn {
+                flex: 1 1 auto;
+                justify-content: center
+            }
+
+            #modal .mf>.btn:first-child:not(:only-child) {
+                margin-right: 0
+            }
+        }
+
+        .lbl {
+            overflow-wrap: anywhere
+        }
+
+        @media (max-width:600px) {
+            .card .row {
+                flex-wrap: wrap
+            }
+        }
+
         .tscroll {
             overflow: auto;
             background:
@@ -2650,7 +2696,7 @@
             }
 
             .kpi .n {
-                font-size: 22px
+                font-size: 24px
             }
         }
 
@@ -3245,110 +3291,1146 @@
 
 
         /* ── login: split screen ─────────────────────────── */
-        #login { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; place-items: stretch; padding: 0; background: var(--paper) }
-        .lg-art { position: relative; overflow: hidden; background: var(--ink); color: #fff; min-height: 100vh; isolation: isolate }
-        .lg-slides, .lg-slide { position: absolute; inset: 0; margin: 0 }
-        .lg-slide { opacity: 0; transition: opacity 1.4s ease }
-        .lg-slide img { width: 100%; height: 100%; object-fit: cover; display: block; transform: scale(1.12); filter: saturate(.85) contrast(1.05) }
-        .lg-slide.on { opacity: 1; z-index: 1 }
-        .lg-slide.on img { animation: lgKen 7.5s linear both }
-        .lg-slide.was { opacity: 0; z-index: 2 }
-        @keyframes lgKen { from { transform: scale(1.12) translate(1.5%, 1%) } to { transform: scale(1.02) translate(0, 0) } }
-        .lg-shade { position: absolute; inset: 0; z-index: 3; pointer-events: none; background: linear-gradient(180deg, rgba(12, 13, 16, .62) 0%, rgba(12, 13, 16, .08) 28%, rgba(12, 13, 16, .2) 52%, rgba(12, 13, 16, .92) 100%), radial-gradient(120% 70% at 0% 100%, rgba(168, 127, 40, .28), rgba(168, 127, 40, 0) 60%) }
-        .lg-top { position: absolute; z-index: 4; top: 34px; left: 40px; right: 40px; display: flex; align-items: center; gap: 12px }
-        .lg-top img { height: 40px; width: auto }
-        .lg-top b { display: block; font-family: 'Libre Caslon Text', serif; font-weight: 400; font-size: 20px; line-height: 1.1 }
-        .lg-top small { display: block; font-family: 'IBM Plex Mono', monospace; font-size: 10.5px; letter-spacing: .22em; color: var(--gold2); margin-top: 4px }
-        .lg-cap { position: absolute; z-index: 4; left: 40px; right: 40px; bottom: 34px; max-width: 560px }
-        .lg-k { font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; font-weight: 500; letter-spacing: .22em; text-transform: uppercase; color: var(--gold2); display: flex; align-items: center; gap: 12px }
-        .lg-k::before { content: ''; width: 28px; height: 1px; background: var(--gold2) }
-        .lg-t { font-family: 'Libre Caslon Text', serif; font-size: clamp(28px, 3.1vw, 44px); line-height: 1.12; letter-spacing: -.01em; margin-top: 14px; text-wrap: balance }
-        .lg-k.in, .lg-t.in { animation: lgText .9s cubic-bezier(.2, .8, .2, 1) both }
-        .lg-t.in { animation-delay: .08s }
-        @keyframes lgText { from { opacity: 0; transform: translateY(16px); filter: blur(4px) } to { opacity: 1; transform: none; filter: none } }
-        .lg-sig { display: block; width: 230px; height: auto; margin: 14px 0 0 -6px; overflow: visible }
-        .lg-sig path { fill: none; stroke: var(--gold2); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; filter: drop-shadow(0 0 6px rgba(227, 203, 146, .35)) }
-        .lg-sig.draw path:nth-child(1) { animation: lgInk 2.1s .35s cubic-bezier(.55, .1, .35, 1) forwards }
-        .lg-sig.draw path:nth-child(2) { animation: lgInk .8s 2.3s cubic-bezier(.4, 0, .3, 1) forwards }
-        .lg-sig.draw path:nth-child(3) { stroke-width: 1.4; opacity: .8; animation: lgInk .9s 3s cubic-bezier(.6, 0, .2, 1) forwards }
-        @keyframes lgInk { to { stroke-dashoffset: 0 } }
-        .lg-meta { display: flex; align-items: center; gap: 18px; margin-top: 22px }
-        .lg-n { font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: .1em; color: rgba(255, 255, 255, .55); white-space: nowrap }
-        .lg-n b { color: #fff; font-weight: 500 }
-        .lg-bars { display: flex; gap: 6px; flex: 1; max-width: 300px }
-        .lg-bars button { flex: 1; height: 18px; padding: 8px 0; background: none; border: 0; cursor: pointer }
-        .lg-bars i { display: block; height: 2px; background: rgba(255, 255, 255, .22); position: relative; overflow: hidden; border-radius: 2px }
-        .lg-bars i::after { content: ''; position: absolute; inset: 0; background: var(--gold2); transform: scaleX(0); transform-origin: left }
-        .lg-bars .done i::after { transform: scaleX(1) }
-        .lg-bars .on i::after { animation: lgBar var(--lg-dur, 7s) linear forwards }
-        @keyframes lgBar { to { transform: scaleX(1) } }
-        .lg-credit { margin-top: 12px; font-size: 11.5px; color: rgba(255, 255, 255, .45) }
-        .lg-credit a { color: rgba(255, 255, 255, .7); text-decoration: none; border-bottom: 1px solid rgba(255, 255, 255, .25) }
-        .lg-credit a:hover { color: #fff }
-
-        .lg-side { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 56px 40px 72px; background: radial-gradient(90% 60% at 100% 0%, rgba(227, 203, 146, .16), rgba(227, 203, 146, 0) 60%), var(--paper) }
-        .lg-side::before { content: ''; position: absolute; inset: 0; pointer-events: none; opacity: .5; background-image: radial-gradient(circle at 1px 1px, rgba(12, 13, 16, .07) 1px, transparent 0); background-size: 22px 22px; mask-image: linear-gradient(180deg, #000, transparent 45%); -webkit-mask-image: linear-gradient(180deg, #000, transparent 45%) }
-        #login .loginbox { position: relative; width: min(420px, 100%); background: none; border: 0; border-radius: 0; box-shadow: none; padding: 0 }
-        #login .loginbox > img { height: 52px; margin: 0 0 22px }
-        .lg-eyebrow { margin-bottom: 10px }
-        #login .loginbox h1 { text-align: left; font-size: clamp(30px, 2.6vw, 38px); line-height: 1.1; text-wrap: balance }
-        #login .loginbox .sub { margin-top: 10px; font-size: 15px }
-        .lg-rolelbl { margin: 28px 0 8px }
-        #login .loginbox .roles { margin: 0 0 18px; gap: 10px }
-        #login .roles button { position: relative; padding: 14px 40px 14px 14px; border-radius: 8px; border-color: var(--rule); transition: border-color .15s, box-shadow .15s, background .15s }
-        #login .roles button:hover { border-color: var(--slv2); background: var(--mist) }
-        #login .roles button::after { content: ''; position: absolute; top: 14px; right: 14px; width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid var(--slv2); transition: .15s }
-        #login .roles button.on { border-color: var(--gold); background: #FBF7EC; box-shadow: 0 0 0 3px rgba(168, 127, 40, .14) }
-        #login .roles button.on::after { border-color: var(--gold); background: radial-gradient(circle, var(--gold) 0 4px, transparent 4.5px) }
-        #login .roles button b { font-weight: 600 }
-        #login .roles button span { display: block; margin-top: 2px }
-        .lg-inp { position: relative }
-        .lg-inp > svg { position: absolute; left: 13px; top: 50%; width: 17px; height: 17px; transform: translateY(-50%); fill: none; stroke: var(--slv); stroke-width: 1.7; stroke-linejoin: round; pointer-events: none }
-        .lg-inp input.f { padding: 12px 44px 12px 40px; font-size: 15px; border-radius: 8px }
-        .lg-inp input.f:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(168, 127, 40, .14) }
-        .lg-inp:focus-within > svg { stroke: var(--gold3) }
-        .lg-eye { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 34px; height: 34px; display: grid; place-items: center; border-radius: 6px; color: var(--slv) }
-        .lg-eye:hover, .lg-eye.on { color: var(--ink); background: var(--mist) }
-        .lg-eye svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7 }
-        .lg-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 4px 0 20px; font-size: 13.5px }
-        .lg-row a { color: var(--gold3); text-decoration: none; font-weight: 500 }
-        .lg-row a:hover { text-decoration: underline }
-        .lg-check { display: inline-flex; align-items: center; gap: 8px; color: var(--steel); cursor: pointer }
-        .lg-check input { accent-color: var(--gold); width: 15px; height: 15px }
-        .lg-go { width: 100%; justify-content: center; padding: 14px 16px; font-size: 15px; border-radius: 8px; position: relative; overflow: hidden }
-        .lg-go svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 2; transition: transform .2s }
-        .lg-go:hover svg { transform: translateX(4px) }
-        .lg-go::after { content: ''; position: absolute; top: 0; bottom: 0; width: 60px; left: -80px; background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .35), rgba(255, 255, 255, 0)); transform: skewX(-20deg); animation: lgShine 5s 2.5s ease-in-out infinite }
-        @keyframes lgShine { 0%, 70% { left: -80px } 100% { left: 110% } }
-        .lg-secure { display: flex; align-items: center; gap: 8px; margin-top: 18px; font-size: 13px; color: var(--steel) }
-        .lg-secure svg { width: 18px; height: 18px; flex: none; fill: none; stroke: var(--ok); stroke-width: 1.7; stroke-linejoin: round }
-        .lg-note { margin-top: 8px }
-        .lg-foot { position: absolute; left: 40px; right: 40px; bottom: 24px; display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: .08em; color: var(--slv) }
-        /* the right column arrives in sequence */
-        #login .loginbox > * { animation: ptRise .7s cubic-bezier(.2, .8, .2, 1) both }
-        #login .loginbox > :nth-child(1) { animation-delay: .05s } #login .loginbox > :nth-child(2) { animation-delay: .1s } #login .loginbox > :nth-child(3) { animation-delay: .15s } #login .loginbox > :nth-child(4) { animation-delay: .2s } #login .loginbox > :nth-child(5) { animation-delay: .26s } #login .loginbox > :nth-child(6) { animation-delay: .3s } #login .loginbox > :nth-child(7) { animation-delay: .34s } #login .loginbox > :nth-child(8) { animation-delay: .38s } #login .loginbox > :nth-child(n+9) { animation-delay: .44s }
-        #login .loginbox { animation: none }
-        body.booting #login .loginbox > *, body.booting .lg-sig path, body.booting .lg-slide img, body.booting .lg-bars i::after { animation-play-state: paused }
-        .lg-art { animation: lgArt 1.2s cubic-bezier(.2, .8, .2, 1) both }
-        body.booting .lg-art { animation-play-state: paused }
-        @keyframes lgArt { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
-
-        @media (max-width:1100px) { .lg-top, .lg-cap { left: 28px; right: 28px } .lg-side { padding: 48px 28px 68px } .lg-foot { left: 28px; right: 28px } }
-        @media (max-width:900px) {
-            #login { grid-template-columns: 1fr }
-            .lg-art { min-height: 0; height: 46vh; min-height: 340px }
-            .lg-top { top: 20px; left: 20px; right: 20px } .lg-top img { height: 32px } .lg-top small { display: none }
-            .lg-cap { left: 20px; right: 20px; bottom: 18px }
-            .lg-t { font-size: 26px } .lg-sig { width: 170px; margin-top: 8px } .lg-meta { margin-top: 12px } .lg-credit { display: none }
-            .lg-side { padding: 36px 20px 64px; justify-content: flex-start }
-            #login .loginbox > img { display: none }
-            .lg-foot { left: 20px; right: 20px }
-            #login .loginbox .roles { grid-template-columns: 1fr 1fr }
+        #login {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            place-items: stretch;
+            padding: 0;
+            background: var(--paper)
         }
-        @media (max-width:420px) { #login .loginbox .roles { grid-template-columns: 1fr } .lg-t { font-size: 23px } }
+
+        .lg-art {
+            position: relative;
+            overflow: hidden;
+            background: var(--ink);
+            color: #fff;
+            min-height: 100vh;
+            isolation: isolate
+        }
+
+        .lg-slides,
+        .lg-slide {
+            position: absolute;
+            inset: 0;
+            margin: 0
+        }
+
+        .lg-slide {
+            opacity: 0;
+            transition: opacity 1.4s ease
+        }
+
+        .lg-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.12);
+            filter: saturate(.85) contrast(1.05)
+        }
+
+        .lg-slide.on {
+            opacity: 1;
+            z-index: 1
+        }
+
+        .lg-slide.on img {
+            animation: lgKen 7.5s linear both
+        }
+
+        .lg-slide.was {
+            opacity: 0;
+            z-index: 2
+        }
+
+        @keyframes lgKen {
+            from {
+                transform: scale(1.12) translate(1.5%, 1%)
+            }
+
+            to {
+                transform: scale(1.02) translate(0, 0)
+            }
+        }
+
+        .lg-shade {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            pointer-events: none;
+            background: linear-gradient(180deg, rgba(12, 13, 16, .62) 0%, rgba(12, 13, 16, .08) 28%, rgba(12, 13, 16, .2) 52%, rgba(12, 13, 16, .92) 100%), radial-gradient(120% 70% at 0% 100%, rgba(168, 127, 40, .28), rgba(168, 127, 40, 0) 60%)
+        }
+
+        .lg-top {
+            position: absolute;
+            z-index: 4;
+            top: 34px;
+            left: 40px;
+            right: 40px;
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .lg-top img {
+            height: 40px;
+            width: auto
+        }
+
+        .lg-top b {
+            display: block;
+            font-family: 'Libre Caslon Text', serif;
+            font-weight: 400;
+            font-size: 22px;
+            line-height: 1.1
+        }
+
+        .lg-top small {
+            display: block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11.5px;
+            letter-spacing: .22em;
+            color: var(--gold2);
+            margin-top: 4px
+        }
+
+        .lg-cap {
+            position: absolute;
+            z-index: 4;
+            left: 40px;
+            right: 40px;
+            bottom: 34px;
+            max-width: 560px
+        }
+
+        .lg-k {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12.5px;
+            font-weight: 500;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            color: var(--gold2);
+            display: flex;
+            align-items: center;
+            gap: 12px
+        }
+
+        .lg-k::before {
+            content: '';
+            width: 28px;
+            height: 1px;
+            background: var(--gold2)
+        }
+
+        .lg-t {
+            font-family: 'Libre Caslon Text', serif;
+            font-size: clamp(28px, 3.1vw, 44px);
+            line-height: 1.12;
+            letter-spacing: -.01em;
+            margin-top: 14px;
+            text-wrap: balance
+        }
+
+        .lg-k.in,
+        .lg-t.in {
+            animation: lgText .9s cubic-bezier(.2, .8, .2, 1) both
+        }
+
+        .lg-t.in {
+            animation-delay: .08s
+        }
+
+        @keyframes lgText {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+                filter: blur(4px)
+            }
+
+            to {
+                opacity: 1;
+                transform: none;
+                filter: none
+            }
+        }
+
+        .lg-sig {
+            display: block;
+            width: 230px;
+            height: auto;
+            margin: 14px 0 0 -6px;
+            overflow: visible
+        }
+
+        .lg-sig path {
+            fill: none;
+            stroke: var(--gold2);
+            stroke-width: 2.2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 1;
+            stroke-dashoffset: 1;
+            filter: drop-shadow(0 0 6px rgba(227, 203, 146, .35))
+        }
+
+        .lg-sig.draw path:nth-child(1) {
+            animation: lgInk 2.1s .35s cubic-bezier(.55, .1, .35, 1) forwards
+        }
+
+        .lg-sig.draw path:nth-child(2) {
+            animation: lgInk .8s 2.3s cubic-bezier(.4, 0, .3, 1) forwards
+        }
+
+        .lg-sig.draw path:nth-child(3) {
+            stroke-width: 1.4;
+            opacity: .8;
+            animation: lgInk .9s 3s cubic-bezier(.6, 0, .2, 1) forwards
+        }
+
+        @keyframes lgInk {
+            to {
+                stroke-dashoffset: 0
+            }
+        }
+
+        .lg-meta {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-top: 22px
+        }
+
+        .lg-n {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 13px;
+            letter-spacing: .1em;
+            color: rgba(255, 255, 255, .55);
+            white-space: nowrap
+        }
+
+        .lg-n b {
+            color: #fff;
+            font-weight: 500
+        }
+
+        .lg-bars {
+            display: flex;
+            gap: 6px;
+            flex: 1;
+            max-width: 300px
+        }
+
+        .lg-bars button {
+            flex: 1;
+            height: 18px;
+            padding: 8px 0;
+            background: none;
+            border: 0;
+            cursor: pointer
+        }
+
+        .lg-bars i {
+            display: block;
+            height: 2px;
+            background: rgba(255, 255, 255, .22);
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px
+        }
+
+        .lg-bars i::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--gold2);
+            transform: scaleX(0);
+            transform-origin: left
+        }
+
+        .lg-bars .done i::after {
+            transform: scaleX(1)
+        }
+
+        .lg-bars .on i::after {
+            animation: lgBar var(--lg-dur, 7s) linear forwards
+        }
+
+        @keyframes lgBar {
+            to {
+                transform: scaleX(1)
+            }
+        }
+
+        .lg-credit {
+            margin-top: 12px;
+            font-size: 12.5px;
+            color: rgba(255, 255, 255, .45)
+        }
+
+        .lg-credit a {
+            color: rgba(255, 255, 255, .7);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, .25)
+        }
+
+        .lg-credit a:hover {
+            color: #fff
+        }
+
+        .lg-side {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 56px 40px 72px;
+            background: radial-gradient(90% 60% at 100% 0%, rgba(227, 203, 146, .16), rgba(227, 203, 146, 0) 60%), var(--paper)
+        }
+
+        .lg-side::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: .5;
+            background-image: radial-gradient(circle at 1px 1px, rgba(12, 13, 16, .07) 1px, transparent 0);
+            background-size: 22px 22px;
+            mask-image: linear-gradient(180deg, #000, transparent 45%);
+            -webkit-mask-image: linear-gradient(180deg, #000, transparent 45%)
+        }
+
+        #login .loginbox {
+            position: relative;
+            width: min(420px, 100%);
+            background: none;
+            border: 0;
+            border-radius: 0;
+            box-shadow: none;
+            padding: 0
+        }
+
+        #login .loginbox>img {
+            height: 52px;
+            margin: 0 0 22px
+        }
+
+        .lg-eyebrow {
+            margin-bottom: 10px
+        }
+
+        #login .loginbox h1 {
+            text-align: left;
+            font-size: clamp(30px, 2.6vw, 38px);
+            line-height: 1.1;
+            text-wrap: balance
+        }
+
+        #login .loginbox .sub {
+            margin-top: 10px;
+            font-size: 16px
+        }
+
+        .lg-rolelbl {
+            margin: 28px 0 8px
+        }
+
+        #login .loginbox .roles {
+            margin: 0 0 18px;
+            gap: 10px
+        }
+
+        #login .roles button {
+            position: relative;
+            padding: 14px 40px 14px 14px;
+            border-radius: 8px;
+            border-color: var(--rule);
+            transition: border-color .15s, box-shadow .15s, background .15s
+        }
+
+        #login .roles button:hover {
+            border-color: var(--slv2);
+            background: var(--mist)
+        }
+
+        #login .roles button::after {
+            content: '';
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 1.5px solid var(--slv2);
+            transition: .15s
+        }
+
+        #login .roles button.on {
+            border-color: var(--gold);
+            background: #FBF7EC;
+            box-shadow: 0 0 0 3px rgba(168, 127, 40, .14)
+        }
+
+        #login .roles button.on::after {
+            border-color: var(--gold);
+            background: radial-gradient(circle, var(--gold) 0 4px, transparent 4.5px)
+        }
+
+        #login .roles button b {
+            font-weight: 600
+        }
+
+        #login .roles button span {
+            display: block;
+            margin-top: 2px
+        }
+
+        .lg-inp {
+            position: relative
+        }
+
+        .lg-inp>svg {
+            position: absolute;
+            left: 13px;
+            top: 50%;
+            width: 17px;
+            height: 17px;
+            transform: translateY(-50%);
+            fill: none;
+            stroke: var(--slv);
+            stroke-width: 1.7;
+            stroke-linejoin: round;
+            pointer-events: none
+        }
+
+        .lg-inp input.f {
+            padding: 12px 44px 12px 40px;
+            font-size: 16px;
+            border-radius: 8px
+        }
+
+        .lg-inp input.f:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(168, 127, 40, .14)
+        }
+
+        .lg-inp:focus-within>svg {
+            stroke: var(--gold3)
+        }
+
+        .lg-eye {
+            position: absolute;
+            right: 6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 34px;
+            height: 34px;
+            display: grid;
+            place-items: center;
+            border-radius: 6px;
+            color: var(--slv)
+        }
+
+        .lg-eye:hover,
+        .lg-eye.on {
+            color: var(--ink);
+            background: var(--mist)
+        }
+
+        .lg-eye svg {
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.7
+        }
+
+        .lg-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 4px 0 20px;
+            font-size: 14.5px
+        }
+
+        .lg-row a {
+            color: var(--gold3);
+            text-decoration: none;
+            font-weight: 500
+        }
+
+        .lg-row a:hover {
+            text-decoration: underline
+        }
+
+        .lg-check {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--steel);
+            cursor: pointer
+        }
+
+        .lg-check input {
+            accent-color: var(--gold);
+            width: 15px;
+            height: 15px
+        }
+
+        .lg-go {
+            width: 100%;
+            justify-content: center;
+            padding: 14px 16px;
+            font-size: 16px;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden
+        }
+
+        .lg-go svg {
+            width: 17px;
+            height: 17px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            transition: transform .2s
+        }
+
+        .lg-go:hover svg {
+            transform: translateX(4px)
+        }
+
+        .lg-go::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            left: -80px;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, .35), rgba(255, 255, 255, 0));
+            transform: skewX(-20deg);
+            animation: lgShine 5s 2.5s ease-in-out infinite
+        }
+
+        @keyframes lgShine {
+
+            0%,
+            70% {
+                left: -80px
+            }
+
+            100% {
+                left: 110%
+            }
+        }
+
+        .lg-secure {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 18px;
+            font-size: 14px;
+            color: var(--steel)
+        }
+
+        .lg-secure svg {
+            width: 18px;
+            height: 18px;
+            flex: none;
+            fill: none;
+            stroke: var(--ok);
+            stroke-width: 1.7;
+            stroke-linejoin: round
+        }
+
+        .lg-note {
+            margin-top: 8px
+        }
+
+        .lg-foot {
+            position: absolute;
+            left: 40px;
+            right: 40px;
+            bottom: 24px;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            letter-spacing: .08em;
+            color: var(--slv)
+        }
+
+        /* the right column arrives in sequence */
+        #login .loginbox>* {
+            animation: ptRise .7s cubic-bezier(.2, .8, .2, 1) both
+        }
+
+        #login .loginbox> :nth-child(1) {
+            animation-delay: .05s
+        }
+
+        #login .loginbox> :nth-child(2) {
+            animation-delay: .1s
+        }
+
+        #login .loginbox> :nth-child(3) {
+            animation-delay: .15s
+        }
+
+        #login .loginbox> :nth-child(4) {
+            animation-delay: .2s
+        }
+
+        #login .loginbox> :nth-child(5) {
+            animation-delay: .26s
+        }
+
+        #login .loginbox> :nth-child(6) {
+            animation-delay: .3s
+        }
+
+        #login .loginbox> :nth-child(7) {
+            animation-delay: .34s
+        }
+
+        #login .loginbox> :nth-child(8) {
+            animation-delay: .38s
+        }
+
+        #login .loginbox> :nth-child(n+9) {
+            animation-delay: .44s
+        }
+
+        #login .loginbox {
+            animation: none
+        }
+
+        body.booting #login .loginbox>*,
+        body.booting .lg-sig path,
+        body.booting .lg-slide img,
+        body.booting .lg-bars i::after {
+            animation-play-state: paused
+        }
+
+        .lg-art {
+            animation: lgArt 1.2s cubic-bezier(.2, .8, .2, 1) both
+        }
+
+        body.booting .lg-art {
+            animation-play-state: paused
+        }
+
+        @keyframes lgArt {
+            from {
+                clip-path: inset(0 100% 0 0)
+            }
+
+            to {
+                clip-path: inset(0 0 0 0)
+            }
+        }
+
+        @media (max-width:1100px) {
+
+            .lg-top,
+            .lg-cap {
+                left: 28px;
+                right: 28px
+            }
+
+            .lg-side {
+                padding: 48px 28px 68px
+            }
+
+            .lg-foot {
+                left: 28px;
+                right: 28px
+            }
+        }
+
+        @media (max-width:900px) {
+            #login {
+                grid-template-columns: 1fr
+            }
+
+            .lg-art {
+                min-height: 0;
+                height: 46vh;
+                min-height: 340px
+            }
+
+            .lg-top {
+                top: 20px;
+                left: 20px;
+                right: 20px
+            }
+
+            .lg-top img {
+                height: 32px
+            }
+
+            .lg-top small {
+                display: none
+            }
+
+            .lg-cap {
+                left: 20px;
+                right: 20px;
+                bottom: 18px
+            }
+
+            .lg-t {
+                font-size: 26px
+            }
+
+            .lg-sig {
+                width: 170px;
+                margin-top: 8px
+            }
+
+            .lg-meta {
+                margin-top: 12px
+            }
+
+            .lg-credit {
+                display: none
+            }
+
+            .lg-side {
+                padding: 36px 20px 64px;
+                justify-content: flex-start
+            }
+
+            #login .loginbox>img {
+                display: none
+            }
+
+            .lg-foot {
+                left: 20px;
+                right: 20px
+            }
+
+            #login .loginbox .roles {
+                grid-template-columns: 1fr 1fr
+            }
+        }
+
+        @media (max-width:420px) {
+            #login .loginbox .roles {
+                grid-template-columns: 1fr
+            }
+
+            .lg-t {
+                font-size: 25px
+            }
+        }
+
         @media (prefers-reduced-motion: reduce) {
-            .lg-slide.on img, .lg-k.in, .lg-t.in, .lg-go::after, .lg-art, #login .loginbox > * { animation: none !important }
-            .lg-sig path { stroke-dashoffset: 0; animation: none !important }
+
+            .lg-slide.on img,
+            .lg-k.in,
+            .lg-t.in,
+            .lg-go::after,
+            .lg-art,
+            #login .loginbox>* {
+                animation: none !important
+            }
+
+            .lg-sig path {
+                stroke-dashoffset: 0;
+                animation: none !important
+            }
+        }
+
+
+        /* ── colour theme, aligned with the web prototype ─────────── */
+        ::selection {
+            background: var(--focus);
+            color: #fff
+        }
+
+        button:focus-visible,
+        a:focus-visible,
+        .btn:focus-visible {
+            outline: 2px solid var(--focus);
+            outline-offset: 2px
+        }
+
+        .btn:not(.gold):not(.quiet):not(.ghost):not(.bad):not(.ok):not(.pillbtn):hover {
+            background: #2A2D34;
+            border-color: #2A2D34;
+            color: #fff
+        }
+
+        .btn.ok:hover {
+            background: #DCEBE0
+        }
+
+        .btn.gold {
+            background: var(--focus);
+            border-color: var(--focus);
+            color: #fff
+        }
+
+        .btn.gold:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #fff;
+            box-shadow: 0 6px 16px rgba(168, 127, 40, .3)
+        }
+
+        /* small hover lift for every button; text colour never changes on hover */
+        .btn {
+            transition: background-color .18s, border-color .18s, box-shadow .18s, transform .18s
+        }
+
+        .btn:not([disabled]):hover {
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(12, 13, 16, .12)
+        }
+
+        .btn.gold:not([disabled]):hover {
+            box-shadow: 0 6px 16px rgba(168, 127, 40, .3)
+        }
+
+        .btn.ghost:hover {
+            box-shadow: none
+        }
+
+        .btn:not([disabled]):active {
+            transform: none;
+            box-shadow: none
+        }
+
+        .btn.quiet:hover {
+            background: var(--paper);
+            border-color: var(--ink)
+        }
+
+        input.f,
+        select.f,
+        textarea.f {
+            border-color: var(--field)
+        }
+
+        input.f:hover,
+        select.f:hover,
+        textarea.f:hover {
+            border-color: #CFC8BA
+        }
+
+        input.f:focus,
+        select.f:focus,
+        textarea.f:focus {
+            border-color: var(--focus);
+            box-shadow: 0 0 0 3px rgba(184, 146, 60, .13)
+        }
+
+        .lbl {
+            color: var(--label)
+        }
+
+        .eyebrow {
+            color: var(--eyebrow)
+        }
+
+        .pill.gold {
+            background: var(--goldsoft)
+        }
+
+        .tab.on {
+            border-bottom-color: var(--focus)
+        }
+
+        #login .roles button.on {
+            background: var(--goldsoft);
+            border-color: var(--focus)
+        }
+
+        .lg-inp input.f:focus {
+            border-color: var(--focus);
+            box-shadow: 0 0 0 3px rgba(184, 146, 60, .13)
+        }
+
+
+        /* drawer footer disappears when it has no actions left (the × in the header closes the drawer) */
+        .dfoot:not(:has(*)) { display: none }
+        /* ── status timeline ─────────────────────────────── */
+        .stl {
+            margin-bottom: 4px
+        }
+
+        .stl-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px
+        }
+
+        .stl-count {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12.5px;
+            letter-spacing: .06em;
+            color: var(--silver)
+        }
+
+        .stl-bar {
+            height: 3px;
+            border-radius: 3px;
+            background: var(--sand);
+            margin: 10px 0 20px;
+            overflow: hidden
+        }
+
+        .stl-bar i {
+            display: block;
+            height: 100%;
+            border-radius: 3px;
+            background: linear-gradient(90deg, var(--gold3), var(--focus), var(--gold2));
+            transform-origin: left;
+            animation: stlBar 1s .15s cubic-bezier(.2, .8, .2, 1) both
+        }
+
+        .stl-list {
+            list-style: none;
+            margin: 0;
+            padding: 0
+        }
+
+        .stl-list li {
+            position: relative;
+            display: grid;
+            grid-template-columns: 118px 30px 1fr;
+            column-gap: 16px;
+            padding-bottom: 20px
+        }
+
+        .stl-list li:last-child {
+            padding-bottom: 0
+        }
+
+        .stl-list li::before {
+            content: '';
+            position: absolute;
+            left: calc(118px + 16px + 14px);
+            top: 30px;
+            bottom: 0;
+            width: 2px;
+            border-radius: 2px;
+            background: var(--focus)
+        }
+
+        .stl-list li.now::before,
+        .stl-list li.next::before {
+            background: none;
+            border-left: 2px dashed var(--slv2);
+            width: 0
+        }
+
+        .stl-list li:last-child::before {
+            display: none
+        }
+
+        .stl-when {
+            text-align: right;
+            padding-top: 3px;
+            line-height: 1.3
+        }
+
+        .stl-when b {
+            display: block;
+            font-weight: 500;
+            font-size: 14px;
+            color: var(--ink)
+        }
+
+        .stl-when span {
+            display: block;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12.5px;
+            color: var(--silver);
+            margin-top: 2px
+        }
+
+        .stl-when .stl-pend {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11.5px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--slv)
+        }
+
+        .stl-node {
+            position: relative;
+            z-index: 1;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            background: var(--paper);
+            border: 2px solid var(--slv2)
+        }
+
+        .stl-node svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: #fff;
+            stroke-width: 2.6;
+            stroke-linecap: round;
+            stroke-linejoin: round
+        }
+
+        .stl-node i {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--slv2)
+        }
+
+        li.done .stl-node {
+            background: var(--focus);
+            border-color: var(--focus);
+            box-shadow: 0 2px 8px rgba(168, 127, 40, .28)
+        }
+
+        li.now .stl-node {
+            border-color: var(--focus);
+            box-shadow: 0 0 0 4px rgba(184, 146, 60, .16)
+        }
+
+        li.now .stl-node i {
+            width: 10px;
+            height: 10px;
+            background: var(--focus)
+        }
+
+        li.now .stl-node::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid var(--focus);
+            animation: stlPulse 1.8s ease-out infinite
+        }
+
+        .stl-body {
+            padding-top: 3px;
+            min-width: 0
+        }
+
+        .stl-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            font-weight: 600;
+            font-size: 15.5px;
+            color: var(--ink)
+        }
+
+        .stl-tag {
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: var(--goldsoft);
+            color: var(--gold3);
+            border: 1px solid var(--gold2)
+        }
+
+        .stl-body p {
+            margin: 3px 0 0;
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--steel);
+            overflow-wrap: anywhere
+        }
+
+        .stl-body small {
+            display: inline-block;
+            margin-top: 4px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 12px;
+            color: var(--gold3)
+        }
+
+        li.next .stl-title {
+            color: var(--silver);
+            font-weight: 500
+        }
+
+        li.next .stl-body p {
+            color: var(--slv)
+        }
+
+        @keyframes stlPulse {
+            from {
+                transform: scale(.85);
+                opacity: .9
+            }
+
+            to {
+                transform: scale(1.35);
+                opacity: 0
+            }
+        }
+
+        @keyframes stlBar {
+            from {
+                transform: scaleX(0)
+            }
+
+            to {
+                transform: scaleX(1)
+            }
+        }
+
+        @media (max-width:600px) {
+            .stl-list li {
+                grid-template-columns: 30px 1fr;
+                column-gap: 14px;
+                grid-template-areas: 'node body' '. when'
+            }
+
+            .stl-list li::before {
+                left: 14px
+            }
+
+            .stl-node {
+                grid-area: node
+            }
+
+            .stl-body {
+                grid-area: body
+            }
+
+            .stl-when {
+                grid-area: when;
+                text-align: left;
+                display: flex;
+                gap: 8px;
+                align-items: baseline;
+                padding-top: 4px
+            }
+
+            .stl-when span {
+                margin-top: 0
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            li.now .stl-node::after,
+            .stl-bar i {
+                animation: none
+            }
         }
 
         @media print {
@@ -3430,21 +4512,39 @@
     <div id="login">
         <section class="lg-art" aria-label="VeriChain — authentication in pictures">
             <div class="lg-slides">
-                <figure class="lg-slide on" data-k="In hand" data-t="Every signature has a story." data-by="Signature Pro" data-u="wB9iWZKwljw"><img src="https://images.unsplash.com/photo-1627518788331-b3b7fdaa382f?auto=format&fit=crop&w=1600&q=78" alt="" style="object-position:50% 45%" decoding="async"></figure>
-                <figure class="lg-slide" data-k="Signed in hand" data-t="A signature, checked stroke by stroke." data-by="Smithsonian" data-u="P1_ne-F95UE"><img src="https://images.unsplash.com/photo-1777554709201-83eb37bd7e42?auto=format&fit=crop&w=1600&q=78" alt="" style="object-position:50% 50%" loading="lazy" decoding="async"></figure>
-                <figure class="lg-slide" data-k="Writing implement" data-t="Ink, pressure and pen, read like a fingerprint." data-by="MJ K" data-u="cw2ai6A_eeM"><img src="https://images.unsplash.com/photo-1457298483369-0a95d2b17fcd?auto=format&fit=crop&w=1600&q=78" alt="" style="object-position:40% 50%" loading="lazy" decoding="async"></figure>
-                <figure class="lg-slide" data-k="Certificate" data-t="Certified, then written to the ledger." data-by="Lewis Keegan" data-u="XQaqV5qYcXg"><img src="https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&w=1600&q=78" alt="" style="object-position:30% 60%" loading="lazy" decoding="async"></figure>
-                <figure class="lg-slide" data-k="On record" data-t="Authenticity anyone can verify." data-by="Herve Margot" data-u="xrLJK7mHgC8"><img src="https://images.unsplash.com/photo-1724404853530-a19ff2ed3c4b?auto=format&fit=crop&w=1600&q=78" alt="" style="object-position:55% 40%" loading="lazy" decoding="async"></figure>
+                <figure class="lg-slide on" data-k="In hand" data-t="Every signature has a story."
+                    data-by="Signature Pro" data-u="wB9iWZKwljw"><img
+                        src="https://images.unsplash.com/photo-1627518788331-b3b7fdaa382f?auto=format&fit=crop&w=1600&q=78"
+                        alt="" style="object-position:50% 45%" decoding="async"></figure>
+                <figure class="lg-slide" data-k="Signed in hand" data-t="A signature, checked stroke by stroke."
+                    data-by="Smithsonian" data-u="P1_ne-F95UE"><img
+                        src="https://images.unsplash.com/photo-1777554709201-83eb37bd7e42?auto=format&fit=crop&w=1600&q=78"
+                        alt="" style="object-position:50% 50%" loading="lazy" decoding="async"></figure>
+                <figure class="lg-slide" data-k="Writing implement"
+                    data-t="Ink, pressure and pen, read like a fingerprint." data-by="MJ K" data-u="cw2ai6A_eeM"><img
+                        src="https://images.unsplash.com/photo-1457298483369-0a95d2b17fcd?auto=format&fit=crop&w=1600&q=78"
+                        alt="" style="object-position:40% 50%" loading="lazy" decoding="async"></figure>
+                <figure class="lg-slide" data-k="Certificate" data-t="Certified, then written to the ledger."
+                    data-by="Lewis Keegan" data-u="XQaqV5qYcXg"><img
+                        src="https://images.unsplash.com/photo-1589330694653-ded6df03f754?auto=format&fit=crop&w=1600&q=78"
+                        alt="" style="object-position:30% 60%" loading="lazy" decoding="async"></figure>
+                <figure class="lg-slide" data-k="On record" data-t="Authenticity anyone can verify."
+                    data-by="Herve Margot" data-u="xrLJK7mHgC8"><img
+                        src="https://images.unsplash.com/photo-1724404853530-a19ff2ed3c4b?auto=format&fit=crop&w=1600&q=78"
+                        alt="" style="object-position:55% 40%" loading="lazy" decoding="async"></figure>
             </div>
             <div class="lg-shade"></div>
-            <div class="lg-top"><img id="loginArtMark" alt=""><div><b>VeriChain</b><small>ADMIN PORTAL</small></div></div>
+            <div class="lg-top"><img id="loginArtMark" alt="">
+                <div><b>VeriChain</b><small>ADMIN PORTAL</small></div>
+            </div>
             <div class="lg-cap">
                 <div class="lg-k" id="lgK">In hand</div>
                 <p class="lg-t" id="lgT">Every signature has a story.</p>
                 <svg class="lg-sig" id="lgSig" viewBox="0 0 300 110" aria-hidden="true">
-                    <path pathLength="1" d="M30 30c-6 20-10 44-6 58 3 10 14 6 16-6 3-22-12-40 2-44 14-4 16 20 22 28 4 6 10-10 16-14 6-4 6 12 12 12 6 0 10-16 18-16s4 14 12 14c10 0 14-20 24-20 6 0 2 14 10 14 12 0 24-20 36-30"/>
-                    <path pathLength="1" d="M150 30l12-5"/>
-                    <path pathLength="1" d="M12 92c50-14 120-4 170-12s70-20 96-14"/>
+                    <path pathLength="1"
+                        d="M30 30c-6 20-10 44-6 58 3 10 14 6 16-6 3-22-12-40 2-44 14-4 16 20 22 28 4 6 10-10 16-14 6-4 6 12 12 12 6 0 10-16 18-16s4 14 12 14c10 0 14-20 24-20 6 0 2 14 10 14 12 0 24-20 36-30" />
+                    <path pathLength="1" d="M150 30l12-5" />
+                    <path pathLength="1" d="M12 92c50-14 120-4 170-12s70-20 96-14" />
                 </svg>
             </div>
         </section>
@@ -3456,12 +4556,37 @@
                 <p class="sub">Sign in with your desk account. The panel adapts to your role.</p>
                 <div class="lbl lg-rolelbl">Signing in as</div>
                 <div class="roles" id="roles"></div>
-                <div class="field"><label class="lbl" for="liEmail">Email</label><div class="lg-inp"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 7l9 6 9-6"/></svg><input class="f" id="liEmail" placeholder="you@verichain.com" autocomplete="username"></div></div>
-                <div class="field"><label class="lbl" for="liPass">Password</label><div class="lg-inp"><svg viewBox="0 0 24 24"><path d="M6 11h12v9H6zM8.5 11V8a3.5 3.5 0 017 0v3"/></svg><input class="f" id="liPass" type="password" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')signIn()"><button type="button" class="lg-eye" aria-label="Show password" onclick="const i=document.getElementById('liPass');const on=i.type==='password';i.type=on?'text':'password';this.classList.toggle('on',on);this.setAttribute('aria-label',on?'Hide password':'Show password')"><svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-6.5 9.5-6.5S21.5 12 21.5 12s-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></button></div></div>
-                <div class="lg-row"><label class="lg-check"><input type="checkbox" checked> Keep me signed in on this device</label><a href="#" onclick="event.preventDefault();toast('A reset link would be emailed to you.')">Forgot password?</a></div>
-                <button class="btn gold lg-go" onclick="signIn()">Sign in <svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-                <div class="lg-secure"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>Every action in the panel is written to the audit log.</div>
-                <p class="small muted lg-note">Prototype — any password works. Choose a role above to see what each person gets.</p>
+                <div class="field"><label class="lbl" for="liEmail">Email</label>
+                    <div class="lg-inp"><svg viewBox="0 0 24 24">
+                            <path d="M3 6h18v12H3zM3 7l9 6 9-6" />
+                        </svg><input class="f" id="liEmail" placeholder="you@verichain.com" autocomplete="username">
+                    </div>
+                </div>
+                <div class="field"><label class="lbl" for="liPass">Password</label>
+                    <div class="lg-inp"><svg viewBox="0 0 24 24">
+                            <path d="M6 11h12v9H6zM8.5 11V8a3.5 3.5 0 017 0v3" />
+                        </svg><input class="f" id="liPass" type="password" placeholder="••••••••"
+                            autocomplete="current-password" onkeydown="if(event.key==='Enter')signIn()"><button
+                            type="button" class="lg-eye" aria-label="Show password"
+                            onclick="const i=document.getElementById('liPass');const on=i.type==='password';i.type=on?'text':'password';this.classList.toggle('on',on);this.setAttribute('aria-label',on?'Hide password':'Show password')"><svg
+                                viewBox="0 0 24 24">
+                                <path d="M2.5 12s3.5-6.5 9.5-6.5S21.5 12 21.5 12s-3.5 6.5-9.5 6.5S2.5 12 2.5 12z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg></button></div>
+                </div>
+                <div class="lg-row"><label class="lg-check"><input type="checkbox" checked> Keep me signed in on this
+                        device</label><a href="#"
+                        onclick="event.preventDefault();toast('A reset link would be emailed to you.')">Forgot
+                        password?</a></div>
+                <button class="btn gold lg-go" onclick="signIn()">Sign in <svg viewBox="0 0 24 24">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg></button>
+                <div class="lg-secure"><svg viewBox="0 0 24 24">
+                        <path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z" />
+                        <path d="M9 12l2 2 4-4" />
+                    </svg>Every action in the panel is written to the audit log.</div>
+                <p class="small muted lg-note">Prototype — any password works. Choose a role above to see what each
+                    person gets.</p>
             </div>
             <div class="lg-foot"><span>© 2026 VeriChain</span><span>Desk v2.6</span></div>
         </section>
@@ -4326,7 +5451,7 @@
         // Login artwork: five photographs cross-fade with a slow push-in; a signature is drawn in ink over each one.
         let LG_I = 0, LG_T = 0; const LG_DUR = 7000;
         // A different hand for each picture: main stroke, a second mark (dot, bar or loop), and the underline.
-        const LG_SIGS = [["M30 30c-6 20-10 44-6 58 3 10 14 6 16-6 3-22-12-40 2-44 14-4 16 20 22 28 4 6 10-10 16-14 6-4 6 12 12 12 6 0 10-16 18-16s4 14 12 14c10 0 14-20 24-20 6 0 2 14 10 14 12 0 24-20 36-30","M150 30l12-5","M12 92c50-14 120-4 170-12s70-20 96-14"],["M40 20c-10 30-20 60-14 68 6 8 26-4 40-10 8-4 8 8 16 6s10-18 18-18c6 0 2 16 10 16 10 0 12-22 22-22 7 0 4 18 12 18 9 0 12-14 20-14 6 0 4 12 12 12 12 0 30-18 44-26","M58 40c-30-6-46 20-30 34 18 16 70-6 72-30 2-20-40-24-60-6","M30 96c80 4 160-6 240-2"],["M20 70l18-46 8 50 14-40 6 36 12-28c4-8 10-6 8 4l-4 20c10-18 22-26 26-18 3 6-6 16 0 18 8 2 18-20 26-22 6-2 4 14 12 14 10 0 20-24 30-28 8-3 6 10 14 8 10-2 22-16 32-22","M58 30l44-7","M18 88c30 6 70 6 110-2 20-4 30 8 12 10"],["M24 60c0-24 24-38 30-24 6 16-20 40-26 34-6-6 14-22 26-18 8 3 2 18 10 16 6-2 8-10 12-10","M120 30c-10 20-16 48-10 52 8 6 18-26 28-24 8 2-2 20 6 20 8 0 12-16 20-16 8 0 2 14 10 14 8 0 14-14 22-14 6 0 4 10 10 10 14 0 30-12 44-24","M110 92c40-8 100-10 170-4"],["M26 84c6-30 14-58 22-60 8-2 4 40 10 42 6 2 14-44 22-42 8 2 0 44 8 46 6 2 10-14 16-14 5 0 2 12 8 12 8 0 12-18 20-18 6 0 2 14 10 14 8 0 12-10 20-10 10 0 4 10 12 10 10 0 26-16 40-30","M150 22c-4 6-2 10 4 8","M20 96c60-12 130-12 190-4 30 4 50-4 40-14-8-8-26 2-18 12"]];
+        const LG_SIGS = [["M30 30c-6 20-10 44-6 58 3 10 14 6 16-6 3-22-12-40 2-44 14-4 16 20 22 28 4 6 10-10 16-14 6-4 6 12 12 12 6 0 10-16 18-16s4 14 12 14c10 0 14-20 24-20 6 0 2 14 10 14 12 0 24-20 36-30", "M150 30l12-5", "M12 92c50-14 120-4 170-12s70-20 96-14"], ["M40 20c-10 30-20 60-14 68 6 8 26-4 40-10 8-4 8 8 16 6s10-18 18-18c6 0 2 16 10 16 10 0 12-22 22-22 7 0 4 18 12 18 9 0 12-14 20-14 6 0 4 12 12 12 12 0 30-18 44-26", "M58 40c-30-6-46 20-30 34 18 16 70-6 72-30 2-20-40-24-60-6", "M30 96c80 4 160-6 240-2"], ["M20 70l18-46 8 50 14-40 6 36 12-28c4-8 10-6 8 4l-4 20c10-18 22-26 26-18 3 6-6 16 0 18 8 2 18-20 26-22 6-2 4 14 12 14 10 0 20-24 30-28 8-3 6 10 14 8 10-2 22-16 32-22", "M58 30l44-7", "M18 88c30 6 70 6 110-2 20-4 30 8 12 10"], ["M24 60c0-24 24-38 30-24 6 16-20 40-26 34-6-6 14-22 26-18 8 3 2 18 10 16 6-2 8-10 12-10", "M120 30c-10 20-16 48-10 52 8 6 18-26 28-24 8 2-2 20 6 20 8 0 12-16 20-16 8 0 2 14 10 14 8 0 14-14 22-14 6 0 4 10 10 10 14 0 30-12 44-24", "M110 92c40-8 100-10 170-4"], ["M26 84c6-30 14-58 22-60 8-2 4 40 10 42 6 2 14-44 22-42 8 2 0 44 8 46 6 2 10-14 16-14 5 0 2 12 8 12 8 0 12-18 20-18 6 0 2 14 10 14 8 0 12-10 20-10 10 0 4 10 12 10 10 0 26-16 40-30", "M150 22c-4 6-2 10 4 8", "M20 96c60-12 130-12 190-4 30 4 50-4 40-14-8-8-26 2-18 12"]];
         function loginSlide(n, manual) {
             const slides = $$('.lg-slide'); if (!slides.length) return;
             const prev = LG_I; LG_I = (n + slides.length) % slides.length;
@@ -4603,21 +5728,52 @@
           ${it.exam ? `<dt>Examination</dt><dd>${it.status === 'complete' ? 'Passed' : it.status === 'rejected' ? `Did not pass${(ex.reasons || []).length ? ' — ' + esc(ex.reasons.join(', ')) : ''}` : 'In progress (draft)'}${ex.examinerNote ? `<div class="small muted">${esc(ex.examinerNote)}</div>` : ''}</dd>` : ''}
         </dl></div>
     </div>
-    <div class="dfoot">${s.status === 'in_auth' && s.by === ME.id && !['complete', 'rejected'].includes(it.status) ? `<button class="btn gold" onclick="closeDrawer();startExam('${s.id}',${i})">${it.status === 'draft' ? 'Resume draft' : 'Authenticate'}</button>` : ''}<span class="spacer"></span><button class="btn ghost" onclick="closeDrawer()">Close</button></div>`);
+    <div class="dfoot">${s.status === 'in_auth' && s.by === ME.id && !['complete', 'rejected'].includes(it.status) ? `<button class="btn gold" onclick="closeDrawer();startExam('${s.id}',${i})">${it.status === 'draft' ? 'Resume draft' : 'Authenticate'}</button>` : ''}</div>`);
         }
         function subDrawer(id) {
             const s = subOf(id); if (!s) return; selectRow(id);
             openDrawer(`
     ${drawerHead(`${s.id}`, esc(subTitle(s)), `${pill(s.status)}<span class="pill">${esc(s.route)}</span>${s.by ? `<span class="pill gold">${esc(teamName(s.by))}</span>` : ''}<span class="spacer"></span><button class="btn quiet sm" onclick="closeDrawer();subPage('${s.id}')">Open as page</button>`)}
     <div class="dbody">${subDetailBody(s)}</div>
-    <div class="dfoot">${subActions(s)}<span class="spacer"></span><button class="btn ghost" onclick="closeDrawer()">Close</button></div>`);
+    <div class="dfoot">${subActions(s)}</div>`);
+        }
+        // Status timeline: each step's date and time come from the submission's history log; steps the seed data never
+        // logged get a stable date spread between submission and today, and a desk-hours time derived from the reference.
+        const TL_MATCH = [/submitted|created at the desk|replacement for/i, /item received|item verified/i, /invoice .* sent/i, /invoice .* paid/i, /accepted by|assigned to|reassigned/i, /complete/i, /returned to the customer/i];
+        const TL_TEXT = ['Request submitted', 'Item checked in at the desk', 'Invoice sent to the customer', 'Payment received', 'Examination under way', 'Result recorded', 'Shipped back to the customer'];
+        const TL_NEXT = ['', 'Waiting for the item to arrive', 'Priced once the item is in hand', 'Waiting for the customer to pay', 'Waiting for an authenticator', 'Result follows the examination', 'Return shipping after completion'];
+        function tlSplit(at) { const m = String(at || '').match(/^(.*?)\s+(\d{1,2}:\d{2})$/); return m ? { d: m[1], t: m[2] } : { d: String(at || ''), t: '' }; }
+        function tlFmt(ms) { const d = new Date(ms); return d.getDate() + ' ' + ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][d.getMonth()] + ' ' + d.getFullYear(); }
+        function subTimeline(s, step) {
+            const log = s.log || [], t0 = Date.parse(s.created) || Date.parse(TODAY), tE = Math.max(t0, Date.parse(TODAY) || t0);
+            const seed = [...s.id].reduce((a, c) => a + c.charCodeAt(0), 0);
+            const n = STEPS.length, at = Math.min(step, n);
+            const rows = STEPS.map((label, i) => {
+                const state = i + 1 < step ? 'done' : i + 1 === step ? 'now' : 'next';
+                if (state === 'next') return { label, state, text: TL_NEXT[i] };
+                const hit = log.find(e => TL_MATCH[i].test(e.what));
+                let { d, t } = hit ? tlSplit(hit.at) : { d: '', t: '' };
+                if (!d) d = i === 0 ? s.created : tlFmt(t0 + Math.round((tE - t0) * i / Math.max(step, 1) / 864e5) * 864e5);
+                if (!t) { const h = seed + i * 37; t = String(9 + h % 8).padStart(2, '0') + ':' + String(h * 7 % 60).padStart(2, '0'); }
+                const who = i === 0 && (!hit || hit.who === 'system') ? 'Customer' : hit ? (hit.who === 'system' ? 'System' : teamName(hit.who)) : '';
+                return { label, state, d, t, text: hit ? hit.what : TL_TEXT[i], who };
+            });
+            const check = '<svg viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+            return `<div class="stl">
+        <div class="stl-head"><span class="eyebrow">Progress</span><span class="stl-count">Step ${at} of ${n}</span></div>
+        <div class="stl-bar"><i style="width:${Math.round((at - (step >= n ? 0 : .5)) / n * 100)}%"></i></div>
+        <ol class="stl-list">${rows.map(r => `<li class="${r.state}">
+          <div class="stl-when">${r.state === 'next' ? '<span class="stl-pend">Pending</span>' : `<b>${esc(r.d)}</b><span>${esc(r.t)}</span>`}</div>
+          <div class="stl-node">${r.state === 'done' ? check : '<i></i>'}</div>
+          <div class="stl-body"><div class="stl-title">${esc(r.label)}${r.state === 'now' ? '<span class="stl-tag">Current</span>' : ''}</div><p>${esc(r.text)}</p>${r.who ? `<small>${esc(r.who)}</small>` : ''}</div>
+        </li>`).join('')}</ol></div>`;
         }
         function subDetailBody(s) {
             const c = custByEmail(s.customer); const inv = invFor(s); const step = STATUS[s.status].step; const rc = isReplacement(s) ? CERTS[s.certNo] : null;
             return `
       ${isReplacement(s) ? `<div class="note gold" style="margin-bottom:14px"><b>Certificate replacement — ${esc(s.certNo)}</b>. The customer entered the authentication number; the record below was fetched from the register. Once the item arrives: invoice the replacement fee, collect payment, verify the item against the record, then print the ${rc && rc.tier === LOA ? 'Letter of Authenticity' : 'certificate'} from the previous record. No new examination.
         ${rc ? `<dl class="kv mt8"><dt>Original record</dt><dd><button class="btn ghost sm" style="padding:0;color:var(--gold3)" onclick="certDrawer('${s.certNo}')">${esc(s.certNo)}</button> · ${esc(levelLabel(normTier(rc.tier, rc.type)))}</dd><dt>Signer / item</dt><dd>${esc(rc.signer)} — ${esc(rc.item)}</dd><dt>Issued</dt><dd>${esc(rc.issued)} by ${esc(teamName(rc.by))}${rc.sub ? ` · from ${rc.sub}` : ''}</dd><dt>Ledger</dt><dd>${rc.anchored ? `Anchored <span class="mono small">${esc(rc.chain || '')}</span>` : 'Off-chain'}</dd>${rc.replaced ? `<dt>Replacements</dt><dd>${rc.replaced.map(r => esc(r.on) + ' by ' + esc(teamName(r.by))).join('<br>')}</dd>` : ''}</dl>` : `<p class="small mt8"><span class="pill bad">Number not found</span> ${esc(s.certNo)} is not on the register — the customer must re-certify the item as a new submission.</p>`}</div>` : ''}
-      <ul class="tl">${STEPS.map((st, i) => `<li class="${i + 1 < step ? 'done' : i + 1 === step ? 'now' : ''}"><span>${st}</span><span>${i + 1 <= step ? (i === 0 ? s.created : '') : ''}</span></li>`).join('')}</ul>
+      ${subTimeline(s, step)}
       <div class="sect"><h3>Customer</h3>
         <dl class="kv"><dt>Name</dt><dd>${c ? `<button class="btn ghost sm" style="padding:0;color:var(--gold3)" onclick="customerDrawer('${c.id}')">${esc(c.name)}</button>` : esc(s.customer)}</dd>
         <dt>Email</dt><dd class="mono small">${esc(s.customer)}</dd>${c && c.phone ? `<dt>Phone</dt><dd class="mono small">${esc(c.phone)}</dd>` : ''}
@@ -4867,7 +6023,7 @@
   <div class="card mt"><div class="grid g2"><div class="field"><label class="lbl">How it reaches us</label><select class="f" onchange="nsSet(null,'route',this.value)">${['Presented at the desk', 'Posted to us', 'Dropped at the shop', 'Signed at the show'].map(r => `<option ${r === NS.route ? 'selected' : ''}>${r}</option>`).join('')}</select></div>
     <div class="field"><label class="lbl">Customer's note (optional)</label><input class="f" value="${esc(NS.note)}" placeholder="Anything they asked for" oninput="nsSet(null,'note',this.value)"></div></div>
     <div class="grid g2"><div class="field"><label class="lbl">Event (optional)</label><select class="f" onchange="nsSet(null,'event',this.value)"><option value="">Not for an event</option>${EVENTS.map(e => `<option value="${e.id}" ${NS.event === e.id ? 'selected' : ''}>${esc(e.name)}${e.startDate ? ' · ' + fmtDay(e.startDate) : ''}</option>`).join('')}</select></div></div>
-    <div class="row between mt" style="border-top:1px solid var(--rule);padding-top:12px"><div><span class="small muted">Estimated total</span><div class="mono" style="font-size:18px" id="nsTotal">${NS.bulk ? 'Priced by the desk on receipt' : NS.items.some(nsOnEnquiry) ? 'Estimate will be sent by the admin' : money(nsTotal())}</div></div>
+    <div class="row between mt" style="border-top:1px solid var(--rule);padding-top:12px"><div><span class="small muted">Estimated total</span><div class="mono" style="font-size:20px" id="nsTotal">${NS.bulk ? 'Priced by the desk on receipt' : NS.items.some(nsOnEnquiry) ? 'Estimate will be sent by the admin' : money(nsTotal())}</div></div>
       <button class="btn gold" onclick="createSubmission()">Create submission</button></div></div>`;
         }
         function createSubmission() {
@@ -4928,9 +6084,9 @@
       <dl class="kv"><dt>Bill to</dt><dd>${esc(c ? c.name : '')}<div class="mono small">${esc(i.customer)}</div>${c && c.addr ? `<div class="small muted">${esc(c.addr)}</div>` : ''}</dd><dt>Created</dt><dd>${i.created}</dd><dt>Due</dt><dd>${i.due}</dd>${i.paidOn ? `<dt>Paid</dt><dd>${i.paidOn}${i.payment ? ` · ${esc(i.payment.method)}${i.payment.ref ? ` · <span class="mono small">${esc(i.payment.ref)}</span>` : ''}${i.payment.source === 'webhook' ? ' (Stripe webhook)' : ''}` : ''}</dd>` : ''}${i.stripe && i.status === 'sent' ? `<dt>Stripe</dt><dd><span class="mono small">${esc(i.stripe.id)}</span><div class="small muted">Checkout link in the email · ${STRIPE.retrieveSession(i.stripe.id) && STRIPE.retrieveSession(i.stripe.id).paid ? 'paid on Stripe — not yet recorded' : 'awaiting payment'}</div></dd>` : ''}</dl>
       <div class="sect"><h3>Lines</h3><table class="lines"><tbody>${i.lines.map(l => `<tr><td>${esc(l.d)}</td><td class="r muted">${l.q} × ${money(l.p)}</td><td class="r mono">${money(l.q * l.p)}</td></tr>`).join('')}${invDiscount(i) ? `<tr><td class="muted">Subtotal</td><td></td><td class="r mono muted">${money(invSubtotal(i))}</td></tr><tr><td>${discountLabel(i)}</td><td></td><td class="r mono">−${money(invDiscount(i))}</td></tr>` : ''}<tr class="total"><td>Total</td><td></td><td class="r mono">${money(invTotal(i))}</td></tr></tbody></table>
       ${i.note ? `<p class="note mt">${esc(i.note)}</p>` : ''}</div>
-      <div class="sect"><h3>Email preview</h3><div class="preview" style="font-size:14px">${esc(SETTINGS.tmplInvoice.replace('{ref}', i.sub || i.no).replace('{amount}', money(invTotal(i))))}<br><br><span class="muted">From ${esc(SETTINGS.fromEmail)} · due ${i.due}</span></div></div>
+      <div class="sect"><h3>Email preview</h3><div class="preview" style="font-size:15px">${esc(SETTINGS.tmplInvoice.replace('{ref}', i.sub || i.no).replace('{amount}', money(invTotal(i))))}<br><br><span class="muted">From ${esc(SETTINGS.fromEmail)} · due ${i.due}</span></div></div>
     </div>
-    <div class="dfoot">${i.status === 'sent' ? `<button class="btn gold" onclick="paymentModal('${i.no}')">Mark paid</button><button class="btn quiet" onclick="sendInvoice('${i.no}',true)">Resend</button>` : ''}${i.status === 'sent' ? `<button class="btn quiet" onclick="invoiceEditor('${i.no}')">Edit</button>` : ''}${i.status === 'sent' || (i.status === 'paid' && ME.role === 'admin') ? `<button class="btn ghost" style="color:var(--bad)" onclick="voidInvoice('${i.no}')">Void</button>` : ''}<button class="btn quiet" onclick="invoicePreview('${i.no}')">Preview invoice</button><button class="btn quiet" onclick="window.print()">Print</button><span class="spacer"></span><button class="btn ghost" onclick="closeDrawer()">Close</button></div>`);
+    <div class="dfoot">${i.status === 'sent' ? `<button class="btn gold" onclick="paymentModal('${i.no}')">Mark paid</button><button class="btn quiet" onclick="sendInvoice('${i.no}',true)">Resend</button>` : ''}${i.status === 'sent' ? `<button class="btn quiet" onclick="invoiceEditor('${i.no}')">Edit</button>` : ''}${i.status === 'sent' || (i.status === 'paid' && ME.role === 'admin') ? `<button class="btn ghost" style="color:var(--bad)" onclick="voidInvoice('${i.no}')">Void</button>` : ''}<button class="btn quiet" onclick="invoicePreview('${i.no}')">Preview invoice</button><button class="btn quiet" onclick="window.print()">Print</button></div>`);
         }
         // The invoice as the customer receives it. `inv` is a saved invoice or the editor's working copy.
         function invoiceDoc(inv) {
@@ -4945,7 +6101,7 @@
       ${disc ? `<tr><td colspan="3" class="r">${discountLabel(inv)}</td><td class="r mono">−${money(disc)}</td></tr>` : ''}
       <tr class="total"><td colspan="3" class="r">Total due</td><td class="r mono">${money(invTotal(inv))}</td></tr></tbody></table>
     ${inv.note ? `<p class="note mt">${esc(inv.note)}</p>` : ''}
-    <div class="sect"><div class="eyebrow">Email that accompanies it</div><p class="mt8" style="font-size:14px">${esc(SETTINGS.tmplInvoice.replace('{ref}', inv.sub || inv.no || 'your submission').replace('{amount}', money(invTotal(inv))))}</p></div>
+    <div class="sect"><div class="eyebrow">Email that accompanies it</div><p class="mt8" style="font-size:15px">${esc(SETTINGS.tmplInvoice.replace('{ref}', inv.sub || inv.no || 'your submission').replace('{amount}', money(invTotal(inv))))}</p></div>
   </div>`;
         }
         function invoicePreview(no) {
@@ -5113,7 +6269,7 @@
       <div class="sect"><h3>Certificates (${certs.length})</h3>${certs.map(([no, x]) => `<div class="itemrow"><div class="grow"><b><span class="mono">${no}</span> — ${esc(x.signer)}</b><div class="m">${esc(x.tier || x.type)} · ${x.issued}</div></div><button class="btn sm quiet" onclick="go('certs');certDrawer('${no}')">Open</button></div>`).join('') || '<p class="small muted">None yet.</p>'}</div>
       <div class="sect"><h3>Invoices (${invs.length})</h3>${invs.map(i => `<div class="itemrow"><div class="grow"><b><span class="mono">${i.no}</span> · ${money(invTotal(i))}</b><div class="m">${i.created} · ${invLabel(i)}</div></div><button class="btn sm quiet" onclick="go('invoices');invoiceDrawer('${i.no}')">Open</button></div>`).join('') || '<p class="small muted">None yet.</p>'}</div>
     </div>
-    <div class="dfoot"><button class="btn gold" onclick="closeDrawer();customerPage('${c.id}')">View</button><button class="btn quiet" onclick="customerEditor('${c.id}')">Edit details</button><button class="btn quiet" onclick="invoiceEditor(null,{customer:'${esc(c.email)}'})">New invoice</button><span class="spacer"></span><button class="btn ghost" onclick="closeDrawer()">Close</button></div>`);
+    <div class="dfoot"><button class="btn gold" onclick="closeDrawer();customerPage('${c.id}')">View</button><button class="btn quiet" onclick="customerEditor('${c.id}')">Edit details</button><button class="btn quiet" onclick="invoiceEditor(null,{customer:'${esc(c.email)}'})">New invoice</button></div>`);
         }
         function customerEditor(id) {
             const c = id ? CUSTOMERS.find(x => x.id === id) : { first: '', last: '', email: '', phone: '', company: '', addr: '', notes: '', tags: [] };
@@ -5207,7 +6363,7 @@
             const facts = ex.signed ? [['Field', ex.field], ['Location of signature', ex.location], ['Implement', ex.implement], ['Ink', ex.ink]] : [['Field', ex.field], ['Era', ex.era], ['Size', ex.size]];
             return `<div class="letterdoc">
     <div class="invtop"><img src="${LOGO_LOCKUP}" alt="VeriChain" class="invlogo"><div class="r small muted">${TODAY}<br><span class="mono">${esc(ex.qr || 'Certificate number pending')}</span></div></div>
-    <h2 class="mt24" style="font-family:'Libre Caslon Text',Georgia,serif;font-weight:400;font-size:22px">${isLoa ? 'Letter of Authenticity — Platinum' : `Certificate of Authenticity — ${esc(ex.tier)}`}</h2>
+    <h2 class="mt24" style="font-family:'Libre Caslon Text',Georgia,serif;font-weight:400;font-size:24px">${isLoa ? 'Letter of Authenticity — Platinum' : `Certificate of Authenticity — ${esc(ex.tier)}`}</h2>
     <p class="mt">To whom it may concern,</p>
     <p class="mt8">VeriChain has examined the ${esc(ex.itemType || it.cat)} presented by ${esc(c ? c.name : s.customer)} under reference <span class="mono">${esc(itemRef(s, ex.i))}</span>${ex.signed ? `, bearing ${ex.sigs > 1 ? ex.sigs + ' signatures' : 'the signature'} of <b>${esc(subject)}</b>` : `, identified as <b>${esc(subject)}</b>`}.</p>
     <p class="mt8">In the opinion of our examiner the ${ex.signed ? 'signature is genuine' : 'object is as described'} and it is entered on the VeriChain register${ex.toChain ? ', anchored to the public ledger' : ''}.</p>
@@ -5332,7 +6488,7 @@
       <div class="sect"><h3>Change level</h3><p class="small muted" style="margin-bottom:8px">Reissues under the same number. Use for paid upgrades taken over the phone or corrections.</p><div class="row wrap">${LEVEL_NAMES.filter(l => l !== c.tier).map(l => `<button class="btn quiet sm" onclick="reissue('${no}','${l}')">To ${levelLabel(l)}</button>`).join('')}</div></div>
       <div class="sect"><h3>Public view</h3><div class="preview"><h4>${esc(c.signer)}</h4>${esc(c.item)} · ${esc(c.tier || c.type)} · issued ${c.issued}<br><span class="mono small">${no} · ${dq ? 'on the blockchain · ' + esc(dq.txid) : q ? 'blockchain record pending' : 'not sent to blockchain'}</span></div></div>
     </div>
-    <div class="dfoot">${q && ME.role === 'admin' ? `<button class="btn gold" onclick="chainSendNow(['${no}'])">Send to blockchain now</button>` : ''}${!q && !dq && !c.revoked ? `<button class="btn quiet" onclick="CHAIN_QUEUE.push({no:'${no}',chain:CERTS['${no}'].chain,queued:TODAY,by:ME.id,status:'pending'});audit('Added ${no} to the blockchain list');certDrawer('${no}');render()">Add to blockchain list</button>` : ''}${!c.revoked && ME.role === 'admin' ? `<button class="btn ghost" style="color:var(--bad)" onclick="revokeCert('${no}')">Revoke</button>` : ''}<span class="spacer"></span><button class="btn ghost" onclick="closeDrawer()">Close</button></div>`);
+    <div class="dfoot">${q && ME.role === 'admin' ? `<button class="btn gold" onclick="chainSendNow(['${no}'])">Send to blockchain now</button>` : ''}${!q && !dq && !c.revoked ? `<button class="btn quiet" onclick="CHAIN_QUEUE.push({no:'${no}',chain:CERTS['${no}'].chain,queued:TODAY,by:ME.id,status:'pending'});audit('Added ${no} to the blockchain list');certDrawer('${no}');render()">Add to blockchain list</button>` : ''}${!c.revoked && ME.role === 'admin' ? `<button class="btn ghost" style="color:var(--bad)" onclick="revokeCert('${no}')">Revoke</button>` : ''}</div>`);
         }
         function chainStatus(no) { const q = CHAIN_QUEUE.find(x => x.no === no); return !q ? '<span class="pill">Off-chain</span>' : q.status === 'done' ? '<span class="pill ok">Done</span>' : '<span class="pill warn">Pending</span>'; }
         function chainSendNow(nos) { const n = chainSend(nos, 'manual'); closeDrawer(); CHAIN_SEL = {}; render(); toast(n ? `${n} certificate${n === 1 ? '' : 's'} sent to the blockchain API.` : 'Nothing pending in that selection.'); }
@@ -5464,7 +6620,7 @@
             if (pg === 'fees' && bk === 'structure') {
                 const v = f => cmsVal(pg, bk, f);
                 const group = n => `<tr><td colspan="3" style="padding:14px 8px 4px"><span class="pill">${esc(v('g' + n + 'Title'))}</span>${v('g' + n + 'Note') ? `<div class="small muted mt8">${esc(v('g' + n + 'Note'))}</div>` : ''}</td></tr>` + v('g' + n + 'Rows').map(r => `<tr><td><b>${esc(r.service)}</b><div class="small muted">${esc(r.sub || '')}</div></td><td class="small" style="color:var(--steel)">${esc(r.desc || '')}</td><td class="r"><span class="mono" style="color:var(--gold3)">${esc(r.fee || '')}</span><div class="small muted">${esc(r.feeSub || '')}</div></td></tr>`).join('');
-                openModal(`<div class="mh"><h2>Fees page · Fee structure table</h2><span class="small muted">Preview with your unpublished edits</span></div><div class="mb"><p class="eyebrow">${esc(v('eyebrow'))}</p><h3 style="font-family:'Libre Caslon Text',Georgia,serif;font-weight:400;font-size:22px;margin:6px 0">${esc(v('headline'))}</h3><p class="small" style="color:var(--steel)">${esc(v('intro'))}</p>
+                openModal(`<div class="mh"><h2>Fees page · Fee structure table</h2><span class="small muted">Preview with your unpublished edits</span></div><div class="mb"><p class="eyebrow">${esc(v('eyebrow'))}</p><h3 style="font-family:'Libre Caslon Text',Georgia,serif;font-weight:400;font-size:24px;margin:6px 0">${esc(v('headline'))}</h3><p class="small" style="color:var(--steel)">${esc(v('intro'))}</p>
       <div class="tscroll" style="margin-top:12px"><table class="tbl"><thead><tr><th>${esc(v('colService'))}</th><th>${esc(v('colDesc'))}</th><th class="r">${esc(v('colFee'))}</th></tr></thead><tbody>${group(1)}${group(2)}${group(3)}</tbody></table></div></div><div class="mf"><button class="btn gold" onclick="closeModal()">Done</button></div>`); $('#modal').classList.add('wide'); return;
             }
             const body = Object.entries(b.fields).map(([f, def]) => {
@@ -5472,9 +6628,9 @@
                 if (def.kind === 'image') return v ? `<img src="${v}" style="width:100%;max-height:220px;object-fit:cover;border-radius:6px;margin:10px 0" alt="">` : `<div class="cmsimg ph" style="width:100%;height:120px;margin:10px 0"><span>${esc(def.hint || '')}</span></div>`;
                 if (def.kind === 'list') return `<div class="mt">${v.map(row => `<div class="itemrow"><div class="grow">${def.cols.map(([k, l, kind]) => kind === 'long' ? `<div class="small" style="color:var(--steel)">${esc(row[k] || '')}</div>` : `<b>${esc(row[k] || '')}</b> `).join('')}</div></div>`).join('')}</div>`;
                 if (/eyebrow|chip|label/i.test(def.label)) return `<p class="eyebrow mt">${esc(v)}</p>`;
-                if (/headline|title/i.test(def.label)) return `<h3 style="font-family:'Libre Caslon Text',Georgia,serif;font-weight:400;font-size:22px;margin:6px 0">${esc(v)}</h3>`;
+                if (/headline|title/i.test(def.label)) return `<h3 style="font-family:'Libre Caslon Text',Georgia,serif;font-weight:400;font-size:24px;margin:6px 0">${esc(v)}</h3>`;
                 if (/button/i.test(def.label)) return `<span class="btn gold sm" style="margin:8px 6px 0 0">${esc(v)}</span>`;
-                return `<p style="font-size:14px;line-height:1.7;color:var(--steel);margin:8px 0">${esc(v).replace(/\n/g, '<br>')}</p>`;
+                return `<p style="font-size:15px;line-height:1.7;color:var(--steel);margin:8px 0">${esc(v).replace(/\n/g, '<br>')}</p>`;
             }).join('');
             openModal(`<div class="mh"><h2>${esc(CMS[pg].title)} · ${esc(b.title)}</h2><span class="small muted">Preview with your unpublished edits</span></div><div class="mb"><div class="preview">${body}</div></div><div class="mf"><button class="btn gold" onclick="closeModal()">Done</button></div>`); $('#modal').classList.add('wide');
         }
@@ -5501,9 +6657,9 @@
     <dl class="kv"><dt>Email</dt><dd><a class="mono" href="mailto:${esc(m.email)}?subject=${subj}">${esc(m.email)}</a>${c ? ` <span class="pill">Customer</span> <button class="btn ghost sm" style="padding:0;color:var(--gold3)" onclick="closeDrawer();customerPage('${c.id}')">Open account</button>` : ' <span class="small muted">Not a customer yet</span>'}</dd>
       <dt>Phone</dt><dd><a class="mono" href="tel:${esc(m.cc + m.phone.replace(/\s/g, ''))}">${esc(m.cc)} ${esc(m.phone)}</a></dd>
       <dt>Submission reference</dt><dd>${m.ref ? (s ? `<button class="btn ghost sm" style="padding:0;color:var(--gold3)" onclick="closeDrawer();subPage('${m.ref}')">${esc(m.ref)}</button> · ${pill(s.status)} · ${esc(subTitle(s))}` : `<span class="mono">${esc(m.ref)}</span> <span class="pill bad">not on record</span>`) : '<span class="muted">None given</span>'}</dd></dl>
-    <div class="sect"><h3>Message</h3><p style="white-space:pre-wrap;font-size:14.5px;line-height:1.6">${esc(m.msg)}</p></div>
+    <div class="sect"><h3>Message</h3><p style="white-space:pre-wrap;font-size:15.5px;line-height:1.6">${esc(m.msg)}</p></div>
     <div class="sect"><h3>Desk notes</h3><textarea class="f" rows="3" placeholder="What was said or done, for whoever picks this up next." oninput="CONTACTS.find(x=>x.id==='${m.id}').notes=this.value">${esc(m.notes || '')}</textarea>${m.repliedBy ? `<p class="small muted mt8">Replied by ${esc(teamName(m.repliedBy))} · ${esc(m.repliedAt)}</p>` : ''}</div>
-  </div><div class="dfoot">${m.status === 'new' ? `<a class="btn gold" href="mailto:${esc(m.email)}?subject=${subj}&body=${encodeURIComponent('Hello ' + m.first + ',\n\n')}" onclick="contactSet('${m.id}','replied')">Reply by email</a><button class="btn quiet" onclick="contactSet('${m.id}','replied')">Mark replied</button>` : ''}${m.status !== 'closed' ? `<button class="btn quiet" onclick="contactSet('${m.id}','closed')">Close</button>` : `<button class="btn quiet" onclick="contactSet('${m.id}','new')">Reopen</button>`}${!c ? `<button class="btn quiet" onclick="closeDrawer();newSubmissionModal();setTimeout(()=>{$('#nsFirst').value='${esc(m.first)}';$('#nsLast').value='${esc(m.last)}';$('#nsEmail').value='${esc(m.email)}';$('#nsPhone').value='${esc(m.cc + ' ' + m.phone)}';nsLookup()},40)">Start a submission</button>` : ''}<span class="spacer"></span><button class="btn ghost" onclick="closeDrawer()">Close</button></div>`);
+  </div><div class="dfoot">${m.status === 'new' ? `<a class="btn gold" href="mailto:${esc(m.email)}?subject=${subj}&body=${encodeURIComponent('Hello ' + m.first + ',\n\n')}" onclick="contactSet('${m.id}','replied')">Reply by email</a><button class="btn quiet" onclick="contactSet('${m.id}','replied')">Mark replied</button>` : ''}${m.status !== 'closed' ? `<button class="btn quiet" onclick="contactSet('${m.id}','closed')">Close</button>` : `<button class="btn quiet" onclick="contactSet('${m.id}','new')">Reopen</button>`}${!c ? `<button class="btn quiet" onclick="closeDrawer();newSubmissionModal();setTimeout(()=>{$('#nsFirst').value='${esc(m.first)}';$('#nsLast').value='${esc(m.last)}';$('#nsEmail').value='${esc(m.email)}';$('#nsPhone').value='${esc(m.cc + ' ' + m.phone)}';nsLookup()},40)">Start a submission</button>` : ''}</div>`);
         }
         function contactSet(id, status) { const m = CONTACTS.find(x => x.id === id); if (!m) return; m.status = status; if (status === 'replied') { m.repliedBy = ME.id; m.repliedAt = TODAY + ' ' + NOW(); } audit(`Contact form message from ${m.email} marked ${status}`); closeDrawer(); render(); toast(`Marked ${status}.`); }
         /* ══════════════════════════ SIGNER DATABASE ══════════════════════════ */
@@ -5731,7 +6887,7 @@
       <div class="field"><label class="lbl">Author</label><input class="f" id="poAuthor" value="${esc(p.author || '')}" placeholder="Marcus Ellery"></div>
       <div class="field"><label class="lbl">Author's role</label><input class="f" id="poRole" value="${esc(p.authorRole || '')}" placeholder="Senior Authenticator"></div></div>
     <div class="field"><label class="lbl">Body</label><textarea class="f" id="poBody" style="min-height:300px" placeholder="Paragraphs separated by a blank line.">${esc(p.body)}</textarea></div></div>
-    <div class="dfoot"><button class="btn gold" onclick="savePost('${id || ''}','published')">${p.status === 'published' ? 'Update' : 'Publish'}</button><button class="btn quiet" onclick="savePost('${id || ''}','draft')">Save draft</button><button class="btn quiet" onclick="postPreview(null)">Preview</button><span class="spacer"></span>${id ? `<button class="btn ghost" style="color:var(--bad)" onclick="POSTS=POSTS.filter(x=>x.id!=='${id}');audit('Deleted post');closeDrawer();render();toast('Post deleted.')">Delete</button>` : ''}<button class="btn ghost" onclick="closeDrawer()">Close</button></div>`, { wide: true });
+    <div class="dfoot"><button class="btn gold" onclick="savePost('${id || ''}','published')">${p.status === 'published' ? 'Update' : 'Publish'}</button><button class="btn quiet" onclick="savePost('${id || ''}','draft')">Save draft</button><button class="btn quiet" onclick="postPreview(null)">Preview</button><span class="spacer"></span>${id ? `<button class="btn ghost" style="color:var(--bad)" onclick="POSTS=POSTS.filter(x=>x.id!=='${id}');audit('Deleted post');closeDrawer();render();toast('Post deleted.')">Delete</button>` : ''}</div>`, { wide: true });
         }
         function savePost(id, status) { const g = k => ($('#' + k) || {}).value ? $('#' + k).value.trim() : ''; if (!fieldErr('poTitle', !g('poTitle'))) return; const p = id ? POSTS.find(x => x.id === id) : { id: 'p' + (POSTS.length + 1) }; Object.assign(p, { title: g('poTitle'), category: g('poCategory'), standfirst: g('poStand'), author: g('poAuthor'), authorRole: g('poRole'), date: g('poDate'), hero: PO_HERO, body: g('poBody'), status }); if (status === 'published' && !p.date) p.date = new Date().toISOString().slice(0, 10); if (!id) POSTS.unshift(p); audit(`${status === 'published' ? 'Published' : 'Saved'} post "${p.title}"`); closeDrawer(); render(); toast(`Post ${status === 'published' ? 'published' : 'saved'}.`); }
 
