@@ -2750,6 +2750,81 @@
             transition: opacity .6s, transform 1.2s cubic-bezier(.2, .8, .2, 1)
         }
 
+        #boot .boot-sheet {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: min(520px, 78vw);
+            aspect-ratio: 1.65;
+            transform: translate(-50%, -50%) rotate(-3deg);
+            border: 1px solid rgba(227, 203, 146, .42);
+            background: linear-gradient(135deg, rgba(255, 255, 255, .08), rgba(227, 203, 146, .04));
+            box-shadow: 0 0 0 8px rgba(227, 203, 146, .025), 0 24px 70px rgba(0, 0, 0, .18);
+            transition: opacity .6s, transform 1.2s cubic-bezier(.2, .8, .2, 1)
+        }
+
+        #boot .boot-sheet::before,
+        #boot .boot-sheet::after {
+            content: '';
+            position: absolute;
+            left: 7%;
+            right: 7%;
+            height: 1px;
+            background: rgba(227, 203, 146, .18)
+        }
+
+        #boot .boot-sheet::before {
+            top: 22%
+        }
+
+        #boot .boot-sheet::after {
+            bottom: 18%
+        }
+
+        #boot .boot-sheet svg {
+            position: absolute;
+            inset: 15% 9% 18%;
+            width: 82%;
+            height: 67%;
+            overflow: visible
+        }
+
+        #boot .boot-sheet path {
+            fill: none;
+            stroke: var(--gold2);
+            stroke-width: 1.4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 1;
+            stroke-dashoffset: 1;
+            animation: bootSignature 2.4s .35s cubic-bezier(.65, 0, .35, 1) forwards
+        }
+
+        #boot .boot-sheet path:nth-child(2) {
+            animation-delay: 1.15s
+        }
+
+        #boot .boot-sheet-label {
+            position: absolute;
+            top: 8%;
+            left: 9%;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .45)
+        }
+
+        #boot .boot-sheet-id {
+            position: absolute;
+            right: 9%;
+            bottom: 7%;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 9px;
+            letter-spacing: .12em;
+            color: rgba(227, 203, 146, .62)
+        }
+
         #boot .boot-rings svg {
             position: absolute;
             inset: 0;
@@ -2993,6 +3068,11 @@
             transform: translate(-50%, -50%) scale(1.25)
         }
 
+        #boot.out .boot-sheet {
+            opacity: 0;
+            transform: translate(-50%, -50%) rotate(2deg) scale(1.08)
+        }
+
         #boot.out .boot-glow,
         #boot.out .boot-corner,
         #boot.out .boot-foot {
@@ -3016,6 +3096,12 @@
         @keyframes bootSpin {
             to {
                 transform: rotate(360deg)
+            }
+        }
+
+        @keyframes bootSignature {
+            to {
+                stroke-dashoffset: 0
             }
         }
 
@@ -3058,6 +3144,127 @@
             100% {
                 transform: scaleX(1);
                 opacity: 0
+            }
+        }
+
+        /* simple loader presentation */
+        #boot {
+            background: var(--mist);
+            color: var(--ink);
+        }
+
+        #boot .boot-half,
+        #boot .boot-glow,
+        #boot .boot-rings,
+        #boot .boot-sheet,
+        #boot .boot-corner,
+        #boot .boot-seam {
+            display: none;
+        }
+
+        #boot .boot-in {
+            width: min(300px, calc(100vw - 48px));
+            padding: 0;
+        }
+
+        #boot .boot-signature {
+            width: min(220px, 72vw);
+            height: 76px;
+            margin-bottom: 16px;
+            overflow: visible;
+        }
+
+        #boot .boot-signature path {
+            fill: none;
+            stroke: var(--gold);
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            stroke-dasharray: 1;
+            stroke-dashoffset: 1;
+            animation: bootWriting 1.8s cubic-bezier(.65, 0, .35, 1) forwards;
+        }
+
+        #boot .boot-signature path:nth-child(2) {
+            animation-delay: .85s;
+        }
+
+        #boot .boot-mark {
+            height: 42px;
+        }
+
+        #boot .boot-word {
+            margin-top: 12px;
+            font-size: 20px;
+            color: var(--ink);
+        }
+
+        #boot .boot-word small {
+            color: var(--gold3);
+            font-size: 9px;
+        }
+
+        #boot .boot-count {
+            margin-top: 26px;
+            font-size: 46px;
+            color: var(--ink);
+        }
+
+        #boot .boot-count span {
+            background: none;
+            color: var(--ink);
+        }
+
+        #boot .boot-count i {
+            color: var(--gold3);
+        }
+
+        #boot .boot-line {
+            width: 100%;
+            height: 2px;
+            margin-top: 18px;
+            background: var(--rule);
+        }
+
+        #boot .boot-line b {
+            background: var(--gold);
+        }
+
+        #boot .boot-line b::after {
+            width: 6px;
+            height: 6px;
+            top: -2px;
+            background: var(--gold);
+            box-shadow: none;
+        }
+
+        #boot .boot-status {
+            margin-top: 12px;
+            color: var(--silver);
+            font-size: 10px;
+            letter-spacing: .14em;
+        }
+
+        #boot.out .boot-in {
+            transform: translateY(-8px);
+            filter: none;
+        }
+
+        #boot.out {
+            opacity: 0;
+            transition: opacity .45s ease;
+        }
+
+        @keyframes bootWriting {
+            to {
+                stroke-dashoffset: 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            #boot .boot-signature path {
+                animation: none;
+                stroke-dashoffset: 0;
             }
         }
 
@@ -4462,9 +4669,23 @@
         <div class="boot-glow"></div>
         <div class="boot-rings" aria-hidden="true"><svg class="r1" viewBox="-300 -300 600 600" id="bootR1"></svg><svg
                 class="r2" viewBox="-300 -300 600 600" id="bootR2"></svg></div>
+        <div class="boot-sheet" aria-hidden="true">
+            <span class="boot-sheet-label">SIGNATURE EXAMINATION</span>
+            <svg viewBox="0 0 300 110">
+                <path pathLength="1"
+                    d="M30 30c-6 20-10 44-6 58 3 10 14 6 16-6 3-22-12-40 2-44 14-4 16 20 22 28 4 6 10-10 16-14 6-4 6 12 12 12 6 0 10-16 18-16s4 14 12 14c10 0 14-20 24-20 6 0 2 14 10 14 12 0 24-20 36-30" />
+                <path pathLength="1" d="M12 92c50-14 120-4 170-12s70-20 96-14" />
+            </svg>
+            <span class="boot-sheet-id">VC / LEDGER</span>
+        </div>
         <i class="boot-corner tl"></i><i class="boot-corner tr"></i><i class="boot-corner bl"></i><i
             class="boot-corner br"></i>
         <div class="boot-in">
+            <svg class="boot-signature" viewBox="0 0 300 110" aria-hidden="true">
+                <path pathLength="1"
+                    d="M30 30c-6 20-10 44-6 58 3 10 14 6 16-6 3-22-12-40 2-44 14-4 16 20 22 28 4 6 10-10 16-14 6-4 6 12 12 12 6 0 10-16 18-16s4 14 12 14c10 0 14-20 24-20 6 0 2 14 10 14 12 0 24-20 36-30" />
+                <path pathLength="1" d="M12 92c50-14 120-4 170-12s70-20 96-14" />
+            </svg>
             <img class="boot-mark" id="bootMark" alt="">
             <div class="boot-word">VeriChain<small>ADMINISTRATION</small></div>
             <div class="boot-count" aria-hidden="true"><span id="bootNum">1</span><i>%</i></div>
@@ -4500,13 +4721,13 @@
                     shown = n; num.textContent = n; bar.style.transform = 'scaleX(' + n / 100 + ')'; c.style.strokeDasharray = (CIRC * n / 100) + ' ' + CIRC;
                     for (var i = STEPS.length - 1; i >= 0; i--) if (n >= STEPS[i][0]) { if (st.textContent !== STEPS[i][1]) { st.textContent = STEPS[i][1]; st.classList.remove('swap'); void st.offsetWidth; st.classList.add('swap'); } break; }
                 }
-                if (n >= 100) return setTimeout(finish, rm ? 50 : 420);
+                if (n >= 100) return finish();
                 requestAnimationFrame(frame);
             }
             function finish() {
                 boot.classList.add('out'); boot.setAttribute('aria-busy', 'false');
-                setTimeout(function () { document.body.classList.remove('booting'); }, rm ? 0 : 700);
-                setTimeout(function () { boot.remove(); }, rm ? 350 : 1800);
+                setTimeout(function () { document.body.classList.remove('booting'); }, rm ? 0 : 280);
+                setTimeout(function () { boot.remove(); }, rm ? 250 : 600);
             }
             requestAnimationFrame(frame);
         })();
