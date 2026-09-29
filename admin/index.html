@@ -5297,7 +5297,7 @@
         const FULL_RECORD = t => t === 'Platinum';
         // Fee schedule. The COA base and the Letter fee are not set here: they come from the signer database, per signer.
         // Return postage is not set here either: it is quoted live by the FedEx / UPS rate APIs from the service, the destination and the package.
-        let SCHEDULE = { extraSig: 5, maxSigs: 10, coaToLoa: 40, bulkFrom: 25, replaceCoa: 15, replaceLoa: 25 };
+        let SCHEDULE = { extraSig: 5, maxSigs: 10, coaToLoa: 40, bulkFrom: 25, replaceCoa: 15, replaceLoa: 25, chainFee: 5 };   // chainFee: blockchain record, per item, charged when the customer ticks it on the submission form
         // Carrier rate integrations (sandbox in the prototype). Live pricing follows the standard rates configured on each account.
         let CARRIERS = { fedex: { account: 'FDX-SANDBOX-4471', status: 'sandbox', packaging: 'Customer packaging', origin: 'Fort Lauderdale, FL 33309' }, ups: { account: 'UPS-SANDBOX-91A2', status: 'sandbox', packaging: 'Customer packaging', origin: 'Fort Lauderdale, FL 33309' } };
         // Stand-in for the carrier rate call: service base × zone from the destination ZIP. Replaced by the real API in production.
@@ -5384,7 +5384,7 @@
         let SUBS = [
             {
                 id: 'VC-S-2624', created: '1 Sep 2026', customer: 'alex@whitfieldcollection.com', route: 'Posted to us', status: 'paid', by: null,
-                items: [item({ cat: 'Boxing glove', signer: 'Muhammad Ali', tier: 'Platinum', notes: 'Right-hand training glove. Signature on the cuff.', photos: 2 })],
+                items: [item({ chain: true, cat: 'Boxing glove', signer: 'Muhammad Ali', tier: 'Platinum', notes: 'Right-hand training glove. Signature on the cuff.', photos: 2 })],
                 note: 'Please put the sticker on the letter, not the glove.'
             },
             {
@@ -5398,7 +5398,7 @@
                 note: 'Unsigned. Please certify the piece itself — full set with box and papers.'
             },
             {
-                id: 'VC-S-2623', created: '30 Aug 2026', customer: 'consignments@heritage-auctions.example', route: 'Posted to us', status: 'paid', by: null, bulk: 30,
+                id: 'VC-S-2623', created: '30 Aug 2026', customer: 'consignments@heritage-auctions.example', route: 'Posted to us', status: 'paid', by: null, bulk: 30, bulkChain: true,
                 items: [], note: '30 items from one consignment — 22 baseballs signed by Mickey Mantle, 8 photographs signed by Wayne Gretzky.'
             },
             {
@@ -5864,10 +5864,12 @@
         // Messages sent through the public contact form ("Send us a message"): first name, last name, email, phone (with country code),
         // submission reference if they have one, and the message. Status: new → replied → closed.
         let CONTACTS = [
-            { id: 'm1', at: '16 Sep 2026 14:22', first: 'Dana', last: 'Mercer', email: 'dana@mercercollection.com', cc: '+1', phone: '212 555 0147', ref: '', msg: 'I have a signed photograph and I am not sure which certification suits it.', status: 'new', notes: '' },
-            { id: 'm2', at: '15 Sep 2026 09:05', first: 'Alex', last: 'Whitfield', email: 'alex@whitfieldcollection.com', cc: '+1', phone: '609 331 9194', ref: 'VC-S-2624', msg: 'Any update on the Ali glove? I would like it back before the 25th if possible.', status: 'new', notes: '' },
-            { id: 'm3', at: '12 Sep 2026 16:48', first: 'Priya', last: 'Raman', email: 'priya.raman@mail.com', cc: '+1', phone: '214 555 0188', ref: 'VC-S-2616', msg: 'The Rolex was posted yesterday with UPS, tracking 1Z 999 AA1 01 2345 6784.', status: 'replied', notes: 'Told her we will confirm on receipt.', repliedBy: 'u1', repliedAt: '12 Sep 2026 17:30' },
-            { id: 'm4', at: '9 Sep 2026 11:15', first: 'Tom', last: 'Reyes', email: 'tom.reyes@example.com', cc: '+44', phone: '7700 900123', ref: '', msg: 'Do you authenticate football shirts from the 1966 World Cup squad? I have three.', status: 'closed', notes: 'Yes — pointed him at the submission form.', repliedBy: 'u3', repliedAt: '9 Sep 2026 12:02' }
+            { id: 'm6', type: 'office', from: 'Services page › Schedule an office visit', at: '17 Sep 2026 11:02', first: 'Dana', last: 'Mercer', email: 'dana@mercercollection.com', cc: '+1', phone: '212 555 0147', ref: '', msg: 'I would like to schedule an office visit. I have a signed photograph and a trading card to bring in.', status: 'new', notes: '' },
+            { id: 'm5', type: 'house', from: 'Submission form › Schedule a house call', at: '16 Sep 2026 16:48', first: 'Grace', last: 'Hollins', email: 'grace.hollins@mail.com', cc: '+1', phone: '973 555 0112', ref: '', msg: 'My late father left about 120 signed items, mostly photographs and programmes. I would rather not post them. We are in Morristown, NJ.', status: 'new', notes: '' },
+            { id: 'm1', type: 'general', from: 'Contact us page', at: '16 Sep 2026 14:22', first: 'Dana', last: 'Mercer', email: 'dana@mercercollection.com', cc: '+1', phone: '212 555 0147', ref: '', msg: 'I have a signed photograph and I am not sure which certification suits it.', status: 'new', notes: '' },
+            { id: 'm2', type: 'general', from: 'Contact us page', at: '15 Sep 2026 09:05', first: 'Alex', last: 'Whitfield', email: 'alex@whitfieldcollection.com', cc: '+1', phone: '609 331 9194', ref: 'VC-S-2624', msg: 'Any update on the Ali glove? I would like it back before the 25th if possible.', status: 'new', notes: '' },
+            { id: 'm3', type: 'general', from: 'Contact us page', at: '12 Sep 2026 16:48', first: 'Priya', last: 'Raman', email: 'priya.raman@mail.com', cc: '+1', phone: '214 555 0188', ref: 'VC-S-2616', msg: 'The Rolex was posted yesterday with UPS, tracking 1Z 999 AA1 01 2345 6784.', status: 'replied', notes: 'Told her we will confirm on receipt.', repliedBy: 'u1', repliedAt: '12 Sep 2026 17:30' },
+            { id: 'm4', type: 'general', from: 'Contact us page', at: '9 Sep 2026 11:15', first: 'Tom', last: 'Reyes', email: 'tom.reyes@example.com', cc: '+44', phone: '7700 900123', ref: '', msg: 'Do you authenticate football shirts from the 1966 World Cup squad? I have three.', status: 'closed', notes: 'Yes — pointed him at the submission form.', repliedBy: 'u3', repliedAt: '9 Sep 2026 12:02' }
         ];
         // Blog posts as the public site lays them out: hero image, category label, title, standfirst, posted date, author with their role, body paragraphs.
         let POSTS = [
@@ -5885,7 +5887,7 @@
         let CMS_HISTORY = [{ at: '2 Sep 2026', who: 'u1', what: 'Published Landing page · Hero (headline)' }, { at: '20 Aug 2026', who: 'u2', what: 'Published post "Reading a signature"' }];
 
         let SETTINGS = {
-            requireReceipt: true, defaultChain: true, autoAssign: false, invoiceDays: 14, chainAuto: true, chainInterval: 3600,   // seconds (1 hour); edited as days / hours / minutes / seconds fromEmail:'desk@verichain.com', notifyAccept:true,
+            requireReceipt: true, defaultChain: true, chainOffered: true, autoAssign: false, invoiceDays: 14, chainAuto: true, chainInterval: 3600,   // seconds (1 hour); edited as days / hours / minutes / seconds fromEmail:'desk@verichain.com', notifyAccept:true,
             tmplInvoice: 'Your item {ref} has been received and priced. Please review and agree the fee of {amount} to start the examination.',
             tmplResult: 'Your item {ref} has been examined. Certificate {cert} is now on record.'
         };
@@ -6547,9 +6549,9 @@
               ${s.status === 'returned' ? `<dt>Status</dt><dd>${pill('returned')}</dd>` : s.status === 'complete' ? `<dt>Status</dt><dd><span class="pill warn">Ready to ship</span></dd>` : ''}</dl>`)
                     : s.desk ? `<p class="small muted">Started at the desk — no return address or service was taken; the customer is dealt with in person.</p>`
                         : `<p class="small muted"><span class="pill bad">Not on record</span> Ask the customer how they want the item back before completing.</p>`}</div>
-      <div class="sect"><h3>Items ${s.bulk ? `<span class="muted">· ${s.items.length} of ${s.bulk} recorded</span>` : ''}</h3>
+      ${s.bulk && s.bulkChain ? `<p class="note mb">The customer asked for every item in this shipment to be recorded on the blockchain (${money(SCHEDULE.chainFee)} per item).</p>` : ''}<div class="sect"><h3>Items ${s.bulk ? `<span class="muted">· ${s.items.length} of ${s.bulk} recorded</span>` : ''}</h3>
         ${s.items.length ? s.items.map((it, i) => `<div class="itemrow"><div class="grow"><b>${esc(it.signed === false ? `${it.make || 'Unsigned'} ${it.model || ''}` : it.signer)} <span class="muted">— ${esc(it.cat)}</span></b>
-          <div class="m">${esc(levelLabel(normTier(it.tier, it.cert)))} · ${it.sigs || 1} signature${(it.sigs || 1) > 1 ? 's' : ''} · ${it.photos || 0} photo${(it.photos || 0) === 1 ? '' : 's'}${it.certNo ? ` · <span class="mono">${it.certNo}</span>` : ''}${it.notes ? `<br>${esc(it.notes)}` : ''}</div></div>
+          <div class="m">${esc(levelLabel(normTier(it.tier, it.cert)))} · ${it.sigs || 1} signature${(it.sigs || 1) > 1 ? 's' : ''} · ${it.photos || 0} photo${(it.photos || 0) === 1 ? '' : 's'}${it.chain ? ` · <span style="color:var(--gold3)">Blockchain requested (+${money(SCHEDULE.chainFee * Math.max(1, it.qty || 1))})</span>` : ''}${it.certNo ? ` · <span class="mono">${it.certNo}</span>` : ''}${it.notes ? `<br>${esc(it.notes)}` : ''}</div></div>
           ${ipill(it.status)}${s.status === 'in_auth' && s.by === ME.id && it.status !== 'complete' && it.status !== 'rejected' ? `<button class="btn sm gold" onclick="startExam('${s.id}',${i})">${it.status === 'draft' ? 'Resume' : 'Authenticate'}</button>` : ''}${it.certNo ? `<button class="btn sm quiet" onclick="certDrawer('${it.certNo}')">Cert</button>` : ''}<button class="btn sm quiet" onclick="itemDrawer('${s.id}',${i})">Open</button></div>`).join('')
                     : `<p class="small muted">No items recorded yet.${s.bulk ? ' They are added one by one when the authenticator records the bulk order.' : ''}</p>`}</div>
       <div class="sect"><h3>Money</h3>
@@ -6580,7 +6582,10 @@
                 if (s.ret && returnCharged(s.ret.service)) { const q = carrierQuote(s.ret.service, s.ret); lines.push({ d: `Return — ${s.ret.service} (${s.ret.service.startsWith('UPS') ? 'UPS' : 'FedEx'} rate)`, q: 1, p: q ?? 0 }); }
                 invoiceEditor(null, { sub: s.id, customer: s.customer, lines, sendNow: true }); return;
             }
+            const chainLines = s.items.filter(it => it.chain).map(it => ({ d: `Recorded on the blockchain — ${it.signed === false ? (it.make + ' ' + (it.model || '')).trim() || 'unsigned item' : it.signer}, ${it.cat.toLowerCase()}`, q: Math.max(1, it.qty || 1), p: SCHEDULE.chainFee }));
+            if (s.bulk && s.bulkChain) chainLines.push({ d: 'Recorded on the blockchain — every item in the shipment', q: s.bulk, p: SCHEDULE.chainFee });
             const lines = s.items.length ? s.items.map(it => ({ d: `${levelLabel(normTier(it.tier, it.cert))} certification — ${it.signed === false ? (it.make + ' ' + (it.model || '')).trim() : it.signer}, ${it.cat.toLowerCase()}${itemFee(it) == null ? ' (priced by the desk)' : ''}`, q: 1, p: itemFee(it) ?? 0 })) : [{ d: `Bulk — ${s.bulk} items at Bronze`, q: s.bulk || 1, p: coaBase() ?? 0 }];
+            lines.push(...chainLines);
             if (s.ret && returnCharged(s.ret.service)) { const q = carrierQuote(s.ret.service, s.ret); lines.push({ d: `Return — ${s.ret.service}${retAddr(s.ret).length ? ' to ' + retAddr(s.ret).slice(-2).join(' ') : ''} (${s.ret.service.startsWith('UPS') ? 'UPS' : 'FedEx'} rate)`, q: 1, p: q ?? 0 }); }
             invoiceEditor(null, { sub: s.id, customer: s.customer, lines, sendNow: true });
         }
@@ -6887,7 +6892,7 @@
             ${LEVEL_NAMES.map(l => `<option value='${JSON.stringify({ d: levelLabel(l) + ' certification', q: 1, p: levelFrom(l) ?? 0 })}'>${levelLabel(l)} — from ${money(levelFrom(l) ?? 0)}</option>`).join('')}
             <option value='${JSON.stringify({ d: 'Additional signature', q: 1, p: SCHEDULE.extraSig })}'>Additional signature — ${money(SCHEDULE.extraSig)}</option>
             ${RETURN_SERVICES.filter(returnCharged).map(r => `<option value='${JSON.stringify({ d: 'Return — ' + r + ' (carrier rate)', q: 1, p: carrierQuote(r, {}) })}'>Return — ${r} — ${money(carrierQuote(r, {}))} (rate)</option>`).join('')}
-            <option value='${JSON.stringify({ d: 'Replacement certificate (COA)', q: 1, p: SCHEDULE.replaceCoa })}'>Replacement COA — ${money(SCHEDULE.replaceCoa)}</option></select></div></div>
+            <option value='${JSON.stringify({ d: 'Replacement certificate (COA)', q: 1, p: SCHEDULE.replaceCoa })}'>Replacement COA — ${money(SCHEDULE.replaceCoa)}</option><option value='${JSON.stringify({ d: 'Replacement Letter of Authenticity (LOA)', q: 1, p: SCHEDULE.replaceLoa })}'>Replacement LOA — ${money(SCHEDULE.replaceLoa)}</option><option value='${JSON.stringify({ d: 'Recorded on the blockchain', q: 1, p: SCHEDULE.chainFee })}'>Recorded on the blockchain — ${money(SCHEDULE.chainFee)} per item</option></select></div></div>
       <div class="sect"><h3>Discount <span class="muted">· optional</span></h3>
         <div class="row" style="gap:8px;align-items:center;flex-wrap:wrap">
           <select class="f" style="width:auto" id="ieDiscType" onchange="INV_EDIT.discount.type=this.value;paintTotal()"><option value="pct" ${i.discount.type === 'pct' ? 'selected' : ''}>Percentage off</option><option value="fixed" ${i.discount.type === 'fixed' ? 'selected' : ''}>Fixed amount off</option></select>
@@ -7107,7 +7112,7 @@
             if (s.status === 'paid') { s.status = 'in_auth'; s.by = ME.id; log(s, `Accepted by ${ME.name}`); }
             const known = it.exam || {}; const last = s.lastExam || {};
             EXAM = Object.assign({
-                subId, i, signed: it.signed !== false, qr: '', chain: '', toChain: SETTINGS.defaultChain, itemType: it.cat, signers: it.signer, sigs: it.sigs || 1, notes: it.notes || '', origin: '', field: '', location: '', implement: '', ink: '', other: '', make: it.make || '', model: it.model || '', era: '', size: '', observ: 'None',
+                subId, i, signed: it.signed !== false, qr: '', chain: '', toChain: it.chain !== undefined ? !!it.chain : (s.bulkChain !== undefined ? !!s.bulkChain : SETTINGS.defaultChain), itemType: it.cat, signers: it.signer, sigs: it.sigs || 1, notes: it.notes || '', origin: '', field: '', location: '', implement: '', ink: '', other: '', make: it.make || '', model: it.model || '', era: '', size: '', observ: 'None',
                 tier: normTier(it.tier, it.cert), photos: Array.from({ length: it.photos || 0 }, (_, k) => ({ name: `customer-${k + 1}.jpg` })), reasons: [], examinerNote: '', rejecting: false, pdfApproved: false, printedLetter: false, resumed: it.status === 'draft'
             },
                 (!it.exam && s.bulk) ? last : {}, known);
@@ -7395,17 +7400,19 @@
             openModal(`<div class="mh"><h2>${esc(CMS[pg].title)} · ${esc(b.title)}</h2><span class="small muted">Preview with your unpublished edits</span></div><div class="mb"><div class="preview">${body}</div></div><div class="mf"><button class="btn gold" onclick="closeModal()">Done</button></div>`); $('#modal').classList.add('wide');
         }
         /* ══════════════════════════ CONTACT FORM ══════════════════════════ */
+        const CT_TYPES = { general: ['General enquiry', ''], house: ['House call', 'gold'], office: ['Office visit', 'live'] };
+        const ctype = t => { const [l, c] = CT_TYPES[t] || CT_TYPES.general; return `<span class="pill ${c} nw">${l}</span>`; };
         const cpill = st => ({ new: '<span class="pill warn">New</span>', replied: '<span class="pill ok">Replied</span>', closed: '<span class="pill">Closed</span>' })[st] || '';
         function viewContacts() {
             crumbs(['Contact form']);
-            const list = CONTACTS.filter(m => fpass('contacts', m.first + ' ' + m.last + ' ' + m.email + ' ' + m.phone + ' ' + (m.ref || '') + ' ' + m.msg + ' ' + m.status, m.status, m.at));
+            const list = CONTACTS.filter(m => fpass('contacts', (m.no || '') + ' ' + m.first + ' ' + m.last + ' ' + m.email + ' ' + m.phone + ' ' + (m.ref || '') + ' ' + m.msg + ' ' + m.status + ' ' + (CT_TYPES[m.type || 'general'][0]), m.status, m.at, m.type || 'general'));
             return `
-  ${pageHead('Contact form', 'Every message sent through "Send us a message" on the website. Open one to read it in full, reply and mark it done.')}
-  <div class="card flush">${fbar('contacts', { placeholder: 'Search name, email, phone, reference, message…', dates: true, statuses: [['new', 'New'], ['replied', 'Replied'], ['closed', 'Closed']], count: `${list.length} of ${CONTACTS.length}` })}
-    ${table([{ h: 'Received' }, { h: 'Status' }, { h: 'First name' }, { h: 'Last name' }, { h: 'Email' }, { h: 'Phone' }, { h: 'Submission ref' }, { h: 'Message', cls: 'wrap' }, { h: '', cls: 'r' }],
+  ${pageHead('Contact form', 'Every message sent through the website contact form — general enquiries, house call requests and office visit requests. The type comes from the link the customer used. Open one to read it in full, reply and mark it done.', `<button class="btn quiet" ${list.length ? '' : 'disabled'} onclick="contactExport()">Export CSV</button>`)}
+  <div class="card flush">${fbar('contacts', { placeholder: 'Search name, email, phone, reference, message…', dates: true, statuses: [['new', 'New'], ['replied', 'Replied'], ['closed', 'Closed']], extra: [['general', 'General enquiry'], ['house', 'House call'], ['office', 'Office visit']], extraLabel: 'Any type', count: `${list.length} of ${CONTACTS.length}` })}
+    ${table([{ h: 'Reference' }, { h: 'Received' }, { h: 'Type' }, { h: 'Status' }, { h: 'First name' }, { h: 'Last name' }, { h: 'Email' }, { h: 'Phone' }, { h: 'Submission ref' }, { h: 'Message', cls: 'wrap' }, { h: '', cls: 'r' }],
                 list.map(m => ({
-                    id: m.id, click: `contactDrawer('${m.id}')`, sort: [parseDay(m.at), { new: 0, replied: 1, closed: 2 }[m.status], m.first, m.last, m.email, m.phone, m.ref || '', m.msg, null],
-                    cells: [`<span class="nw">${esc(m.at)}</span>`, cpill(m.status), `<b style="font-weight:500">${esc(m.first)}</b>`, esc(m.last), `<span class="mono small">${esc(m.email)}</span>`, `<span class="mono small nw">${esc(m.cc)} ${esc(m.phone)}</span>`,
+                    id: m.id, click: `contactDrawer('${m.id}')`, sort: [m.no || '', parseDay(m.at), (CT_TYPES[m.type || 'general'] || CT_TYPES.general)[0], { new: 0, replied: 1, closed: 2 }[m.status], m.first, m.last, m.email, m.phone, m.ref || '', m.msg, null],
+                    cells: [`<span class="mono nw" ${m.status === 'new' ? 'style="font-weight:600"' : ''}>${esc(m.no || '')}</span>`, `<span class="nw">${esc(m.at)}</span>`, ctype(m.type), cpill(m.status), `<b style="font-weight:500">${esc(m.first)}</b>`, esc(m.last), `<span class="mono small">${esc(m.email)}</span>`, `<span class="mono small nw">${esc(m.cc)} ${esc(m.phone)}</span>`,
                     m.ref ? (subOf(m.ref) ? `<button class="btn ghost sm" style="padding:0;color:var(--gold3)" onclick="event.stopPropagation();subPage('${m.ref}')">${esc(m.ref)}</button>` : `<span class="mono small">${esc(m.ref)}</span> <span class="pill bad">unknown</span>`) : '<span class="muted">—</span>',
                     `<span class="small">${esc(m.msg.length > 70 ? m.msg.slice(0, 70) + '…' : m.msg)}</span>`, `<div class="acts">${m.status === 'new' ? `<button class="btn sm gold" onclick="event.stopPropagation();contactDrawer('${m.id}')">Reply</button>` : ''}<button class="btn sm quiet" onclick="event.stopPropagation();contactDrawer('${m.id}')">Open</button></div>`]
                 })),
@@ -7413,15 +7420,16 @@
         }
         function contactDrawer(id) {
             const m = CONTACTS.find(x => x.id === id); if (!m) return; const c = custByEmail(m.email); const s = m.ref ? subOf(m.ref) : null; const subj = encodeURIComponent('Re: your message to VeriChain' + (m.ref ? ' — ' + m.ref : ''));
-            openDrawer(`${drawerHead(`${esc(m.first)} ${esc(m.last)}`, `Received ${esc(m.at)}`, cpill(m.status))}<div class="dbody">
+            openDrawer(`${drawerHead(`${esc(m.first)} ${esc(m.last)}`, `Received ${esc(m.at)}`, ctype(m.type) + cpill(m.status))}<div class="dbody">
     <dl class="kv"><dt>Email</dt><dd><a class="mono" href="mailto:${esc(m.email)}?subject=${subj}">${esc(m.email)}</a>${c ? ` <span class="pill">Customer</span> <button class="btn ghost sm" style="padding:0;color:var(--gold3)" onclick="closeDrawer();customerPage('${c.id}')">Open account</button>` : ' <span class="small muted">Not a customer yet</span>'}</dd>
-      <dt>Phone</dt><dd><a class="mono" href="tel:${esc(m.cc + m.phone.replace(/\s/g, ''))}">${esc(m.cc)} ${esc(m.phone)}</a></dd>
+      <dt>Type</dt><dd>${(CT_TYPES[m.type || 'general'] || CT_TYPES.general)[0]}</dd><dt>Sent from</dt><dd>${esc(m.from || 'Contact us page')}</dd>
+                <dt>Phone</dt><dd><a class="mono" href="tel:${esc(m.cc + m.phone.replace(/\s/g, ''))}">${esc(m.cc)} ${esc(m.phone)}</a></dd>
       <dt>Submission reference</dt><dd>${m.ref ? (s ? `<button class="btn ghost sm" style="padding:0;color:var(--gold3)" onclick="closeDrawer();subPage('${m.ref}')">${esc(m.ref)}</button> · ${pill(s.status)} · ${esc(subTitle(s))}` : `<span class="mono">${esc(m.ref)}</span> <span class="pill bad">not on record</span>`) : '<span class="muted">None given</span>'}</dd></dl>
     <div class="sect"><h3>Message</h3><p style="white-space:pre-wrap;font-size:15.5px;line-height:1.6">${esc(m.msg)}</p></div>
     <div class="sect"><h3>Desk notes</h3><textarea class="f" rows="3" placeholder="What was said or done, for whoever picks this up next." oninput="CONTACTS.find(x=>x.id==='${m.id}').notes=this.value">${esc(m.notes || '')}</textarea>${m.repliedBy ? `<p class="small muted mt8">Replied by ${esc(teamName(m.repliedBy))} · ${esc(m.repliedAt)}</p>` : ''}</div>
   </div><div class="dfoot">${m.status === 'new' ? `<a class="btn gold" href="mailto:${esc(m.email)}?subject=${subj}&body=${encodeURIComponent('Hello ' + m.first + ',\n\n')}" onclick="contactSet('${m.id}','replied')">Reply by email</a><button class="btn quiet" onclick="contactSet('${m.id}','replied')">Mark replied</button>` : ''}${m.status !== 'closed' ? `<button class="btn quiet" onclick="contactSet('${m.id}','closed')">Close</button>` : `<button class="btn quiet" onclick="contactSet('${m.id}','new')">Reopen</button>`}${!c ? `<button class="btn quiet" onclick="closeDrawer();newSubmissionModal();setTimeout(()=>{$('#nsFirst').value='${esc(m.first)}';$('#nsLast').value='${esc(m.last)}';$('#nsEmail').value='${esc(m.email)}';$('#nsPhone').value='${esc(m.cc + ' ' + m.phone)}';nsLookup()},40)">Start a submission</button>` : ''}</div>`);
         }
-        function contactSet(id, status) { const m = CONTACTS.find(x => x.id === id); if (!m) return; m.status = status; if (status === 'replied') { m.repliedBy = ME.id; m.repliedAt = TODAY + ' ' + NOW(); } audit(`Contact form message from ${m.email} marked ${status}`); closeDrawer(); render(); toast(`Marked ${status}.`); }
+        function contactSet(id, status) { const m = CONTACTS.find(x => x.id === id); if (!m) return; m.status = status; if (status === 'replied') { m.repliedBy = ME.id; m.repliedAt = TODAY + ' ' + NOW(); } audit(`Contact form ${(CT_TYPES[m.type || 'general'] || CT_TYPES.general)[0].toLowerCase()} from ${m.email} marked ${status}`); closeDrawer(); render(); toast(`Marked ${status}.`); }
         /* ══════════════════════════ SIGNER DATABASE ══════════════════════════ */
         function viewSigners() {
             crumbs(['Signer database']);
@@ -7662,8 +7670,17 @@
       <div class="grid g2 mt"><div class="field"><label class="lbl">Base (Bronze)</label><div class="f mono" style="background:var(--mist)">${coaBase() != null ? 'from ' + money(coaBase()) : '—'}</div><p class="small muted mt8">Calculated from the signer database (lowest Bronze fee). Set per signer there.</p></div>
         <div class="field"><label class="lbl">Letter of Authenticity (Platinum)</label><div class="f mono" style="background:var(--mist)">${loaFloor() != null ? 'from ' + money(loaFloor()) : '—'}</div><p class="small muted mt8">Calculated from the signer database (lowest Platinum fee). A signer without a fee gets "estimate will be sent by the admin".</p></div></div>
       <button class="btn quiet sm" onclick="go('signers')">Open the signer database</button>
-      <div class="grid g2 mt">${[['extraSig', 'Additional signature'], ['coaToLoa', 'COA → LOA upgrade'], ['replaceCoa', 'Replacement COA'], ['replaceLoa', 'Replacement LOA'], ['bulkFrom', 'Bulk from (items)']].map(([k, l]) => `<div class="field"><label class="lbl">${l}</label><input class="f mono" type="number" value="${SCHEDULE[k]}" onchange="SCHEDULE['${k}']=Number(this.value);audit('Schedule ${k} = '+this.value);toast('Schedule saved.')"></div>`).join('')}</div>
-      <p class="note mt">Unsigned items have no fixed price at any level. The desk reviews the item and sends the customer an estimate.</p>
+      <div class="grid g2 mt">${[['extraSig', 'Additional signature'], ['coaToLoa', 'COA → LOA upgrade'], ['replaceCoa', 'Replacement COA (with certification number)'], ['replaceLoa', 'Replacement LOA (with certification number)'], ['bulkFrom', 'Bulk from (items)']].map(([k, l]) => `<div class="field"><label class="lbl">${l}</label><input class="f mono" type="number" value="${SCHEDULE[k]}" onchange="SCHEDULE['${k}']=Number(this.value);audit('Schedule ${k} = '+this.value);toast('Schedule saved.')"></div>`).join('')}</div>
+      <p class="small muted mt8">The replacement fees apply when the customer enters a certification number we hold. Without one, the item is re-certified as a new submission at the normal fee.</p>
+                    <div class="mt" style="border:1px solid var(--rule);border-radius:8px;padding:14px 16px;background:var(--paper)">
+                      <label class="switch" style="display:flex;gap:10px;align-items:flex-start"><input type="checkbox" ${SETTINGS.chainOffered ? 'checked' : ''} onchange="SETTINGS.chainOffered=this.checked;audit('Setting: offer blockchain recording on the submission form = '+(this.checked?'on':'off'));toast('Saved.');render()">
+                        <span><b style="font-weight:500">Offer blockchain recording on the submission form</b>
+                        <span class="small muted" style="display:block;line-height:1.6">Customers see a checkbox on each item, "Record this authentication on the blockchain", and one for the whole shipment on a bulk order. Each ticked item is charged the fee below and the examination form opens with "Send to blockchain on issue" ticked. Turn this off to hide the option from new submissions; submissions already made keep their choice.</span></span></label>
+                      <div class="field mt8" style="max-width:260px"><label class="lbl" for="chainFeeIn">Blockchain record, per item ($)</label>
+                        <input class="f mono" id="chainFeeIn" type="number" min="0" max="1000" step="0.5" value="${SCHEDULE.chainFee}" ${SETTINGS.chainOffered ? '' : 'disabled'} onchange="const v=Number(this.value);if(this.value===''||!(v>=0&&v<=1000)){fieldErr('chainFeeIn',true);return;}fieldErr('chainFeeIn',false);audit('Fee schedule: blockchain record per item '+money(SCHEDULE.chainFee)+' → '+money(v));SCHEDULE.chainFee=v;toast('Schedule saved.')">
+                        <p class="err" id="chainFeeInErr">Enter an amount from 0 to 1,000.</p></div>
+                    </div>
+                    <p class="note mt">Unsigned items have no fixed price at any level. The desk reviews the item and sends the customer an estimate.</p>
       <h3 class="eyebrow mt">Signed items — from, by level</h3><div class="grid g4 mt8">${LEVEL_NAMES.map(l => `<div class="field"><label class="lbl">${levelLabel(l)}</label><div class="f mono" style="background:var(--mist)">${levelFrom(l) != null ? 'from ' + money(levelFrom(l)) : '—'}</div></div>`).join('')}</div><p class="small muted mt8">Read from the signer database — the lowest fee at each level. Platinum is the Letter of Authenticity. Bronze is desk-only.</p></div>
     <div><div class="card"><h2>Blockchain</h2><p class="sub">Certificates issued with "Send to blockchain" ticked are sent to the blockchain API on a schedule. The Blockchain page lists what is pending and lets an admin send any of it by hand.</p>
       ${sw('chainAuto', 'Send pending certificates automatically', 'Every interval below, all pending records go to the API in one call.')}
@@ -7676,7 +7693,7 @@
       <div class="grid g2 mt8"><div class="field"><label class="lbl">Publishable key</label><input class="f mono" value="${esc(STRIPE.publishable)}" onchange="STRIPE.publishable=this.value;audit('Stripe publishable key changed');toast('Saved.')"></div><div class="field"><label class="lbl">Secret key</label><input class="f mono" type="password" value="${esc(STRIPE.secret)}" onchange="STRIPE.secret=this.value;audit('Stripe secret key changed');toast('Saved.')"></div>
         <div class="field"><label class="lbl">Webhook signing secret</label><input class="f mono" type="password" value="${esc(STRIPE.webhookSecret)}" onchange="STRIPE.webhookSecret=this.value;toast('Saved.')"></div><div class="field"><label class="lbl">Mode</label><select class="f" onchange="STRIPE.mode=this.value;toast('Saved.')"><option ${STRIPE.mode === 'test' ? 'selected' : ''} value="test">Test</option><option ${STRIPE.mode === 'live' ? 'selected' : ''} value="live">Live</option></select></div></div>
       <p class="small muted mt8">Webhook endpoint: <span class="mono">https://admin.verichain.com/webhooks/stripe</span> — event <span class="mono">checkout.session.completed</span>.</p></div>
-    <div class="card mt"><h2>Desk rules</h2>${sw('requireReceipt', 'Require the printed receipt in the box', 'Items arriving without it are held at intake.')}${sw('defaultChain', 'Send to blockchain by default', 'The examination form opens with the option ticked.')}${sw('autoAssign', 'Auto-assign by specialty', 'Paid submissions go straight to the authenticator with the matching field.')}${sw('notifyAccept', 'Email the customer when accepted', 'They see "authentication ongoing" either way.')}
+    <div class="card mt"><h2>Desk rules</h2>${sw('requireReceipt', 'Require the printed receipt in the box', 'Items arriving without it are held at intake.')}${sw('defaultChain', 'Send to blockchain by default', 'Used only where the customer made no choice, such as submissions created at the desk. Otherwise the examination form follows the customer.')}${sw('autoAssign', 'Auto-assign by specialty', 'Paid submissions go straight to the authenticator with the matching field.')}${sw('notifyAccept', 'Email the customer when accepted', 'They see "authentication ongoing" either way.')}
         <div class="field mt"><label class="lbl">Invoice due after (days)</label><input class="f mono" type="number" value="${SETTINGS.invoiceDays}" onchange="SETTINGS.invoiceDays=Number(this.value);toast('Saved.')"></div>
         <div class="field"><label class="lbl">Sent from</label><input class="f" value="${esc(SETTINGS.fromEmail)}" onchange="SETTINGS.fromEmail=this.value;toast('Saved.')"></div></div>
       <div class="card mt"><h2>Email templates</h2><p class="sub">Placeholders: {ref} {amount} {cert} {customer}</p><div class="field mt"><label class="lbl">Invoice sent</label><textarea class="f" onchange="SETTINGS.tmplInvoice=this.value;toast('Saved.')">${esc(SETTINGS.tmplInvoice)}</textarea></div><div class="field"><label class="lbl">Result issued</label><textarea class="f" onchange="SETTINGS.tmplResult=this.value;toast('Saved.')">${esc(SETTINGS.tmplResult)}</textarea></div></div>
@@ -7688,6 +7705,393 @@
         /* ══════════════════════════ BOOT ══════════════════════════ */
         paintLogin();
         loginStart();
+    </script>
+    <script>
+        /* ═══════════════ Story alignment (VC-5 … VC-39) ═══════════════
+           Loaded after the main script: upgrades the Content model, validation, Publish history,
+           Blog posts, Contact form, Settings and sign-in to match the Jira stories. */
+
+
+        const _extCss = document.createElement('style'); _extCss.textContent = `.cmsphoto{width:64px;height:64px;border-radius:50%;overflow:hidden;background:var(--mist);border:1px dashed var(--slv2);display:grid;place-items:center;cursor:pointer;position:relative;margin-bottom:6px}.cmsphoto i{position:absolute;inset:0;background-repeat:no-repeat}.cmsphoto span{font-size:10.5px;color:var(--steel);text-align:center;padding:4px}.cmsphoto.big{border-style:solid}#richEd h2{font-family:'Libre Caslon Text',serif;font-weight:400;font-size:22px;margin:14px 0 6px}#richEd h3{font-size:16px;margin:12px 0 4px}#richEd ul,#richEd ol{padding-left:22px}`; document.head.appendChild(_extCss);
+
+        /* ── 1. Content model ─────────────────────────────────────── */
+        const TG = (label, value, o) => Object.assign({ kind: 'toggle', label, value }, o || {});
+        const RO = (label, compute, note) => ({ kind: 'readonly', label, compute, note, value: '' });
+        const RICH = (label, value) => ({ kind: 'rich', label, value });
+        function cmsInsert(pg, bk, after, key, def) {
+            const b = CMS[pg].blocks[bk]; const out = {}; let done = false;
+            if (after === null) { out[key] = def; done = true; }
+            for (const [k, v] of Object.entries(b.fields)) { out[k] = v; if (k === after) { out[key] = def; done = true; } }
+            if (!done) out[key] = def; b.fields = out;
+        }
+        (function cmsUpgrade() {
+            // Landing page — ledger headline (shown on the site, missing in the admin)
+            cmsInsert('home', 'ledger', 'eyebrow', 'headline', T('Headline', 'Written once.'));
+            cmsInsert('home', 'ledger', 'headline', 'accent', T('Headline, accent line', 'Verifiable for life.'));
+            CMS.home.blocks.claims.fields.claims.rows = [4, 4]; CMS.home.blocks.record.fields.points.rows = [3, 3];
+            CMS.home.blocks.story.fields.frames.rows = [4, 4]; CMS.home.blocks.ledger.fields.cards.rows = [3, 3];
+            CMS.home.blocks.marquee.fields.items.max = 250; CMS.home.blocks.marquee.fields.items.csv = [3, 10, 25];
+            CMS.home.blocks.quote.fields.quote.noQuotes = true;
+            // Chips above the headline
+            cmsInsert('process', 'hero', null, 'chip', T('Chip above the headline', 'Authentication process'));
+            cmsInsert('about', 'hero', null, 'chip', T('Chip above the headline', 'About'));
+            cmsInsert('contact', 'hero', null, 'chip', T('Chip above the headline', 'Contact us'));
+            // Services — the Certificate replacement card, calculated prices, comparison points
+            const cards = CMS.services.blocks.ways.fields.cards; cards.rows = [7, 7]; cards.noUniqueDup = 'title';
+            if (!cards.value.some(c => /replacement/i.test(c.title))) cards.value.splice(2, 0, { title: 'Certificate replacement', lead: 'Lost or damaged certificate.', body: 'Enter the certification number and post the item to us. We check it against the record we hold and reissue the certificate under the same number. No account needed; if you do not have the number, re-certify the item as a new submission.', meta: 'Submission form' });
+            const cert = CMS.services.blocks.certification.fields;
+            cert.l1Price = RO('Level 01 price line', () => `FROM ${money(levelFrom('Bronze'))} PER SIGNATURE`, 'Lowest Bronze fee in the Signer database');
+            cert.l2Price = RO('Level 02 price line', () => `FROM ${money(levelFrom(LOA))} PER SIGNATURE`, 'Lowest Platinum fee in the Signer database');
+            cert.tiers.rows = [4, 4]; cert.tiers.lockCols = ['name'];
+            CMS.services.blocks.included.fields.stickerPrice = RO('Sticker price line', () => `+ ${money(SCHEDULE.sticker)} PER ITEM`, 'Settings › Fee schedule › Tamper-evident sticker');
+            CMS.services.blocks.included.fields.points.rows = [2, 6];
+            cmsInsert('services', 'different', 'colA', 'pointsA', LIST('Left column points', [['text', 'Point', 'text']], ['A printed letter, which can be copied or altered', 'A private register only the issuer can read or change', 'Verification depends on the company still trading', 'Provenance restarts each time the item is sold', 'Nothing proves when the opinion was actually given'].map(text => ({ text }))));
+            cmsInsert('services', 'different', 'colB', 'pointsB', LIST('Right column points', [['text', 'Point', 'text']], ['The certificate is hashed and anchored to a public chain', 'Anyone can read the entry — no account, no fee', 'The record outlives us. It does not depend on our servers', 'Ownership transfers extend the history rather than reset it', 'The issue date is timestamped and cannot be backdated'].map(text => ({ text }))));
+            CMS.services.blocks.different.fields.pointsA.rows = [5, 5]; CMS.services.blocks.different.fields.pointsB.rows = [5, 5];
+            CMS.services.blocks.outcomes.fields.results.rows = [3, 3];
+            // Process
+            CMS.process.blocks.how.fields.steps.rows = [3, 8]; CMS.process.blocks.how.fields.steps.noNumbers = 'title';
+            CMS.process.blocks.covers.fields.points.rows = [4, 4]; CMS.process.blocks.ledger.fields.paras.rows = [1, 4];
+            // About — headline, team with photo + designation, customisable facts
+            cmsInsert('about', 'people', 'eyebrow', 'headline', T('Headline', 'Meet the'));
+            cmsInsert('about', 'people', 'headline', 'accent', T('Headline, accent line', 'team.'));
+            const team = CMS.about.blocks.people.fields.team; team.label = 'Team members';
+            team.cols = [['photo', 'Photo', 'photo'], ['name', 'Name', 'text'], ['designation', 'Designation', 'text']]; team.rows = [1, 40];
+            team.value = team.value.map(r => ({ photo: '', zoom: 100, x: 50, y: 50, rot: 0, name: r.name, designation: r.role || r.designation || '' }));
+            const fb = CMS.about.blocks.facts; fb.title = 'Three facts strip';
+            const oldFacts = fb.fields.facts.value; const T3 = ['Two offices', 'On the record', 'No grading'], IC = ['pin', 'record', 'cross'];
+            fb.fields = { show: TG('Show facts strip', true), facts: LIST('Facts', [['icon', 'Icon', 'icon'], ['accent', 'Accent', 'accent'], ['title', 'Title', 'text'], ['body', 'Text', 'long']], oldFacts.map((f, i) => ({ icon: IC[i] || 'star', accent: i % 2 ? 'silver' : 'gold', title: T3[i] || '', body: f.body }))) };
+            fb.fields.facts.rows = [2, 6];
+            // Contact — offices with two address lines, email, hours and the posting address; form texts; 8th FAQ
+            const ob = CMS.contact.blocks.offices; const g = ob.fields;
+            const offices = g.offices.value.map((o, i) => { const [a1, a2] = String(o.address || '').split('\n'); return { label: o.label, address1: a1 || '', address2: a2 || '', phone: o.phone, email: '', hours: '', posting: i === 0 ? 'yes' : 'no' }; });
+            offices.push({ label: g.generalLabel.value, address1: '', address2: '', phone: g.generalPhone.value, email: g.generalEmail.value, hours: g.hours.value, posting: 'no' });
+            ob.fields = { headline: g.headline, offices: LIST('Offices', [['label', 'Label', 'text'], ['address1', 'Address line 1', 'text'], ['address2', 'Address line 2', 'text'], ['phone', 'Phone', 'text'], ['email', 'Email', 'text'], ['hours', 'Hours', 'text'], ['posting', 'Receives posted items', 'yesno']], offices) };
+            ob.fields.offices.rows = [1, 6]; ob.fields.offices.optionalCols = ['address1', 'address2', 'email', 'hours'];
+            const ff = CMS.contact.blocks.form.fields;
+            cmsInsert('contact', 'form', 'button', 'success', L('Message after sending', 'Message sent. Our team replies within one business day.'));
+            cmsInsert('contact', 'form', 'success', 'recipient', T('Messages go to (email)', 'info@myverichain.com'));
+            cmsInsert('contact', 'form', 'recipient', 'houseHeadline', T('House call — headline', 'Ask for a house call'));
+            cmsInsert('contact', 'form', 'houseHeadline', 'houseIntro', L('House call — line under the headline', 'Tell us roughly what you have and where you are. Our team will call you to agree the fee, a date and a time.'));
+            cmsInsert('contact', 'form', 'houseIntro', 'housePlaceholder', L('House call — message placeholder', 'What you have, roughly how many items, your town or city, and days that suit you.'));
+            cmsInsert('contact', 'form', 'housePlaceholder', 'officeHeadline', T('Office visit — headline', 'Schedule an office visit'));
+            cmsInsert('contact', 'form', 'officeHeadline', 'officeIntro', L('Office visit — line under the headline', 'Tell us what you\'d like to bring in and which office suits you. Our team will call you to agree a date and time.'));
+            cmsInsert('contact', 'form', 'officeIntro', 'officePlaceholder', L('Office visit — message placeholder', 'What you\'d like to bring in, Fort Lauderdale or Parsippany, and days that suit you.'));
+            CMS.contact.blocks.form.fields.recipient.email = true;
+            const faq = CMS.contact.blocks.faq.fields.faq; faq.rows = [1, 15];
+            if (!faq.value.some(q => /not authenticate/.test(q.q))) faq.value.push({ q: 'What happens if an item does not authenticate?', a: 'We return it with a written result and no certificate. Fees cover the examination rather than the outcome, so they still apply. Every result, pass or fail, is written to the record in the same way.' });
+            // Terms and privacy — one title and one formatted content section
+            const lg = CMS.legal.blocks; const v = (b, f) => esc(lg[b].fields[f].value);
+            CMS.legal.blocks = {
+                page: {
+                    title: 'Terms and privacy', fields: {
+                        title: T('Page title', 'Terms and privacy'),
+                        content: RICH('Content', `<h2>Terms</h2><p>${v('terms', 'intro')}</p><p>${v('terms', 'liability')}</p><p>${v('terms', 'returns')}</p><h2>Privacy</h2><p>${v('privacy', 'intro')}</p><p>${v('privacy', 'retention')}</p><p>${v('privacy', 'contact')}</p>`)
+                    }
+                }
+            };
+            CMS.legal.updated = null;
+            // Blog page text
+            CMS.blogpage = {
+                title: 'Blog page', blocks: {
+                    hero: { title: 'Hero', fields: { chip: T('Chip above the headline', 'Blog'), headline: T('Headline', 'Notes from the desk'), lede: L('Lede', 'What our authenticators see, and what collectors ask us most often. Written by the people doing the examining.'), image: I('Hero image', 'A nib writing') } },
+                    listing: { title: 'Listing and post pages', fields: { more: T('"More from the desk" label', 'More from the desk'), empty: L('Text when no post is published', 'No articles yet. Check back soon.') } }
+                }
+            };
+            const pi = CMS_MENU.findIndex(m => m[0] === 'posts'); CMS_MENU.splice(pi + 1, 0, ['blogpage', 'Blog page']);
+            SCHEDULE.sticker = SCHEDULE.sticker ?? 25;
+            SETTINGS.siteUrl = SETTINGS.siteUrl || 'https://myverichain.com';
+        })();
+
+        /* ── 2. Limits and validation ─────────────────────────────── */
+        const CMS_PATHS = { home: '/', services: '/services', fees: '/fees', process: '/process', about: '/about', contact: '/contact', legal: '/terms', blogpage: '/blog' };
+        function cmsLimits(def) {
+            if (def.max) return { min: def.min ?? (def.kind === 'long' ? 10 : 2), max: def.max };
+            const n = String(def.value || '').length, up = Math.ceil(n * 1.2 / 10) * 10, l = String(def.label).toLowerCase();
+            if (def.kind === 'long') return { min: 10, max: Math.max(n <= 200 ? 250 : 400, up) };
+            const fl = /button/.test(l) ? 30 : /eyebrow|chip|label|tag|lead word|tagline|domain|phone|hours|attribution/.test(l) ? 40 : /headline|title/.test(l) ? 80 : 60;
+            return { min: 2, max: Math.max(fl, up) };
+        }
+        function colLimits(kind, rows, k) { const L0 = Math.max(0, ...rows.map(r => String(r[k] || '').length)); return kind === 'long' ? { min: 10, max: Math.max(L0 <= 200 ? 250 : 400, Math.ceil(L0 * 1.2 / 10) * 10) } : { min: 2, max: Math.max(40, Math.ceil(L0 * 1.2 / 10) * 10) }; }
+        const CMS_LIM = {};   // pg.bk.f → limits, fixed from the published value so drafts don't move the goalposts
+        function limFor(pg, bk, f, def) { const k = pg + '.' + bk + '.' + f; return CMS_LIM[k] || (CMS_LIM[k] = cmsLimits(def)); }
+        function stripTags(h) { const d = document.createElement('div'); d.innerHTML = h || ''; return d.textContent || ''; }
+        function cmsErrors(pg, bk) {
+            const b = CMS[pg].blocks[bk]; const errs = {};
+            for (const [f, def] of Object.entries(b.fields)) {
+                const v = cmsVal(pg, bk, f);
+                if (def.kind === 'image' || def.kind === 'readonly' || def.kind === 'toggle') continue;
+                if (def.kind === 'rich') {
+                    const t = stripTags(v).trim();
+                    if (t.length < 200) errs[f] = 'The terms need at least 200 characters before they can be published.';
+                    else if (t.length > 100000) errs[f] = 'The content can\'t be longer than 100,000 characters.';
+                    else if (!/<h2[\s>]/i.test(v)) errs[f] = 'Add at least one heading so readers can find their way around.';
+                    continue;
+                }
+                if (def.kind === 'list') {
+                    const [mn, mx] = def.rows || [0, 99];
+                    if (v.length < mn) { errs[f] = `Add at least ${mn} ${mn === 1 ? 'row' : 'rows'}.`; continue; }
+                    if (v.length > mx) { errs[f] = `No more than ${mx} rows.`; continue; }
+                    const bad = [];
+                    v.forEach((row, i) => def.cols.forEach(([k, l, kind]) => {
+                        if (['icon', 'accent', 'yesno'].includes(kind) || (def.optionalCols || []).includes(k)) return;
+                        if (kind === 'photo') { if (!row.photo) bad.push(`Add a photo of ${row.name || 'row ' + (i + 1)}.`); return; }
+                        const s = String(row[k] || '').trim(); const lim = colLimits(kind, def.value, k);
+                        if (!s) bad.push(`Row ${i + 1}: ${l} is required.`); else if (s.length < lim.min) bad.push(`Row ${i + 1}: ${l} — enter at least ${lim.min} characters.`);
+                    }));
+                    if (f === 'faq') v.forEach((r, i) => { if (r.q && !/\?\s*$/.test(r.q)) bad.push(`Row ${i + 1}: A question should end with a question mark.`); });
+                    if (f === 'offices') {
+                        const p = v.filter(r => r.posting === 'yes'); if (p.length !== 1) bad.push('Choose the one office that receives posted items.');
+                        v.forEach((r, i) => { if (!!r.address1 !== !!r.address2) bad.push(`Row ${i + 1}: Enter both address lines, or leave both empty.`); if (r.posting === 'yes' && (!r.address1 || !r.address2)) bad.push('The office that receives posted items needs a full address.'); if (r.posting === 'yes' && /p\.?\s*o\.?\s*box/i.test(r.address1)) bad.push('Couriers can\'t deliver to a PO box. Use a street address.'); if (r.email && !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(r.email)) bad.push(`Row ${i + 1}: Enter a valid email address.`); if (r.phone && !/^[\d\s()+\-A-Za-z]{7,20}$/.test(r.phone)) bad.push(`Row ${i + 1}: Enter a valid phone number.`); });
+                    }
+                    if (def.noUniqueDup) { const seen = {}; v.forEach(r => { const t = String(r[def.noUniqueDup] || '').toLowerCase(); if (t && seen[t]) bad.push('Another route already uses this title.'); seen[t] = 1; }); }
+                    if (bad.length) errs[f] = bad[0] + (bad.length > 1 ? ` (+${bad.length - 1} more)` : '');
+                    continue;
+                }
+                const s = String(v || '').trim(); const lim = limFor(pg, bk, f, def); const optional = def.value === '' || def.value == null;
+                if (!s) { if (!optional) errs[f] = 'This field is required.'; continue; }
+                if (s.length < lim.min) errs[f] = `Enter at least ${lim.min} characters.`;
+                else if (s.length > lim.max) errs[f] = `Maximum ${lim.max} characters.`;
+                else if (/<[a-z][\s\S]*>/i.test(s)) errs[f] = 'Formatting and HTML aren\'t allowed. Use plain text.';
+                else if (def.email && !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(s)) errs[f] = 'Enter a valid email address.';
+                else if (def.noQuotes && /^["“”'].*|.*["“”']$/.test(s)) errs[f] = 'Don\'t include quotation marks; they\'re added automatically.';
+                else if (def.csv) { const items = s.split(',').map(x => x.trim()).filter(Boolean); const [a, z, w] = def.csv; if (items.length < a) errs[f] = `Add at least ${a} items.`; else if (items.length > z) errs[f] = `No more than ${z} items.`; else if (items.some(x => x.length > w)) errs[f] = `Each item can be up to ${w} characters.`; else if (new Set(items.map(x => x.toLowerCase())).size !== items.length) errs[f] = 'This item is already in the list.'; }
+            }
+            return errs;
+        }
+        let CMS_SHOWERR = {};
+        function cmsCount(el, max) { const c = el.parentElement.querySelector('.cmscount'); if (!c) return; const n = el.value.length; c.textContent = `${n} / ${max}`; c.style.color = n >= max ? 'var(--bad)' : n >= max * .9 ? 'var(--warn)' : ''; }
+
+        /* ── 3. Editor rendering ──────────────────────────────────── */
+        const FACT_ICONS = { pin: ['Location pin', 'M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11zM12 12.3a2.3 2.3 0 100-4.6 2.3 2.3 0 000 4.6z'], record: ['Document with seal', 'M4 3h16v18H4zM8 8h8M8 12h5M15.5 16a2.5 2.5 0 10.01 0'], cross: ['Crossed-out square', 'M4 4h16v16H4zM5 19L19 5'], shield: ['Shield with tick', 'M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM9 12l2 2 4-4'], chain: ['Chain link', 'M10 14a4 4 0 005.7 0l3-3a4 4 0 00-5.7-5.7l-1 1M14 10a4 4 0 00-5.7 0l-3 3a4 4 0 005.7 5.7l1-1'], loupe: ['Magnifying glass', 'M10.5 17a6.5 6.5 0 100-13 6.5 6.5 0 000 13zM15.5 15.5L21 21'], nib: ['Pen nib', 'M12 3l6 8-6 10-6-10zM12 3v9M12 12a1 1 0 100 .01'], clock: ['Clock', 'M12 21a9 9 0 100-18 9 9 0 000 18zM12 7v5l3 2'], people: ['People', 'M9 11a4 4 0 100-8 4 4 0 000 8zM2 21v-1a7 7 0 0114 0v1M17 11a3 3 0 100-6M22 21v-1a5 5 0 00-4-4.9'], star: ['Star', 'M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z'] };
+        const icoSvg = (k, col) => `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="${col === 'silver' ? '#8B939C' : '#A87F28'}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="${(FACT_ICONS[k] || FACT_ICONS.star)[1]}"/></svg>`;
+        const photoStyle = r => `background-image:url('${r.photo}');background-size:${r.zoom || 100}%;background-position:${r.x ?? 50}% ${r.y ?? 50}%;transform:rotate(${r.rot || 0}deg)`;
+        function cmsBlock(pg, bk, n) {
+            const b = CMS[pg].blocks[bk]; const drafts = (CMS_DRAFTS[pg] || {})[bk] || {}; const dirty = Object.keys(drafts).length;
+            const showErr = CMS_SHOWERR[pg + '.' + bk]; const errs = showErr ? cmsErrors(pg, bk) : {};
+            const errP = f => errs[f] ? `<p class="err" style="display:block">${esc(errs[f])}</p>` : '';
+            const chg = f => drafts[f] !== undefined ? '<span class="pill warn">changed</span>' : '';
+            const fieldHtml = (f, def) => {
+                const v = cmsVal(pg, bk, f); const id = `${pg}-${bk}-${f}`;
+                if (def.kind === 'readonly') return `<div class="field"><label class="lbl">${esc(def.label)} <span class="pill">Read only</span></label><div class="f mono" style="background:var(--mist)">${esc(def.compute())}</div><p class="small muted mt8">Calculated — ${esc(def.note)}. Changes there update the website without a Content publish.</p></div>`;
+                if (def.kind === 'toggle') return `<div class="field"><label class="switch" style="display:flex;gap:10px;align-items:center"><input type="checkbox" ${v ? 'checked' : ''} onchange="cmsToggle('${pg}','${bk}','${f}',this.checked)"><span><b style="font-weight:500">${esc(def.label)}</b> ${chg(f)}<span class="small muted" style="display:block">${v ? 'Shown on the website.' : 'Hidden from the website. The rows below are kept.'}</span></span></label></div>`;
+                if (def.kind === 'image') return `<div class="field"><label class="lbl">${esc(def.label)} ${chg(f)}</label><div class="row" style="align-items:flex-start"><div class="cmsimg ${v ? '' : 'ph'}" onclick="$('#ci-${id}').click()">${v ? `<img src="${v}" alt="">` : `<span>${esc(def.hint || 'No image')}<br><em>site plate — click to replace</em></span>`}</div><input type="file" id="ci-${id}" accept="image/jpeg,image/png,image/webp${/video/i.test(def.label) ? ',video/mp4,video/webm' : ''}" hidden onchange="cmsImageChecked('${pg}','${bk}','${f}',this.files[0])"><div><button class="btn ghost sm" onclick="$('#ci-${id}').click()">Replace</button>${v ? `<button class="btn ghost sm" onclick="cmsEdit('${pg}','${bk}','${f}','');render()">Use the site plate</button>` : ''}<p class="small muted mt8">JPG, PNG or WebP, 5 MB or less${/video/i.test(def.label) ? ' (or MP4/WebM, 20 MB)' : ''}.</p></div></div>${errP(f)}</div>`;
+                if (def.kind === 'rich') return richField(pg, bk, f, def, v) + errP(f);
+                if (def.kind === 'list') {
+                    const [mn, mx] = def.rows || [0, 99]; const fixed = mn === mx;
+                    const cell = (row, i, [k, l, kind]) => {
+                        if (kind === 'photo') return `<div class="cmsphoto" title="${row.photo ? 'Change photo' : 'Add photo'}" onclick="photoPanel('${pg}','${bk}','${f}',${i})">${row.photo ? `<i style="${photoStyle(row)}"></i>` : '<span>Add photo</span>'}</div>${row.photo ? '' : '<span class="pill warn" style="margin:4px 0 6px">Photo needed</span>'}`;
+                        if (kind === 'icon') return `<div class="row" style="gap:6px;flex-wrap:wrap;margin-bottom:6px">${Object.entries(FACT_ICONS).map(([ik, [il]]) => `<button type="button" title="${il}" class="btn quiet sm" style="padding:4px;${row.icon === ik ? 'outline:2px solid var(--gold);' : ''}" onclick="cmsEditRow('${pg}','${bk}','${f}',${i},'icon','${ik}');render()">${icoSvg(ik, row.accent)}</button>`).join('')}</div>`;
+                        if (kind === 'accent') return `<select class="f sm" style="max-width:140px;margin-bottom:6px" onchange="cmsEditRow('${pg}','${bk}','${f}',${i},'accent',this.value);render()"><option value="gold" ${row.accent !== 'silver' ? 'selected' : ''}>Gold</option><option value="silver" ${row.accent === 'silver' ? 'selected' : ''}>Silver</option></select>`;
+                        if (kind === 'yesno') return `<label class="small" style="display:flex;gap:8px;align-items:center;margin:4px 0 6px"><input type="checkbox" ${row.posting === 'yes' ? 'checked' : ''} onchange="cmsPosting('${pg}','${bk}','${f}',${i},this.checked)"> ${esc(l)} ${row.posting === 'yes' ? '<span class="pill gold">Posting address</span>' : ''}</label>`;
+                        const lim = colLimits(kind, def.value, k); const ro = (def.lockCols || []).includes(k);
+                        const attrs = `placeholder="${esc(l)}" maxlength="${lim.max}" ${ro ? 'readonly style="background:var(--mist)"' : ''} oninput="cmsEditRow('${pg}','${bk}','${f}',${i},'${k}',this.value);cmsCount(this,${lim.max})"`;
+                        return `<div style="position:relative">${kind === 'long' ? `<textarea class="f" rows="2" ${attrs}>${esc(row[k] || '')}</textarea>` : `<input class="f" value="${esc(row[k] || '')}" ${attrs}>`}<span class="cmscount small muted" style="position:absolute;right:8px;bottom:4px;font-size:10.5px">${String(row[k] || '').length} / ${lim.max}</span></div>`;
+                    };
+                    return `<div class="field"><label class="lbl">${esc(def.label)} ${chg(f)} <span class="small muted">· ${fixed ? `exactly ${mn}` : `${mn}–${mx}`} rows</span></label><div class="cmsrows">${v.map((row, i) => `<div class="cmsrow"><div class="cmsrow-n">${String(i + 1).padStart(2, '0')}</div><div class="grow">${def.cols.map(c => cell(row, i, c)).join('')}</div><div class="cmsrow-acts"><button class="btn ghost sm" title="Move up" onclick="cmsMoveRow('${pg}','${bk}','${f}',${i},-1)">↑</button><button class="btn ghost sm" title="Move down" onclick="cmsMoveRow('${pg}','${bk}','${f}',${i},1)">↓</button>${fixed || v.length <= mn ? '' : `<button class="btn ghost sm" style="color:var(--bad)" title="Remove" onclick="cmsRemoveRowAsk('${pg}','${bk}','${f}',${i})">×</button>`}</div></div>`).join('')}${fixed || v.length >= mx ? '' : `<button class="btn quiet sm mt8" onclick="cmsAddRow('${pg}','${bk}','${f}')">+ Add row</button>`}</div>${errP(f)}</div>`;
+                }
+                const lim = limFor(pg, bk, f, def); const n0 = String(v).length;
+                const input = def.kind === 'long' ? `<textarea class="f ${errs[f] ? 'bad' : ''}" maxlength="${lim.max}" rows="${Math.min(8, Math.max(2, Math.ceil(n0 / 110)))}" oninput="cmsEdit('${pg}','${bk}','${f}',this.value);cmsCount(this,${lim.max})">${esc(v)}</textarea>` : `<input class="f ${errs[f] ? 'bad' : ''}" maxlength="${lim.max}" value="${esc(v)}" oninput="cmsEdit('${pg}','${bk}','${f}',this.value.replace(/[\\r\\n]+/g,' '));cmsCount(this,${lim.max})">`;
+                return `<div class="field"><label class="lbl">${esc(def.label)} ${chg(f)}</label>${input}<div class="row between" style="margin-top:4px"><span class="small muted">${def.value === '' ? 'Optional' : ''}</span><span class="cmscount small muted">${n0} / ${lim.max}</span></div>${errP(f)}</div>`;
+            };
+            const errCount = Object.keys(cmsErrors(pg, bk)).length;
+            return `<div class="card cmsblock ${dirty ? 'dirty' : ''}"><div class="row between"><div><span class="eyebrow">Block ${String(n + 1).padStart(2, '0')}</span><h2 style="margin-top:4px">${esc(b.title)}</h2></div><div class="row">${dirty ? `<span class="pill warn">${dirty} unpublished</span><button class="btn quiet sm" onclick="discardBlock('${pg}','${bk}')">Discard</button><button class="btn gold sm" onclick="publishBlockChecked('${pg}','${bk}')">Publish block</button>` : (pg === 'legal' && !CMS.legal.updated ? '<span class="pill warn">Not published yet</span><button class="btn gold sm" onclick="publishBlockChecked(\'legal\',\'page\')">Publish</button>' : '<span class="pill ok">Live</span>')}<button class="btn quiet sm" onclick="cmsPreview('${pg}','${bk}')">Preview</button></div></div>
+    ${showErr && errCount ? `<p class="note mt8" style="color:var(--bad)">Fix ${errCount} field${errCount === 1 ? '' : 's'} before publishing.</p>` : ''}
+    ${pg === 'legal' ? `<p class="small muted mt8">${CMS.legal.updated ? 'Last updated ' + esc(CMS.legal.updated) : 'Not published yet — the footer link on the website stays hidden until the first publish.'}</p>` : ''}
+    ${pg === 'contact' && bk === 'offices' && drafts.offices ? '<p class="note mt8">The About page mentions your offices ("Two offices"). Check it matches. <button class="btn ghost sm" style="padding:0;color:var(--gold3)" onclick="go(\'cms\',\'about\')">Open About page</button></p>' : ''}
+    <div class="mt">${Object.entries(b.fields).map(([f, def]) => fieldHtml(f, def)).join('')}</div></div>`;
+        }
+        function cmsToggle(pg, bk, f, on) { if (!on && f === 'show') { confirmAction('Hide the facts strip?', 'Hide the facts strip from the About page? Your facts are kept and can be shown again.', 'Hide strip', () => { cmsEdit(pg, bk, f, false); render(); }); render(); return; } cmsEdit(pg, bk, f, on); render(); }
+        function cmsPosting(pg, bk, f, i, on) { const rows = JSON.parse(JSON.stringify(cmsVal(pg, bk, f))); rows.forEach((r, k) => r.posting = on && k === i ? 'yes' : (on ? 'no' : r.posting)); if (!on) rows[i].posting = 'no'; cmsEdit(pg, bk, f, rows); render(); }
+        function cmsRemoveRowAsk(pg, bk, f, i) {
+            const row = cmsVal(pg, bk, f)[i] || {}; const name = row.name || row.title || row.q || row.label || row.text || ('row ' + (i + 1));
+            if (pg === 'about' && f === 'team') { const n = POSTS.filter(p => p.status === 'published' && p.author === row.name).length; if (n) { toast(`${row.name} is the author of ${n} published post${n === 1 ? '' : 's'}. Reassign them first.`); return; } }
+            if (pg === 'contact' && f === 'offices' && row.posting === 'yes') { toast('This is the posting address. Choose another office for posted items first.'); return; }
+            confirmAction('Remove this row?', `Remove "${esc(name)}"? It stays on the website until the block is published.`, 'Remove', () => cmsRemoveRow(pg, bk, f, i), true);
+        }
+        function cmsImageChecked(pg, bk, f, file) { if (!file) return; const vid = /^video\//.test(file.type); if (!/^(image\/(jpeg|png|webp)|video\/(mp4|webm))$/.test(file.type)) { toast('Use a JPG, PNG or WebP image under 5 MB.'); return; } if (file.size > (vid ? 20 : 5) * 1048576) { toast(vid ? 'The video must be 20 MB or smaller.' : 'Use a JPG, PNG or WebP image under 5 MB.'); return; } cmsImage(pg, bk, f, file); }
+        function publishBlockChecked(pg, bk) {
+            const errs = cmsErrors(pg, bk); if (Object.keys(errs).length) { CMS_SHOWERR[pg + '.' + bk] = true; render(); toast(`Fix ${Object.keys(errs).length} field${Object.keys(errs).length === 1 ? '' : 's'} before publishing.`); return; }
+            const go1 = () => { delete CMS_SHOWERR[pg + '.' + bk]; if (pg === 'legal' && !CMS_DRAFTS.legal) { CMS_DRAFTS.legal = { page: { title: cmsVal('legal', 'page', 'title') } }; } publishBlock(pg, bk); if (pg === 'legal') CMS.legal.updated = new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' }); render(); toast(pg === 'legal' ? 'Terms and privacy published.' : `${CMS[pg].blocks[bk].title} published.`); };
+            if (pg === 'legal') return confirmAction('Publish the new Terms and privacy?', 'Every submission made from now on is accepted against this version.', 'Publish', go1);
+            const d = (CMS_DRAFTS[pg] || {})[bk] || {};
+            if (pg === 'contact' && bk === 'offices' && d.offices) { const post = r => (r.find(x => x.posting === 'yes') || {}); const a = post(CMS.contact.blocks.offices.fields.offices.value), b2 = post(d.offices); if (a.address1 !== b2.address1 || a.address2 !== b2.address2) return confirmAction('Change the postal address?', 'This changes the postal address on every new submission receipt, confirmation page and confirmation email. Submissions already made keep the address they were given. Publish?', 'Publish', go1); }
+            go1();
+        }
+        function publishSection(pg) { const blocks = Object.keys(CMS_DRAFTS[pg] || {}); const bad = blocks.filter(bk => Object.keys(cmsErrors(pg, bk)).length); bad.forEach(bk => CMS_SHOWERR[pg + '.' + bk] = true); blocks.filter(bk => !bad.includes(bk)).forEach(bk => publishBlock(pg, bk)); render(); toast(bad.length ? `Published ${blocks.length - bad.length}; ${bad.length} block${bad.length === 1 ? '' : 's'} need fixing first.` : `${CMS[pg].title} published.`); }
+        // Publish history entry with page, link and before/after
+        function publishBlock(pg, bk) {
+            const d = (CMS_DRAFTS[pg] || {})[bk]; if (!d) return; const b = CMS[pg].blocks[bk];
+            const changes = Object.keys(d).map(f => ({ label: b.fields[f].label, before: b.fields[f].value, after: d[f] }));
+            Object.keys(d).forEach(f => { b.fields[f].value = d[f]; }); delete CMS_DRAFTS[pg][bk]; if (!Object.keys(CMS_DRAFTS[pg]).length) delete CMS_DRAFTS[pg];
+            const footer = pg === 'contact' && bk === 'footer';
+            CMS_HISTORY.unshift({ at: TODAY + ' ' + NOW(), who: ME.id, page: footer ? 'Footer' : CMS[pg].title, path: footer ? '/' : CMS_PATHS[pg], allPages: footer, action: 'Published', what: `${b.title} (${changes.map(c => c.label.toLowerCase()).join(', ')})`, changes });
+            audit(`Published ${CMS[pg].title} · ${b.title}`);
+        }
+        // Rich editor (Terms and privacy)
+        function richField(pg, bk, f, def, v) {
+            const words = stripTags(v).trim().split(/\s+/).filter(Boolean).length, chars = stripTags(v).length;
+            const heads = (String(v).match(/<h[23][^>]*>.*?<\/h[23]>/gi) || []).map(h => ({ lvl: h[2], t: stripTags(h) }));
+            const tb = [['formatBlock', 'h2', 'Heading'], ['formatBlock', 'h3', 'Sub-heading'], ['formatBlock', 'p', 'Paragraph'], ['bold', '', '<b>B</b>'], ['italic', '', '<i>I</i>'], ['insertUnorderedList', '', '• List'], ['insertOrderedList', '', '1. List'], ['link', '', 'Link'], ['undo', '', '↶'], ['redo', '', '↷'], ['removeFormat', '', 'Clear']];
+            return `<div class="field"><label class="lbl">${esc(def.label)} ${((CMS_DRAFTS[pg] || {})[bk] || {})[f] !== undefined ? '<span class="pill warn">changed</span>' : ''}</label>
+  <div class="grid" style="grid-template-columns:190px 1fr;gap:14px;align-items:start">
+    <div class="card" style="margin:0;padding:12px;position:sticky;top:70px"><span class="eyebrow">Outline</span>${heads.length ? heads.map((h, i) => `<div class="small" style="padding:4px 0 4px ${h.lvl === '3' ? 12 : 0}px;cursor:pointer;color:var(--gold3)" onclick="richJump(${i})">${esc(h.t)}</div>`).join('') : '<p class="small muted mt8">Headings appear here as you add them.</p>'}</div>
+    <div><div class="row" style="gap:4px;flex-wrap:wrap;position:sticky;top:56px;background:var(--paper);padding:6px 0;z-index:2">${tb.map(([c, a, l]) => `<button type="button" class="btn quiet sm" onmousedown="event.preventDefault();richCmd('${c}','${a}')">${l}</button>`).join('')}</div>
+    <div id="richEd" class="f" contenteditable="true" style="min-height:360px;line-height:1.7;padding:14px" oninput="richSync('${pg}','${bk}','${f}')" onpaste="richPaste(event)">${v}</div>
+    <div class="row between small muted mt8"><span id="richSaved">${CMS_DRAFTS.legal ? 'Draft saved at ' + NOW() : ''}</span><span id="richCount">${words.toLocaleString()} words · ${chars.toLocaleString()} / 100,000 characters</span></div></div></div></div>`;
+        }
+        function richCmd(c, a) { if (c === 'link') { const u = prompt('Link address (https://, mailto: or /)'); if (!u) return; if (!/^(https:\/\/|mailto:|\/)/.test(u)) { toast('Enter a link starting with https://, mailto: or /'); return; } document.execCommand('createLink', false, u); } else document.execCommand(c, false, a ? a : null); $('#richEd').dispatchEvent(new Event('input')); }
+        function richClean(html) {
+            const d = document.createElement('div'); d.innerHTML = html; const ok = ['H2', 'H3', 'P', 'B', 'STRONG', 'I', 'EM', 'UL', 'OL', 'LI', 'A', 'BR'];
+            const walk = n => [...n.childNodes].forEach(c => { if (c.nodeType === 1) { walk(c); if (!ok.includes(c.tagName)) { if (['SCRIPT', 'STYLE', 'IMG', 'TABLE', 'IFRAME'].includes(c.tagName)) c.remove(); else c.replaceWith(...c.childNodes); } else { [...c.attributes].forEach(at => { if (!(c.tagName === 'A' && at.name === 'href')) c.removeAttribute(at.name); }); } } }); walk(d); return d.innerHTML;
+        }
+        function richPaste(e) { e.preventDefault(); const h = e.clipboardData.getData('text/html'); const t = e.clipboardData.getData('text/plain'); document.execCommand('insertHTML', false, h ? richClean(h) : esc(t).replace(/\n\n+/g, '</p><p>').replace(/\n/g, '<br>')); toast('We kept headings, lists, bold, italics and links, and removed other formatting.'); }
+        let RICH_T = null;
+        function richSync(pg, bk, f) { const el = $('#richEd'); const t = stripTags(el.innerHTML); if (t.length > 100000) toast('The content can\'t be longer than 100,000 characters.'); cmsEdit(pg, bk, f, richClean(el.innerHTML)); const c = $('#richCount'); if (c) c.textContent = `${t.trim().split(/\s+/).filter(Boolean).length.toLocaleString()} words · ${t.length.toLocaleString()} / 100,000 characters`; clearTimeout(RICH_T); RICH_T = setTimeout(() => { const s = $('#richSaved'); if (s) s.textContent = 'Draft saved at ' + NOW(); }, 800); }
+        function richJump(i) { const h = $('#richEd').querySelectorAll('h2,h3')[i]; if (h) h.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+        // Team photo panel (upload, zoom, position, rotate)
+        let PH = null;
+        function photoPanel(pg, bk, f, i) {
+            const row = cmsVal(pg, bk, f)[i]; PH = { pg, bk, f, i, photo: row.photo, zoom: row.zoom || 100, x: row.x ?? 50, y: row.y ?? 50, rot: row.rot || 0, name: row.name, des: row.designation };
+            openModal(`<div class="mh"><h2>${row.photo ? 'Change photo' : 'Add photo'} — ${esc(row.name || 'new member')}</h2></div><div class="mb" id="phBody"></div><div class="mf">${row.photo ? '<button class="btn ghost" style="color:var(--bad);margin-right:auto" onclick="phRemove()">Remove photo</button>' : ''}<button class="btn quiet" onclick="closeModal()">Cancel</button><button class="btn gold" id="phUse" onclick="phUse()">Use this photo</button></div>`); phPaint();
+        }
+        function phPaint() {
+            const p = PH; $('#phUse').disabled = !p.photo;
+            $('#phBody').innerHTML = `<div class="row" style="gap:22px;align-items:flex-start;flex-wrap:wrap">
+   <div><div class="cmsphoto big" style="width:180px;height:180px">${p.photo ? `<i style="${photoStyle(p)}"></i>` : '<span>Drop a photo here</span>'}</div>
+     <input type="file" id="phFile" accept="image/jpeg,image/png,image/webp" capture="user" hidden onchange="phFile(this.files[0])"><button class="btn quiet sm mt8" onclick="$('#phFile').click()">${p.photo ? 'Replace photo' : 'Upload from computer'}</button></div>
+   <div class="grow" style="min-width:220px">${p.photo ? `<label class="lbl">Zoom ${p.zoom}%</label><input type="range" min="100" max="300" value="${p.zoom}" oninput="PH.zoom=+this.value;phPaint()" style="width:100%">
+     <label class="lbl mt8">Left – right</label><input type="range" min="0" max="100" value="${p.x}" oninput="PH.x=+this.value;phPaint()" style="width:100%">
+     <label class="lbl mt8">Up – down</label><input type="range" min="0" max="100" value="${p.y}" oninput="PH.y=+this.value;phPaint()" style="width:100%">
+     <div class="row mt8" style="gap:6px"><button class="btn quiet sm" onclick="PH.rot=(PH.rot+270)%360;phPaint()">Rotate left</button><button class="btn quiet sm" onclick="PH.rot=(PH.rot+90)%360;phPaint()">Rotate right</button><button class="btn ghost sm" onclick="Object.assign(PH,{zoom:100,x:50,y:50,rot:0});phPaint()">Reset</button></div>` : '<p class="small muted">JPG, PNG or WebP, 5 MB or less, at least 400 × 400 pixels. On a phone you can take the photo with the camera.</p>'}
+     <div class="card mt" style="text-align:center;padding:14px"><div class="cmsphoto" style="width:84px;height:84px;margin:0 auto;border:2px solid var(--gold)">${p.photo ? `<i style="${photoStyle(p)}"></i>` : ''}</div><div style="font-family:'Libre Caslon Text',serif;margin-top:8px;text-transform:uppercase;letter-spacing:.06em">${esc(p.name || 'Name')}</div><div class="small" style="color:var(--gold3);text-transform:uppercase;letter-spacing:.08em">${esc(p.des || 'Designation')}</div></div></div></div>`;
+        }
+        function phFile(file) { if (!file) return; if (!/^image\/(jpeg|png|webp)$/.test(file.type)) { toast('Use a JPG, PNG or WebP image.'); return; } if (file.size > 5 * 1048576) { toast('The photo must be 5 MB or smaller.'); return; } const r = new FileReader(); r.onload = () => { const im = new Image(); im.onload = () => { if (Math.min(im.width, im.height) < 400) { toast('The photo must be at least 400 × 400 pixels.'); return; } Object.assign(PH, { photo: r.result, zoom: 100, x: 50, y: 50, rot: 0 }); phPaint(); }; im.src = r.result; }; r.readAsDataURL(file); }
+        function phUse() { const p = PH; const rows = JSON.parse(JSON.stringify(cmsVal(p.pg, p.bk, p.f))); Object.assign(rows[p.i], { photo: p.photo, zoom: p.zoom, x: p.x, y: p.y, rot: p.rot }); cmsEdit(p.pg, p.bk, p.f, rows); closeModal(); render(); }
+        function phRemove() { const p = PH; const rows = JSON.parse(JSON.stringify(cmsVal(p.pg, p.bk, p.f))); rows[p.i].photo = ''; cmsEdit(p.pg, p.bk, p.f, rows); closeModal(); render(); }
+        // Preview: handle the new field kinds
+        const _cmsPreview0 = window.cmsPreview;
+        window.cmsPreview = function (pg, bk) {
+            const b = CMS[pg].blocks[bk];
+            if (pg === 'fees' && bk === 'structure') return _cmsPreview0(pg, bk);
+            const body = Object.entries(b.fields).map(([f, def]) => {
+                const v = cmsVal(pg, bk, f);
+                if (def.kind === 'readonly') return `<p class="mono" style="color:var(--gold3)">${esc(def.compute())}</p>`;
+                if (def.kind === 'toggle') return `<p class="small muted">${esc(def.label)}: ${v ? 'shown' : 'hidden'}</p>`;
+                if (def.kind === 'rich') return `<h1 style="font-family:'Libre Caslon Text',serif;font-weight:400">${esc(cmsVal(pg, bk, 'title'))}</h1><p class="small muted">Last updated ${new Date().toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p><div style="max-width:820px;line-height:1.75">${v}</div>`;
+                if (pg === 'legal' && f === 'title') return '';
+                if (def.kind === 'image') return v ? `<img src="${v}" style="width:100%;max-height:220px;object-fit:cover;border-radius:6px;margin:10px 0" alt="">` : `<div class="cmsimg ph" style="width:100%;height:120px;margin:10px 0"><span>${esc(def.hint || '')}</span></div>`;
+                if (def.kind === 'list' && f === 'team') return `<div class="grid g4 mt">${v.map(r => `<div style="text-align:center"><div class="cmsphoto" style="width:96px;height:96px;margin:0 auto;border:2px solid var(--gold)">${r.photo ? `<i style="${photoStyle(r)}"></i>` : '<span>Photo needed</span>'}</div><div style="margin-top:8px;text-transform:uppercase;letter-spacing:.06em;font-size:13px">${esc((r.name || '').split(' ')[0])}<br>${esc((r.name || '').split(' ').slice(1).join(' '))}</div><div class="small" style="color:var(--gold3);text-transform:uppercase;font-size:10.5px">${esc(r.designation)}</div></div>`).join('')}</div>`;
+                if (def.kind === 'list' && f === 'facts') return cmsVal(pg, bk, 'show') ? `<div class="grid g3 mt" style="background:#F1EBDD;padding:16px;border-radius:8px">${v.map(r => `<div style="text-align:center"><div style="width:44px;height:44px;border-radius:50%;border:1.5px solid ${r.accent === 'silver' ? '#8B939C' : '#A87F28'};display:grid;place-items:center;margin:0 auto">${icoSvg(r.icon, r.accent)}</div><div style="font-family:'Libre Caslon Text',serif;font-size:22px;color:${r.accent === 'silver' ? '#8B939C' : '#A87F28'};margin-top:10px">${esc(r.title)}</div><p class="small" style="color:var(--steel)">${esc(r.body)}</p></div>`).join('')}</div>` : '<p class="small muted">The facts strip is hidden.</p>';
+                if (def.kind === 'list') return `<div class="mt">${v.map(row => `<div class="itemrow"><div class="grow">${def.cols.map(([k, l, kind]) => kind === 'long' ? `<div class="small" style="color:var(--steel)">${esc(row[k] || '')}</div>` : kind === 'yesno' ? (row[k] === 'yes' ? '<span class="pill gold">Posting address</span>' : '') : `<b>${esc(row[k] || '')}</b> `).join('')}</div></div>`).join('')}</div>`;
+                if (/accent/i.test(def.label)) return `<h3 style="font-family:'Libre Caslon Text',Georgia,serif;font-weight:400;font-size:24px;margin:0 0 6px;color:var(--gold3)">${esc(v)}</h3>`;
+                if (/eyebrow|chip|label/i.test(def.label)) return `<p class="eyebrow mt">${esc(v)}</p>`;
+                if (/headline|title/i.test(def.label)) return `<h3 style="font-family:'Libre Caslon Text',Georgia,serif;font-weight:400;font-size:24px;margin:6px 0">${esc(v)}</h3>`;
+                if (/button/i.test(def.label)) return `<span class="btn gold sm" style="margin:8px 6px 0 0">${esc(v)}</span>`;
+                return `<p style="font-size:15px;line-height:1.7;color:var(--steel);margin:8px 0">${esc(v).replace(/\n/g, '<br>')}</p>`;
+            }).join('');
+            openModal(`<div class="mh"><h2>${esc(CMS[pg].title)} · ${esc(b.title)}</h2><span class="small muted">Preview with your unpublished edits</span></div><div class="mb"><div class="preview">${body}</div></div><div class="mf"><button class="btn gold" onclick="closeModal()">Done</button></div>`); $('#modal').classList.add('wide');
+        };
+
+        /* ── 4. Publish history ───────────────────────────────────── */
+        const siteLink = p => (SETTINGS.siteUrl || '').replace(/\/$/, '') + p;
+        function histLink(h) {
+            if (h.removed) return `${esc(h.page)} <span class="pill bad">Removed</span>`;
+            const p = h.postId ? POSTS.find(x => x.id === h.postId) : null; const path = p ? '/blog/' + postSlug(p) : h.path;
+            if (p && p.status !== 'published') return `<span class="muted mono small" title="This page isn't on the website at the moment.">${esc(siteLink(path).replace(/^https?:\/\//, ''))}</span> <span class="pill">Not live now</span>`;
+            if (!path) return '<span class="muted">—</span>';
+            return `${h.allPages ? '<span class="small muted">All pages · </span>' : ''}<a class="mono small" style="color:var(--gold3)" target="_blank" rel="noopener" href="${esc(siteLink(path))}" onclick="event.stopPropagation()">${esc(siteLink(path).replace(/^https?:\/\//, ''))} ↗</a>`;
+        }
+        CMS_HISTORY.forEach(h => { if (!h.page) { const m = /^Published (.+?) · (.+)$/.exec(h.what); if (m) { const pg = Object.keys(CMS).find(k => CMS[k].title === m[1]); Object.assign(h, { page: m[1], path: CMS_PATHS[pg] || '/', action: 'Published', what: m[2] }); } else { const t = /post "(.+)"/.exec(h.what); Object.assign(h, { page: t ? t[1] : 'Blog', path: '/blog', action: 'Published' }); } } });
+        function cmsHistory() {
+            const list = CMS_HISTORY.filter(h => fpass('hist', [h.page, h.what, teamName(h.who), h.path].join(' '), h.action, h.at));
+            return `<div class="card flush">${fbar('hist', { placeholder: 'Search page, change or admin', dates: true, statuses: [['Published', 'Published'], ['Updated', 'Updated'], ['Unpublished', 'Unpublished'], ['Deleted', 'Deleted']], statusLabel: 'Any action', count: `${list.length} of ${CMS_HISTORY.length}`, right: `<button class="btn quiet sm" style="margin-left:8px" ${list.length ? '' : 'disabled'} onclick="histExport()">Export CSV</button>` })}
+  ${!SETTINGS.siteUrl ? '<p class="note" style="margin:12px 20px">Set the website address in Settings to show full links.</p>' : ''}
+  ${table([{ h: 'When' }, { h: 'Who' }, { h: 'Page' }, { h: 'Page link', cls: 'wrap' }, { h: 'Action' }, { h: 'What changed', cls: 'wrap' }, { h: '', cls: 'r' }], list.map((h, i) => ({ id: 'h' + i, click: `histView(${CMS_HISTORY.indexOf(h)})`, cells: [`<span class="nw small">${esc(h.at)}</span>`, esc(teamName(h.who)), esc(h.page), histLink(h), `<span class="pill ${h.action === 'Deleted' ? 'bad' : h.action === 'Unpublished' ? 'warn' : 'ok'}">${esc(h.action)}</span>`, `<span class="small">${esc(h.what)}</span>`, `<div class="acts"><button class="btn sm quiet" onclick="event.stopPropagation();histView(${CMS_HISTORY.indexOf(h)})">View change</button>${h.path && !h.removed ? `<button class="btn sm ghost" onclick="event.stopPropagation();navigator.clipboard&&navigator.clipboard.writeText('${siteLink(h.path)}');toast('Link copied.')">Copy link</button>` : ''}</div>`] })), { key: 'hist', emptyTitle: 'No publish history matches these filters.' })}
+  <p class="small muted" style="padding:10px 20px">Links open the page as it is live now.</p></div>`;
+        }
+        function histView(i) {
+            const h = CMS_HISTORY[i]; const show = x => typeof x === 'string' ? (x.startsWith('data:') ? `<img src="${x}" style="max-width:160px;border-radius:6px">` : esc(stripTags(x)).slice(0, 600)) : Array.isArray(x) ? `<span class="small">${x.length} rows: ${esc(x.map(r => r.title || r.name || r.q || r.label || r.text || r.body || '').filter(Boolean).slice(0, 8).join(' · '))}</span>` : esc(String(x));
+            openDrawer(`${drawerHead(esc(h.page), `${esc(h.at)} · ${esc(teamName(h.who))}`, `<span class="pill">${esc(h.action)}</span>`)}<div class="dbody"><div class="sect"><h3>Page</h3><p>${histLink(h)}</p></div><div class="sect"><h3>Changes</h3>${(h.changes || []).length ? h.changes.map(c => `<div class="itemrow" style="display:block"><b>${esc(c.label)}</b><div class="small" style="background:var(--badbg);padding:6px 8px;border-radius:6px;margin-top:6px;text-decoration:line-through">${show(c.before)}</div><div class="small" style="background:var(--okbg);padding:6px 8px;border-radius:6px;margin-top:4px">${show(c.after)}</div></div>`).join('') : `<p class="small muted">${esc(h.what)}</p>`}</div></div><div class="dfoot"><span class="spacer"></span><button class="btn ghost" onclick="closeDrawer()">Close</button></div>`);
+        }
+        function histExport() { const q = v => `"${String(v ?? '').replace(/"/g, '""')}"`; const list = CMS_HISTORY.filter(h => fpass('hist', [h.page, h.what, teamName(h.who), h.path].join(' '), h.action, h.at)); const rows = [['When', 'Who', 'Page', 'Page link', 'Action', 'What changed']].concat(list.map(h => [h.at, teamName(h.who), h.page, h.path ? siteLink(h.path) : '', h.action, h.what])); const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([rows.map(r => r.map(q).join(',')).join('\n')], { type: 'text/csv' })); a.download = 'publish-history.csv'; a.click(); audit(`Exported publish history, ${list.length} rows`); }
+
+        /* ── 5. Blog posts ────────────────────────────────────────── */
+        const POST_CATS = ['From the desk', 'Collecting', 'Guidance'];
+        POSTS.forEach(p => { if (!POST_CATS.includes(p.category)) p.category = 'Guidance'; if (!p.slug) p.slug = slugify(p.title); });
+        function slugify(s) { return String(s || '').toLowerCase().normalize('NFKD').replace(/[^\w\s-]/g, '').trim().replace(/[\s_]+/g, '-').replace(/-+/g, '-').slice(0, 80).replace(/^-|-$/g, ''); }
+        function postSlug(p) { return p.slug || slugify(p.title); }
+        const teamList = () => cmsVal('about', 'people', 'team');
+        function postEditor(id) {
+            const p = id ? POSTS.find(x => x.id === id) : { title: '', slug: '', category: '', standfirst: '', author: '', authorRole: '', date: '', hero: '', body: '', status: 'draft' };
+            PO_HERO = p.hero || ''; PO_SLUG_TOUCHED = !!(id && p.slug);
+            const team = teamList(); const bodyStats = poBodyStats; const _unused = b => { const ps = String(b || '').split(/\n\s*\n/).filter(x => x.trim()); return `${ps.length} paragraph${ps.length === 1 ? '' : 's'} · ${String(b || '').replace(/\s+/g, ' ').length.toLocaleString()} / 8,000`; };
+            openDrawer(`${drawerHead(id ? 'Edit post' : 'New post', 'Everything the public post page shows. Plain text with blank lines between paragraphs.', p.status === 'published' ? '<span class="pill ok">Published</span>' : '<span class="pill warn">Draft</span>')}<div class="dbody">
+    <div class="grid" style="grid-template-columns:220px 1fr;gap:16px;align-items:start">
+      <div><label class="lbl">Hero image (16:10)</label><div id="poHeroBox" class="evthumb-box" style="width:220px;height:138px" onclick="$('#poHeroFile').click()">${PO_HERO ? `<img src="${PO_HERO}" alt="">` : '<span>Add image</span>'}</div><input type="file" id="poHeroFile" accept="image/jpeg,image/png,image/webp" hidden onchange="poHeroChecked(this.files[0])"><div class="row mt8"><button class="btn ghost sm" onclick="$('#poHeroFile').click()">Change</button>${PO_HERO ? `<button class="btn ghost sm" onclick="PO_HERO='';$('#poHeroBox').innerHTML='<span>Add image</span>'">Remove</button>` : ''}</div><p class="err" id="poHeroErr">Add a cover image.</p><p class="small muted">JPG, PNG or WebP, 5 MB or less, at least 1600 × 1000.</p></div>
+      <div><div class="field"><label class="lbl">Category</label><select class="f" id="poCategory"><option value="">Choose a category</option>${POST_CATS.map(c => `<option ${p.category === c ? 'selected' : ''}>${c}</option>`).join('')}</select><p class="err" id="poCategoryErr">This field is required to publish.</p></div>
+        <div class="field"><label class="lbl">Title</label><input class="f" id="poTitle" maxlength="90" value="${esc(p.title)}" placeholder="The three things that give a forgery away" oninput="if(!PO_SLUG_TOUCHED)$('#poSlug').value=slugify(this.value);cmsCount(this,90)"><div class="row between"><p class="err" id="poTitleErr">Enter a title.</p><span class="cmscount small muted">${p.title.length} / 90</span></div></div>
+        <div class="field"><label class="lbl">Web address</label><div class="row" style="gap:6px"><span class="mono small muted">/blog/</span><input class="f mono" id="poSlug" maxlength="80" value="${esc(p.slug || slugify(p.title))}" oninput="PO_SLUG_TOUCHED=true"></div><p class="err" id="poSlugErr">Use lower case letters, numbers and hyphens only.</p></div></div></div>
+    <div class="field"><label class="lbl">Standfirst (the line under the title)</label><textarea class="f" id="poStand" rows="2" maxlength="220" placeholder="One or two sentences that sum the piece up." oninput="this.value=this.value.replace(/\\n/g,' ');cmsCount(this,220)">${esc(p.standfirst || '')}</textarea><div class="row between"><p class="err" id="poStandErr">Enter at least 40 characters.</p><span class="cmscount small muted">${(p.standfirst || '').length} / 220</span></div></div>
+    <div class="grid g2"><div class="field"><label class="lbl">Posted date</label><input class="f" id="poDate" type="date" value="${esc(p.date || '')}"><p class="small muted mt8">Left blank, publishing sets it to today.</p></div>
+      <div class="field"><label class="lbl">Author</label><select class="f" id="poAuthor"><option value="">Choose an author</option>${team.map(m => `<option value="${esc(m.name)}" ${p.author === m.name ? 'selected' : ''}>${esc(m.name)}, ${esc(m.designation)}</option>`).join('')}</select><p class="err" id="poAuthorErr">Choose an author from the team list.</p><p class="small muted mt8">From Content › About page › The people.</p></div></div>
+    <div class="field"><label class="lbl">Body</label><textarea class="f" id="poBody" style="min-height:300px" placeholder="Paragraphs separated by a blank line." oninput="$('#poBodyStats').textContent=poBodyStats(this.value)">${esc(p.body)}</textarea><div class="row between"><p class="err" id="poBodyErr">Write at least 200 characters before publishing.</p><span id="poBodyStats" class="small muted">${bodyStats(p.body)}</span></div></div></div>
+    <div class="dfoot"><button class="btn gold" onclick="savePost('${id || ''}','published')">${p.status === 'published' ? 'Update' : 'Publish'}</button>${p.status === 'published' ? `<button class="btn quiet" onclick="unpublishPost('${id}')">Unpublish</button>` : `<button class="btn quiet" onclick="savePost('${id || ''}','draft')">Save draft</button>`}<button class="btn quiet" onclick="postPreview(null)">Preview</button><span class="spacer"></span>${id ? `<button class="btn ghost" style="color:var(--bad)" onclick="deletePost('${id}')">Delete</button>` : ''}</div>`, { wide: true });
+        }
+        let PO_SLUG_TOUCHED = false;
+        function poBodyStats(b) { const ps = String(b || '').split(/\n\s*\n/).filter(x => x.trim()); return `${ps.length} paragraph${ps.length === 1 ? '' : 's'} · ${String(b || '').replace(/\s+/g, ' ').length.toLocaleString()} / 8,000`; }
+        function poHeroChecked(file) { if (!file) return; if (!/^image\/(jpeg|png|webp)$/.test(file.type)) { toast('Use a JPG, PNG or WebP image.'); return; } if (file.size > 5 * 1048576) { toast('The image must be 5 MB or smaller.'); return; } const r = new FileReader(); r.onload = () => { const im = new Image(); im.onload = () => { if (im.width < 1600 || im.height < 1000) { toast('The image must be at least 1600 × 1000 pixels so it stays sharp in the article header.'); return; } PO_HERO = r.result; $('#poHeroBox').innerHTML = `<img src="${PO_HERO}" alt="">`; }; im.src = r.result; }; r.readAsDataURL(file); }
+        function poDraft() { const g = k => ($('#' + k) || {}).value ? $('#' + k).value.trim() : ''; const m = teamList().find(t => t.name === g('poAuthor')) || {}; return { title: g('poTitle'), slug: g('poSlug'), category: g('poCategory'), standfirst: g('poStand'), author: g('poAuthor'), authorRole: m.designation || '', date: g('poDate'), hero: PO_HERO, body: g('poBody') }; }
+        function savePost(id, status) {
+            const d = poDraft(); const others = POSTS.filter(x => x.id !== id);
+            let ok = fieldErr('poTitle', d.title.length < 10 || d.title.length > 90); if (!d.title) $('#poTitleErr').textContent = 'Enter a title.'; else if (d.title.length < 10) $('#poTitleErr').textContent = 'Enter at least 10 characters.'; else if (others.some(x => x.title.toLowerCase() === d.title.toLowerCase())) { ok = fieldErr('poTitle', true) && false; $('#poTitleErr').textContent = 'Another post already has this title.'; }
+            const slugBad = !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(d.slug) || others.some(x => postSlug(x) === d.slug); ok = fieldErr('poSlug', slugBad) && ok; if (others.some(x => postSlug(x) === d.slug)) $('#poSlugErr').textContent = 'Another post already uses this web address.';
+            if (status === 'published') {
+                ok = fieldErr('poCategory', !d.category) && ok; ok = fieldErr('poAuthor', !d.author) && ok; ok = fieldErr('poStand', d.standfirst.length < 40) && ok; ok = fieldErr('poHero', !d.hero) && ok;
+                const paras = d.body.split(/\n\s*\n/).filter(x => x.trim()); let be = '';
+                if (d.body.replace(/\s+/g, ' ').length < 200) be = 'Write at least 200 characters before publishing.'; else if (paras.some(x => x.length > 1200)) be = 'A paragraph can\'t be longer than 1,200 characters.'; else if (d.body.length > 8000) be = 'The post can\'t be longer than 8,000 characters.'; else if (paras.length > 20) be = 'No more than 20 paragraphs.';
+                $('#poBodyErr').textContent = be || $('#poBodyErr').textContent; ok = fieldErr('poBody', !!be) && ok;
+            }
+            if (!ok) { toast(status === 'published' ? 'Fill in the highlighted fields to publish.' : 'Enter a title.'); return; }
+            const was = id ? POSTS.find(x => x.id === id) : null; const wasLive = was && was.status === 'published';
+            const p = was || { id: 'p' + (POSTS.length + 1) }; Object.assign(p, d, { status }); if (status === 'published' && !p.date) p.date = new Date().toISOString().slice(0, 10); if (!was) POSTS.unshift(p);
+            if (status === 'published') CMS_HISTORY.unshift({ at: TODAY + ' ' + NOW(), who: ME.id, page: p.title, path: '/blog/' + p.slug, postId: p.id, action: wasLive ? 'Updated' : 'Published', what: wasLive ? `Post "${p.title}" updated` : 'New post' });
+            audit(`${status === 'published' ? (wasLive ? 'Updated' : 'Published') : 'Saved'} post "${p.title}"`); closeDrawer(); render(); toast(status === 'published' ? (wasLive ? 'Post updated.' : 'Post published.') : 'Post saved.');
+        }
+        function unpublishPost(id) { const p = POSTS.find(x => x.id === id); confirmAction(`Unpublish "${esc(p.title)}"?`, 'It will be removed from the Blog page and from "More from the desk". You can publish it again later.', 'Unpublish', () => { p.status = 'draft'; CMS_HISTORY.unshift({ at: TODAY + ' ' + NOW(), who: ME.id, page: p.title, path: '/blog/' + postSlug(p), postId: p.id, action: 'Unpublished', what: `Post "${p.title}"` }); audit(`Unpublished post "${p.title}"`); closeDrawer(); render(); toast('Post unpublished.'); }); }
+        function deletePost(id) { const p = POSTS.find(x => x.id === id); confirmAction(`Delete "${esc(p.title)}"?`, 'This can\'t be undone.', 'Delete post', () => { POSTS = POSTS.filter(x => x.id !== id); if (p.status === 'published') CMS_HISTORY.unshift({ at: TODAY + ' ' + NOW(), who: ME.id, page: p.title, removed: true, action: 'Deleted', what: `Post "${p.title}"` }); audit(`Deleted post "${p.title}"`); closeDrawer(); render(); toast('Post deleted.'); }, true); }
+
+        /* ── 6. Contact form: reference + export ──────────────────── */
+        CONTACTS.forEach((m, i) => { if (!m.no) m.no = 'VC-R-' + (4127 - i); });
+        function contactExport() { const q = v => `"${String(v ?? '').replace(/"/g, '""')}"`; const list = CONTACTS.filter(m => fpass('contacts', m.no + ' ' + m.first + ' ' + m.last + ' ' + m.email + ' ' + m.phone + ' ' + (m.ref || '') + ' ' + m.msg + ' ' + m.status, m.status, m.at, m.type || 'general')); const rows = [['Reference', 'Type', 'Received', 'First name', 'Last name', 'Email', 'Phone', 'Submission reference', 'Sent from', 'Status', 'Message']].concat(list.map(m => [m.no, (CT_TYPES[m.type || 'general'] || CT_TYPES.general)[0], m.at, m.first, m.last, m.email, m.cc + ' ' + m.phone, m.ref, m.from || 'Contact us page', m.status, m.msg])); const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([rows.map(r => r.map(q).join(',')).join('\n')], { type: 'text/csv' })); a.download = 'contact-form.csv'; a.click(); audit(`Exported contact form, ${list.length} rows`); toast(`Exported ${list.length} message${list.length === 1 ? '' : 's'}.`); }
+        const _contactDrawer0 = window.contactDrawer;
+        window.contactDrawer = function (id) { _contactDrawer0(id); const m = CONTACTS.find(x => x.id === id); const h = document.querySelector('#drawer .dhead h2'); if (h && m) h.innerHTML = `${esc(m.first)} ${esc(m.last)} <span class="mono small muted" style="font-size:13px">${m.no}</span>`; };
+
+        /* ── 7. Submissions: route wording ────────────────────────── */
+        const _subService0 = window.subService;
+        window.subService = function (s) { const v = _subService0(s); return s.route === 'Dropped at the shop' ? v.replace('Show drop-off', 'Ship to us') : v; };
+
+        /* ── 8. Settings: website address and sticker fee ─────────── */
+        const _viewSettings0 = window.viewSettings;
+        window.viewSettings = function () {
+            let html = _viewSettings0();
+            html = html.replace("['bulkFrom', 'Bulk from (items)']", "['bulkFrom', 'Bulk from (items)']");
+            const extra = `<div class="field mt"><label class="lbl" for="stickerIn">Tamper-evident sticker, per item ($)</label><input class="f mono" id="stickerIn" type="number" min="0" max="1000" value="${SCHEDULE.sticker}" onchange="const v=Number(this.value);if(this.value===''||!(v>=0&&v<=1000)){toast('Enter an amount from 0 to 1,000.');return;}audit('Fee schedule: sticker per item '+money(SCHEDULE.sticker)+' → '+money(v));SCHEDULE.sticker=v;toast('Schedule saved.')"><p class="small muted mt8">Shown on the Services page sticker price line.</p></div>`;
+            html = html.replace('<p class="note mt">Unsigned items have no fixed price', extra + '<p class="note mt">Unsigned items have no fixed price');
+            const site = `<div class="field"><label class="lbl" for="siteUrlIn">Website address</label><input class="f mono" id="siteUrlIn" value="${esc(SETTINGS.siteUrl || '')}" placeholder="https://myverichain.com" onchange="const v=this.value.trim().replace(/\\/$/,'');if(v&&!/^https:\\/\\//.test(v)){toast('Enter a full web address starting with https://');return;}SETTINGS.siteUrl=v;audit('Setting: website address = '+(v||'(empty)'));toast('Saved.')"><p class="small muted mt8">Used for page links in Publish history.</p></div>`;
+            return html.replace('<div class="field"><label class="lbl">Sent from</label>', site + '<div class="field"><label class="lbl">Sent from</label>');
+        };
+
+        /* ── 9. Sign-in: no role picker, real account check, idle sign-out ── */
+        // Sign-in keeps the prototype's screen exactly as designed (role picker, demo note, any password).
+        const _signIn0 = window.signIn;
+        window.signIn = function () { _signIn0(); idleReset(); };
+        let IDLE_T = null, IDLE_W = null; const IDLE_MIN = 30;
+        function idleReset() { clearTimeout(IDLE_T); clearTimeout(IDLE_W); if (!ME) return; IDLE_W = setTimeout(() => { if (!ME) return; confirmAction('Still there?', "You'll be signed out in 2 minutes for security.", 'Stay signed in', () => idleReset()); }, (IDLE_MIN - 2) * 60000); IDLE_T = setTimeout(() => { if (!ME) return; audit('Signed out after inactivity'); closeModal(); signOut(); const e = $('#liErr'); if (e) { e.textContent = 'You were signed out after 30 minutes without activity. Sign in again to continue.'; e.style.display = 'block'; } }, IDLE_MIN * 60000); }
+        ['click', 'keydown'].forEach(ev => document.addEventListener(ev, () => { if (ME) idleReset(); }, { passive: true }));
+        const _signOut0 = window.signOut; window.signOut = function () { if (ME) audit('Signed out'); clearTimeout(IDLE_T); clearTimeout(IDLE_W); _signOut0(); };
+        if (typeof PW_RULES !== 'undefined') PW_RULES.push(['Not your name or email', v => { const e = (typeof RC !== 'undefined' && RC && RC.email) ? RC.email.split('@')[0].toLowerCase() : ''; return !!v && (!e || !v.toLowerCase().includes(e)); }]);
+
     </script>
 </body>
 
